@@ -1,0 +1,9 @@
+[submodule "NCFExt"]
+	path = NCFExt
+	url = git@git.retrolab.de:Retrolab/NCFExt.git
+[submodule "NCFControls"]
+	path = NCFControls
+	url = git@git.retrolab.de:Retrolab/NCFControls.git
+[submodule "NCFBCReader"]
+	path = NCFBCReader
+	url = git@git.retrolab.de:Retrolab/NCFBCReader.git
