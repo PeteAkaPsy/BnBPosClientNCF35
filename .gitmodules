@@ -7,3 +7,6 @@
 [submodule "NCFBCReader"]
 	path = NCFBCReader
 	url = git@git.retrolab.de:Retrolab/NCFBCReader.git
+[submodule "NCFRest"]
+	path = NCFRest
+	url = git@git.retrolab.de:Retrolab/NCFRest.git
