@@ -56,6 +56,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration.cs" />
+    <Compile Include="ConnectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectForm.Designer.cs">
+      <DependentUpon>ConnectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="datatypes\LoginData.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ConnectForm.resx">
+      <DependentUpon>ConnectForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -72,9 +83,18 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ServerPickerForm.resx">
+      <DependentUpon>ServerPickerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ServerPickerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServerPickerForm.Designer.cs">
+      <DependentUpon>ServerPickerForm.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +109,10 @@
     <ProjectReference Include="..\NCFExt\NCFExt.csproj">
       <Project>{DF9BD544-4BD3-4655-B0D1-570B20FB5EC8}</Project>
       <Name>NCFExt</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NCFRest\RetroLab.REST.CF.VS2008.csproj">
+      <Project>{9664BC87-B023-49EC-9BC9-6A1B80966D58}</Project>
+      <Name>RetroLab.REST.CF.VS2008</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
