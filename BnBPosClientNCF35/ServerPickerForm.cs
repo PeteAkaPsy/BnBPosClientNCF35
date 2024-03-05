@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using RetroLab.Json;
 using Retrolab;
+using BnBPosClientNCF35.Properties;
 
 namespace BnBPosClientNCF35
 {
@@ -45,7 +46,7 @@ namespace BnBPosClientNCF35
                 RowButton btn = Pools.RowBtnPool.Get();
                 btn.Width = panel1.Width;
                 btn.Height = Element_Height;
-                btn.Init(cfg.Configs[i].ServerUri, OnClickElement, B64Res.EditIcon, OnClickEditElement, B64Res.DeleteIcon, OnClickDeleteElement);
+                btn.Init(cfg.Configs[i].ServerUri, OnClickElement, Resources.EditIcon_32, OnClickEditElement, Resources.DeleteIcon_32, OnClickDeleteElement);
                 btn.SetPos(0, i * (Element_Height + Element_Space));
                 btn.EntryId = i;
                 panel1.Controls.Add(btn);

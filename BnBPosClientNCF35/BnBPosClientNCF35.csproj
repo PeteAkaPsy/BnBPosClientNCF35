@@ -80,7 +80,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -118,7 +118,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <Content Include="Resources\AddIcon_32.png" />
+    <Content Include="Resources\AddIcon_64.png" />
+    <Content Include="Resources\AddMultipleIcon_32.png" />
+    <Content Include="Resources\AddMultipleIcon_64.png" />
+    <Content Include="Resources\BackIcon_32.png" />
+    <Content Include="Resources\DeleteIcon_32.png" />
+    <Content Include="Resources\EditIcon_32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
   <ProjectExtensions>

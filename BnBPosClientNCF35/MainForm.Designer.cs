@@ -1,4 +1,5 @@
 ﻿using Retrolab;
+using BnBPosClientNCF35.Properties;
 
 namespace BnBPosClientNCF35
 {
@@ -36,7 +37,7 @@ namespace BnBPosClientNCF35
             this.checkInBtn = new Retrolab.ImageButton();
             this.checkOutBtn = new Retrolab.ImageButton();
             this.imageButton1 = new Retrolab.ImageButton();
-            this.confBtn = new Retrolab.ImageButton();
+            this.backBtn = new Retrolab.ImageButton();
             this.imageButton2 = new Retrolab.ImageButton();
             this.sellLabel = new System.Windows.Forms.Label();
             this.checkInLabel = new System.Windows.Forms.Label();
@@ -83,14 +84,14 @@ namespace BnBPosClientNCF35
             this.imageButton1.Size = new System.Drawing.Size(64, 64);
             this.imageButton1.TabIndex = 4;
             // 
-            // confBtn
+            // backBtn
             // 
-            this.confBtn.BackColor = System.Drawing.SystemColors.Control;
-            this.confBtn.Image = null;
-            this.confBtn.Location = new System.Drawing.Point(3, 3);
-            this.confBtn.Name = "confBtn";
-            this.confBtn.Size = new System.Drawing.Size(32, 32);
-            this.confBtn.TabIndex = 5;
+            this.backBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.backBtn.Image = Resources.BackIcon_32;
+            this.backBtn.Location = new System.Drawing.Point(3, 3);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(32, 32);
+            this.backBtn.TabIndex = 5;
             // 
             // imageButton2
             // 
@@ -137,7 +138,7 @@ namespace BnBPosClientNCF35
             this.Controls.Add(this.checkInLabel);
             this.Controls.Add(this.sellLabel);
             this.Controls.Add(this.imageButton2);
-            this.Controls.Add(this.confBtn);
+            this.Controls.Add(this.backBtn);
             this.Controls.Add(this.imageButton1);
             this.Controls.Add(this.checkOutBtn);
             this.Controls.Add(this.checkInBtn);
@@ -156,7 +157,7 @@ namespace BnBPosClientNCF35
         private ImageButton checkInBtn;
         private ImageButton checkOutBtn;
         private ImageButton imageButton1;
-        private ImageButton confBtn;
+        private ImageButton backBtn;
         private ImageButton imageButton2;
         private System.Windows.Forms.Label sellLabel;
         private System.Windows.Forms.Label checkInLabel;
