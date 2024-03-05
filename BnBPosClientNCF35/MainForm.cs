@@ -6,15 +6,21 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using RetroLab.REST;
 
 namespace BnBPosClientNCF35
 {
     public partial class MainForm : Form
     {
         private const int CenterSpacing = 2;
+        private ServerCfg _cfg;
+        private IRestClient rest = null;
 
-        public MainForm()
+        public MainForm(ServerCfg cfg)
         {
+            this._cfg = cfg;
+            this.rest = new RestClient(this._cfg.ServerUri, this._cfg.AccountToken);
+
             InitializeComponent();
 
             SetMainIconPos();
@@ -22,33 +28,33 @@ namespace BnBPosClientNCF35
 
         private void SetMainIconPos()
         {
-            int centerX = ClientSize.Width / 2;
-            int centerY = ClientSize.Height / 2;
+            int centerX = this.ClientSize.Width / 2;
+            int centerY = this.ClientSize.Height / 2;
 
             //CheckIn
-            checkInBtn.Location = new Point(
-                centerX - checkInBtn.Width - CenterSpacing,
-                centerY - checkInBtn.Height - CenterSpacing - checkInLabel.Height - CenterSpacing);
-            checkInLabel.Location = new Point(
-                centerX - checkInLabel.Width - CenterSpacing,
-                centerY - checkInLabel.Height - CenterSpacing);
+            this.checkInBtn.Location = new Point(
+                centerX - this.checkInBtn.Width - CenterSpacing,
+                centerY - this.checkInBtn.Height - CenterSpacing - this.checkInLabel.Height - CenterSpacing);
+            this.checkInLabel.Location = new Point(
+                centerX - this.checkInLabel.Width - CenterSpacing,
+                centerY - this.checkInLabel.Height - CenterSpacing);
             //Sell
-            sellBtn.Location = new Point(
+            this.sellBtn.Location = new Point(
                 centerX + CenterSpacing,
-                centerY - checkInBtn.Height - CenterSpacing - checkInLabel.Height - CenterSpacing);
-            sellLabel.Location = new Point(
+                centerY - this.checkInBtn.Height - CenterSpacing - this.checkInLabel.Height - CenterSpacing);
+            this.sellLabel.Location = new Point(
                 centerX + CenterSpacing,
-                centerY - sellLabel.Height - CenterSpacing);
+                centerY - this.sellLabel.Height - CenterSpacing);
 
             //CheckOut
-            checkOutBtn.Location = new Point(
-                centerX - checkOutBtn.Width - CenterSpacing,
+            this.checkOutBtn.Location = new Point(
+                centerX - this.checkOutBtn.Width - CenterSpacing,
                 centerY + CenterSpacing);
-            checkOutLabel.Location = new Point(
-                centerX - checkOutBtn.Width - CenterSpacing,
-                centerY + CenterSpacing + checkOutBtn.Height + CenterSpacing);
+            this.checkOutLabel.Location = new Point(
+                centerX - this.checkOutBtn.Width - CenterSpacing,
+                centerY + CenterSpacing + this.checkOutBtn.Height + CenterSpacing);
             //tmp/unknown
-            imageButton1.Location = new Point(
+            this.imageButton1.Location = new Point(
                 centerX + CenterSpacing,
                 centerY + CenterSpacing);
             //missing label

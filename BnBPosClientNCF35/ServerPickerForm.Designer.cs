@@ -31,15 +31,26 @@
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.addEntryIBtn = new Retrolab.ImageButton();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Info;
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(3, 41);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(221, 224);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Info;
+            this.panel2.Location = new System.Drawing.Point(4, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(214, 224);
             // 
             // addEntryIBtn
             // 
@@ -50,6 +61,7 @@
             this.addEntryIBtn.Name = "addEntryIBtn";
             this.addEntryIBtn.Size = new System.Drawing.Size(32, 32);
             this.addEntryIBtn.TabIndex = 7;
+            this.addEntryIBtn.Click += new System.EventHandler(this.addEntryIBtn_Click);
             // 
             // vScrollBar1
             // 
@@ -67,9 +79,12 @@
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.addEntryIBtn);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
             this.Menu = this.mainMenu1;
+            this.MinimizeBox = false;
             this.Name = "ServerPickerForm";
             this.Text = "ServerPicker";
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -79,5 +94,6 @@
         private System.Windows.Forms.Panel panel1;
         private Retrolab.ImageButton addEntryIBtn;
         private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

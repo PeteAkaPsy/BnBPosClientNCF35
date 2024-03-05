@@ -37,6 +37,8 @@
             this.LoginBtn = new System.Windows.Forms.Button();
             this.serverUriLabel = new System.Windows.Forms.Label();
             this.serverUriTB = new System.Windows.Forms.TextBox();
+            this.serverNameTB = new System.Windows.Forms.TextBox();
+            this.serverNameLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // usernameLabel
@@ -94,12 +96,29 @@
             this.serverUriTB.Size = new System.Drawing.Size(164, 21);
             this.serverUriTB.TabIndex = 8;
             // 
+            // serverNameTB
+            // 
+            this.serverNameTB.Location = new System.Drawing.Point(39, 37);
+            this.serverNameTB.MaxLength = 255;
+            this.serverNameTB.Name = "serverNameTB";
+            this.serverNameTB.Size = new System.Drawing.Size(164, 21);
+            this.serverNameTB.TabIndex = 13;
+            // 
+            // serverNameLabel
+            // 
+            this.serverNameLabel.Location = new System.Drawing.Point(39, 14);
+            this.serverNameLabel.Name = "serverNameLabel";
+            this.serverNameLabel.Size = new System.Drawing.Size(164, 20);
+            this.serverNameLabel.Text = "Server Name";
+            // 
             // ConnectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.serverNameTB);
+            this.Controls.Add(this.serverNameLabel);
             this.Controls.Add(this.serverUriTB);
             this.Controls.Add(this.serverUriLabel);
             this.Controls.Add(this.LoginBtn);
@@ -123,5 +142,7 @@
         private System.Windows.Forms.Button LoginBtn;
         private System.Windows.Forms.Label serverUriLabel;
         private System.Windows.Forms.TextBox serverUriTB;
+        private System.Windows.Forms.TextBox serverNameTB;
+        private System.Windows.Forms.Label serverNameLabel;
     }
 }

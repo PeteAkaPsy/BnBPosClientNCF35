@@ -1,4 +1,6 @@
-﻿namespace BnBPosClientNCF35
+﻿using System;
+
+namespace BnBPosClientNCF35
 {
     [Serializable]
     public struct LoginData
