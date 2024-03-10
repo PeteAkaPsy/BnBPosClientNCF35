@@ -123,8 +123,11 @@
     <Content Include="Resources\AddMultipleIcon_32.png" />
     <Content Include="Resources\AddMultipleIcon_64.png" />
     <Content Include="Resources\BackIcon_32.png" />
+    <None Include="Resources\BackIcon_64.png" />
     <Content Include="Resources\DeleteIcon_32.png" />
+    <None Include="Resources\DeleteIcon_64.png" />
     <Content Include="Resources\EditIcon_32.png" />
+    <None Include="Resources\EditIcon_64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
   <ProjectExtensions>

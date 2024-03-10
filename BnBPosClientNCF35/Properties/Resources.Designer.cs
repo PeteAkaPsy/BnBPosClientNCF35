@@ -95,6 +95,13 @@ namespace BnBPosClientNCF35.Properties {
             }
         }
         
+        public static System.Drawing.Bitmap BackIcon_64 {
+            get {
+                object obj = ResourceManager.GetObject("BackIcon_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         public static System.Drawing.Bitmap DeleteIcon_32 {
             get {
                 object obj = ResourceManager.GetObject("DeleteIcon_32", resourceCulture);
@@ -102,9 +109,23 @@ namespace BnBPosClientNCF35.Properties {
             }
         }
         
+        public static System.Drawing.Bitmap DeleteIcon_64 {
+            get {
+                object obj = ResourceManager.GetObject("DeleteIcon_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         public static System.Drawing.Bitmap EditIcon_32 {
             get {
                 object obj = ResourceManager.GetObject("EditIcon_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap EditIcon_64 {
+            get {
+                object obj = ResourceManager.GetObject("EditIcon_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

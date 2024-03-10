@@ -14,23 +14,25 @@ namespace BnBPosClientNCF35
         {
             //int newAmmount = Configs != null ? Configs.Count() : 0;
 
-            List<ServerCfg> tcfg = new List<ServerCfg>(Configs);
+            List<ServerCfg> tcfg = this.Configs == null ? new List<ServerCfg>() : new List<ServerCfg>(this.Configs);
             tcfg.Add(newCfg);
-            Configs = tcfg.ToArray();
+            this.Configs = tcfg.ToArray();
         }
 
         public void RemoveServer(ServerCfg cfgToRemove)
         {
-            List<ServerCfg> tcfg = new List<ServerCfg>(Configs);
+            if (this.Configs == null) return;
+            List<ServerCfg> tcfg = new List<ServerCfg>(this.Configs);
             tcfg.Remove(cfgToRemove);
-            Configs = tcfg.ToArray();
+            this.Configs = tcfg.ToArray();
         }
 
         public void RemoveServerAt(long index)
         {
-            List<ServerCfg> tcfg = new List<ServerCfg>(Configs);
+            if (this.Configs == null) return;
+            List<ServerCfg> tcfg = new List<ServerCfg>(this.Configs);
             tcfg.RemoveAt((int)index);
-            Configs = tcfg.ToArray();
+            this.Configs = tcfg.ToArray();
         }
     }
 }

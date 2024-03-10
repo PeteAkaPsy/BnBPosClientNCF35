@@ -32,6 +32,7 @@ namespace BnBPosClientNCF35
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.sellBtn = new Retrolab.ImageButton();
             this.checkInBtn = new Retrolab.ImageButton();
@@ -53,6 +54,7 @@ namespace BnBPosClientNCF35
             this.sellBtn.Name = "sellBtn";
             this.sellBtn.Size = new System.Drawing.Size(64, 64);
             this.sellBtn.TabIndex = 1;
+            this.sellBtn.Click += new System.EventHandler(this.sellBtn_Click);
             // 
             // checkInBtn
             // 
@@ -63,6 +65,7 @@ namespace BnBPosClientNCF35
             this.checkInBtn.Name = "checkInBtn";
             this.checkInBtn.Size = new System.Drawing.Size(64, 64);
             this.checkInBtn.TabIndex = 2;
+            this.checkInBtn.Click += new System.EventHandler(this.checkInBtn_Click);
             // 
             // checkOutBtn
             // 
@@ -73,6 +76,7 @@ namespace BnBPosClientNCF35
             this.checkOutBtn.Name = "checkOutBtn";
             this.checkOutBtn.Size = new System.Drawing.Size(64, 64);
             this.checkOutBtn.TabIndex = 3;
+            this.checkOutBtn.Click += new System.EventHandler(this.checkOutBtn_Click);
             // 
             // imageButton1
             // 
@@ -83,15 +87,17 @@ namespace BnBPosClientNCF35
             this.imageButton1.Name = "imageButton1";
             this.imageButton1.Size = new System.Drawing.Size(64, 64);
             this.imageButton1.TabIndex = 4;
+            this.imageButton1.Click += new System.EventHandler(this.imageButton1_Click);
             // 
             // backBtn
             // 
             this.backBtn.BackColor = System.Drawing.SystemColors.Control;
-            this.backBtn.Image = Resources.BackIcon_32;
+            this.backBtn.Image = ((System.Drawing.Image)(resources.GetObject("backBtn.Image")));
             this.backBtn.Location = new System.Drawing.Point(3, 3);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(32, 32);
             this.backBtn.TabIndex = 5;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
             // imageButton2
             // 
@@ -102,6 +108,7 @@ namespace BnBPosClientNCF35
             this.imageButton2.Name = "imageButton2";
             this.imageButton2.Size = new System.Drawing.Size(32, 32);
             this.imageButton2.TabIndex = 6;
+            this.imageButton2.Click += new System.EventHandler(this.imageButton2_Click);
             // 
             // sellLabel
             // 
