@@ -14,13 +14,14 @@ namespace BnBPosClientNCF35
     public partial class MainForm : Form
     {
         private const int CenterSpacing = 2;
-        private ServerCfg _cfg;
-        private IRestClient rest = null;
+        private Configuration cfg;
+        private IRestClient rest;
 
-        public MainForm(ServerCfg cfg)
+        public MainForm()
         {
-            this._cfg = cfg;
-            this.rest = new RestClient(this._cfg.ServerUri, this._cfg.AccountToken);
+            this.cfg = Program.cfg;
+            this.rest = Program.rest;
+            //this.rest = new RestClient(this._cfg.ServerUri, this._cfg.AccountToken);
 
             InitializeComponent();
 

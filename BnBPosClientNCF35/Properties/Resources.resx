@@ -148,4 +148,10 @@
   <data name="EditIcon_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EditIcon_64.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="LoginFailed" xml:space="preserve">
+    <value>The Login Failed!</value>
+  </data>
+  <data name="TokenInvalid" xml:space="preserve">
+    <value>The Token is Invalid!</value>
+  </data>
 </root>

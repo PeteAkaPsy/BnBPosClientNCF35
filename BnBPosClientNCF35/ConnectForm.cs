@@ -19,6 +19,9 @@ namespace BnBPosClientNCF35
         public ConnectForm()
         {
             InitializeComponent();
+
+            if (string.IsNullOrEmpty(this.serverUriTB.Text))
+                this.serverUriTB.Text = "http://";
         }
 
         public ConnectForm(ServerCfg cfg) : this()

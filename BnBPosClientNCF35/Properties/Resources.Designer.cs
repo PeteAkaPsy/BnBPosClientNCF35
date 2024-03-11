@@ -129,5 +129,23 @@ namespace BnBPosClientNCF35.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The Login Failed! ähnelt.
+        /// </summary>
+        public static string LoginFailed {
+            get {
+                return ResourceManager.GetString("LoginFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The Token is Invalid! ähnelt.
+        /// </summary>
+        public static string TokenInvalid {
+            get {
+                return ResourceManager.GetString("TokenInvalid", resourceCulture);
+            }
+        }
     }
 }

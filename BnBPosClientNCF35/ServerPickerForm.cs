@@ -64,11 +64,26 @@ namespace BnBPosClientNCF35
 
         private void OnClickElement(long index)
         {
+            Program.rest.baseURL = this.cfg.Configs[index].ServerUri;
+            Program.rest.SetAuthToken(this.cfg.Configs[index].AccountToken);
+
             // check if server was reachable and token is valid first
+            Program.rest.Get("r/ping", null,
+                (bool valid) => {
+                    if (valid)
+                    {
+                        Debug.WriteLine("Ping: valid");
+                        MainForm frm = new MainForm();
+                        frm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show(Resources.TokenInvalid);
+                    }
+            }, null); 
 
-
-            MainForm frm = new MainForm(this.cfg.Configs[index]);
-            frm.Show();
+            //MainForm frm = new MainForm();
+            //frm.Show();
         }
 
         private void OnClickEditElement(long index)
