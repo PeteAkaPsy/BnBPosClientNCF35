@@ -78,7 +78,7 @@ namespace BnBPosClientNCF35
                     }
                     else
                     {
-                        MessageBox.Show(Resources.TokenInvalid);
+                        MessageBox.Show(Loca.TokenInvalid);
                     }
             }, null); 
 

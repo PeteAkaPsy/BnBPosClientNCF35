@@ -22,14 +22,14 @@ namespace BnBPosClientNCF35.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "2.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    public class Loca {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Loca() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace BnBPosClientNCF35.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BnBPosClientNCF35.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BnBPosClientNCF35.Properties.Loca", typeof(Loca).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -60,73 +60,21 @@ namespace BnBPosClientNCF35.Properties {
             }
         }
         
-        public static System.Drawing.Bitmap AddIcon_32 {
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The Login Failed! ähnelt.
+        /// </summary>
+        public static string LoginFailed {
             get {
-                object obj = ResourceManager.GetObject("AddIcon_32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("LoginFailed", resourceCulture);
             }
         }
         
-        public static System.Drawing.Bitmap AddIcon_64 {
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The Token is Invalid! ähnelt.
+        /// </summary>
+        public static string TokenInvalid {
             get {
-                object obj = ResourceManager.GetObject("AddIcon_64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap AddMultipleIcon_32 {
-            get {
-                object obj = ResourceManager.GetObject("AddMultipleIcon_32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap AddMultipleIcon_64 {
-            get {
-                object obj = ResourceManager.GetObject("AddMultipleIcon_64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap BackIcon_32 {
-            get {
-                object obj = ResourceManager.GetObject("BackIcon_32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap BackIcon_64 {
-            get {
-                object obj = ResourceManager.GetObject("BackIcon_64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap DeleteIcon_32 {
-            get {
-                object obj = ResourceManager.GetObject("DeleteIcon_32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap DeleteIcon_64 {
-            get {
-                object obj = ResourceManager.GetObject("DeleteIcon_64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap EditIcon_32 {
-            get {
-                object obj = ResourceManager.GetObject("EditIcon_32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap EditIcon_64 {
-            get {
-                object obj = ResourceManager.GetObject("EditIcon_64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("TokenInvalid", resourceCulture);
             }
         }
     }

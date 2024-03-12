@@ -13,6 +13,7 @@ namespace BnBPosClientNCF35
     {
         const string cfgFilePath = "./config.json";
         public static RestClient rest;
+        public static BCReader.IBCReader barcodeReader;
         public static Configuration cfg;
 
 
@@ -22,14 +23,18 @@ namespace BnBPosClientNCF35
         [MTAThread]
         static void Main()
         {
+            rest = new RestClient();
+            barcodeReader = BCReader.BCR.Get();
+
             if (File.Exists(cfgFilePath))
             {
                 cfg = Converter.Deserialize<Configuration>(Ext.ReadAllText(cfgFilePath));
             }
             LoadConfig();
 
-            rest = new RestClient();
             Application.Run(new ServerPickerForm());
+
+            barcodeReader.Close();
         }
 
         public static void LoadConfig()

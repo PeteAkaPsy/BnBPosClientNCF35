@@ -107,7 +107,8 @@ namespace BnBPosClientNCF35
 
         private void checkInBtn_Click(object sender, EventArgs e)
         {
-
+            Form frm = new CheckInForm();
+            frm.Show();
         }
 
         private void sellBtn_Click(object sender, EventArgs e)

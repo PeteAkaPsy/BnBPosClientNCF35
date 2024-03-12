@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,35 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AddIcon_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\addicon_32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <metadata name="mainMenu1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="backBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAABH1JREFUSEvtVl1s
+        FFUUnra2QGvBNsQQHiAGDFXbEO0DpX937p3ttqkNJo0bISJGhX3zxVcf9kFiog0PfTFpUilsd+7cmaWA
+        TWPaoNbEgqmd3b3zsz+01bKtlVT8ITEqCHY8tyhqKtCR9c1JTrLJnnu/e75zzneOJP3/3YUBz5NKzOFw
+        +eWxgxWeIZX4JcvweyYSkYrHB9D6BG3cOnMGN2Z00paf2LfVD7DnRYqXl3vXrfnBnhEqGYserHBOdOzg
+        jOx3Gep3GDrtGvglP8DCV4Cv6YygRtBqDbbv4hp+IcVklVM0a2vypTSTBwQTa7rIj5MRkkpcAz1on0I1
+        DlMOWSoe5Jqc4yr+2qaI2xQfhZwX+bnznr5wYXG2v7HSOR14TIBChCdtKqdtHS/aGjEdio+Zx9tb7nmR
+        HweRBxFpTg3WcAAFik8kY8i1KMrbDE+6TOnJMoLz79RV+bn3rr4iZ2M9bRWWjnc5Kj7kxshJoNixVJRP
+        0dZPOZPftpkSyA0f2OxBKgoFXDQ3jtY7Gt4BeVzJqR3DGfi9wGNoMkVJT5KStsmBzi2mWV8KoCK/fuyf
+        39nXFy5NxPB2qNznU5pMoZCmIeolHpO5o5FeR0NdrtG1bQnSMN3bsc6vGZFQ2ap2EhSfH2p7OM1ICPLI
+        uEYuWar8g62iRejZEVdXXsvEcXAqKu+xBslTaao86ccusuBu+1SwZl4PVo+Powduhz5/oWEDAHaCnYXq
+        /cpSyXVbU34Fmn+CyPPQOp9ZGvnYjpEP7UGfFlM+sGJk1NLQu068s9sdfaX6NnB6pHs7j+FzAPA9AN5M
+        GwFPmMMCnqXhG/DfDUtVrosH+TUOZ4DBn5Mq+iYZRWNONNhompKoEUkSymRRAtUr/+Lqt0ALaXDnskPJ
+        NUeTk7PvYeIaUtkKsNlXX55kgU5O5Y9SGv4OROLm79FeS6noW4sC3ao842oo59uYnHUosh0dn82oe/df
+        /aT5b/1fZKoHNju68lxKl4eTVL4MtP/IKV4A1Yq7Gg6n46Tl4lDTbj60t9avpeJNTySiDTvnzjzzkDcu
+        /VlcK5MDetM0mraJHk6qZAio/wLsCrCQyOjKW66OyaSBtohe97xwqWeu3UzwFdV8x6GiH2vYkFQDj9q6
+        8rJNFQPkcgbUahGoviCGgoh6fvTZ6lWvvl8JE9NmcbirPAHDIUXxETAGYzAHLTbvqmgio5I3Pjc6mq+O
+        PF1V8JEo1EWoE2dttRmDHLYo1izamuW0dQEK7HyOKUfhEc3n+uo33W+gq84bsHVcmWistPTWOgA+ApXN
+        uIpgFqMvbdBtkNA3p6JtewoOLC4U2we02SZLV+pSKg6DZuscWgom1RKIyhQIyesFXwT+iESATw92bORR
+        VOuo5DDMZwOqfNamLXOW1nq84Hn+K4WeFyrJ9u+rFItBJi6/CIUWhWofmWL41YJQ7UXuvAGKTdPsC5fn
+        9JZHskxuz8QD3Qm9YadfYFE7fs9IEUmClShUNv1+x8b8SHOVZzx+S2/9ff9+OfRg6/hPc+svEP/evwHe
+        9Vj8yOrKBgAAAABJRU5ErkJggg==
+</value>
   </data>
-  <data name="AddIcon_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\addicon_64.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AddMultipleIcon_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\addmultipleicon_32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AddMultipleIcon_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\addmultipleicon_64.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BackIcon_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\backicon_32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BackIcon_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackIcon_64.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DeleteIcon_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\deleteicon_32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DeleteIcon_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DeleteIcon_64.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="EditIcon_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\editicon_32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="EditIcon_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EditIcon_64.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  <metadata name="$this.FormFactorShadowProperty" xml:space="preserve">
+    <value>Pocket_PC</value>
+  </metadata>
+  <metadata name="$this.Skin" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

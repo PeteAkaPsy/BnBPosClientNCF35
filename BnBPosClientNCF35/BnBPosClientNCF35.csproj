@@ -71,6 +71,17 @@
     </Compile>
     <Compile Include="datatypes\ServerCfg.cs" />
     <Compile Include="datatypes\LoginData.cs" />
+    <Compile Include="ManualInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManualInputForm.Designer.cs">
+      <DependentUpon>ManualInputForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Loca.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Loca.resx</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +95,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConnectForm.resx">
       <DependentUpon>ConnectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManualInputForm.resx">
+      <DependentUpon>ManualInputForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Loca.de.resx" />
+    <EmbeddedResource Include="Properties\Loca.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Loca.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
