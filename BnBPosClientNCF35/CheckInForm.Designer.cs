@@ -36,6 +36,9 @@
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.manualInputButton = new Retrolab.ImageButton();
+            this.payButton = new Retrolab.ImageButton();
+            this.cancelButton = new Retrolab.ImageButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +67,7 @@
             // 
             this.vScrollBar1.Location = new System.Drawing.Point(224, 41);
             this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(13, 224);
+            this.vScrollBar1.Size = new System.Drawing.Size(13, 184);
             this.vScrollBar1.TabIndex = 10;
             // 
             // panel1
@@ -73,14 +76,43 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(3, 41);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(221, 224);
+            this.panel1.Size = new System.Drawing.Size(221, 184);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Info;
             this.panel2.Location = new System.Drawing.Point(4, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(214, 224);
+            this.panel2.Size = new System.Drawing.Size(214, 184);
+            // 
+            // manualInputButton
+            // 
+            this.manualInputButton.BackColor = System.Drawing.SystemColors.Control;
+            this.manualInputButton.Image = null;
+            this.manualInputButton.Location = new System.Drawing.Point(104, 232);
+            this.manualInputButton.Name = "manualInputButton";
+            this.manualInputButton.Size = new System.Drawing.Size(32, 32);
+            this.manualInputButton.TabIndex = 12;
+            this.manualInputButton.Click += new System.EventHandler(this.manualInputButton_Click);
+            // 
+            // payButton
+            // 
+            this.payButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.payButton.BackColor = System.Drawing.SystemColors.Control;
+            this.payButton.Image = null;
+            this.payButton.Location = new System.Drawing.Point(205, 232);
+            this.payButton.Name = "payButton";
+            this.payButton.Size = new System.Drawing.Size(32, 32);
+            this.payButton.TabIndex = 14;
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.BackColor = System.Drawing.SystemColors.Control;
+            this.cancelButton.Image = ((System.Drawing.Image)(resources.GetObject("cancelButton.Image")));
+            this.cancelButton.Location = new System.Drawing.Point(3, 232);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(32, 32);
+            this.cancelButton.TabIndex = 13;
             // 
             // CheckInForm
             // 
@@ -88,6 +120,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.payButton);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.manualInputButton);
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.imageButton2);
@@ -107,5 +142,8 @@
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private Retrolab.ImageButton manualInputButton;
+        private Retrolab.ImageButton payButton;
+        private Retrolab.ImageButton cancelButton;
     }
 }

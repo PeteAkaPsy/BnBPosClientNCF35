@@ -19,8 +19,13 @@ namespace BnBPosClientNCF35
 
         private BCReader.IBCReader bcr;
 
+        //private List<SellItemData> items;
+        private Dictionary<long,SellItemData> items;
+
         public CheckInForm()
         {
+            this.items = new Dictionary<long,SellItemData>();
+
             InitializeComponent();
 
             this.bcr = Program.barcodeReader;
@@ -38,15 +43,15 @@ namespace BnBPosClientNCF35
         {
             //List<CollectionsData> collections = collectionsDb.CollTbl.Select();
             Pools.RecycleTwoColTxtBtnCollection(panel2.Controls);
-            panel2.Height = (cfg.Configs.Count() + 1) * (Element_Height + Element_Space);
+            panel2.Height = (items.Count() + 1) * (Element_Height + Element_Space);
 
-            for (int i = 0; i < cfg.Configs.Count(); i++)
+            for (int i = 0; i < items.Count(); i++)
             {
                 //ToDo: add with Data, positioning,scrolling
                 TwoColTxtButton btn = Pools.TwoColTxtBtnPool.Get();
                 btn.Width = panel2.Width;
                 btn.Height = Element_Height;
-                btn.Init(cfg.Configs[i].ServerName, OnClickElement, Resources.DeleteIcon_32, OnClickDeleteElement);
+                btn.Init(items[i].Name, items[i].Price.CurrencyStr(), Resources.DeleteIcon_32, OnClickDeleteElement);
                 btn.SetPos(0, i * (Element_Height + Element_Space));
                 btn.EntryId = i;
                 panel2.Controls.Add(btn);
@@ -59,7 +64,29 @@ namespace BnBPosClientNCF35
         {
             Debug.WriteLine("CheckIn Scanned BarCode:" + bcode);
 
-            UpdateView();
+            long bcodeVal = Convert.ToInt64(bcode);
+
+            if (bcodeVal == 0)
+            {
+                Debug.WriteLine("Checked in Value could not be converted to an integer");
+                return;
+            }
+
+            Program.rest.Get<SellItemData>("/r/sellitem", new Dictionary<string, string>() { { "", "" } }, 
+                result => {
+                    if (result != null && !this.items.ContainsKey(result.Id))
+                    {
+                        this.items.Add(result.Id, result);
+                        UpdateView();
+                    }
+                }, 
+                errors => {
+                });
+        }
+
+        private void OnClickDeleteElement(long index)
+        {
+
         }
 
         private void imageButton2_Click(object sender, EventArgs e)
@@ -75,6 +102,12 @@ namespace BnBPosClientNCF35
                 this.bcr.OnScan -= this.OnBarcodeScanned;
             }
             this.Close();
+        }
+
+        private void manualInputButton_Click(object sender, EventArgs e)
+        {
+            Form frm = new ManualInputForm(this.OnBarcodeScanned);
+            frm.Show();
         }
     }
 }

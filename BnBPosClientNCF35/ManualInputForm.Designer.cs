@@ -33,7 +33,7 @@
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.backBtn = new Retrolab.ImageButton();
             this.manualInputLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.idTB = new System.Windows.Forms.TextBox();
             this.addBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -48,25 +48,29 @@
             // 
             // manualInputLabel
             // 
-            this.manualInputLabel.Location = new System.Drawing.Point(69, 103);
+            this.manualInputLabel.Location = new System.Drawing.Point(16, 116);
             this.manualInputLabel.Name = "manualInputLabel";
-            this.manualInputLabel.Size = new System.Drawing.Size(100, 20);
-            this.manualInputLabel.Text = "Please Input the ID here";
+            this.manualInputLabel.Size = new System.Drawing.Size(53, 20);
+            this.manualInputLabel.Text = "ID:";
+            this.manualInputLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox1
+            // idTB
             // 
-            this.textBox1.Location = new System.Drawing.Point(69, 127);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 8;
+            this.idTB.Location = new System.Drawing.Point(75, 116);
+            this.idTB.MaxLength = 10;
+            this.idTB.Name = "idTB";
+            this.idTB.Size = new System.Drawing.Size(100, 21);
+            this.idTB.TabIndex = 8;
+            this.idTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.idTB_KeyPress);
             // 
             // addBtn
             // 
-            this.addBtn.Location = new System.Drawing.Point(129, 154);
+            this.addBtn.Location = new System.Drawing.Point(165, 245);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(72, 20);
             this.addBtn.TabIndex = 9;
             this.addBtn.Text = "ADD";
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
             // ManualInputForm
             // 
@@ -75,7 +79,7 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
             this.Controls.Add(this.addBtn);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.idTB);
             this.Controls.Add(this.manualInputLabel);
             this.Controls.Add(this.backBtn);
             this.MaximizeBox = false;
@@ -91,7 +95,7 @@
 
         private Retrolab.ImageButton backBtn;
         private System.Windows.Forms.Label manualInputLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox idTB;
         private System.Windows.Forms.Button addBtn;
     }
 }
