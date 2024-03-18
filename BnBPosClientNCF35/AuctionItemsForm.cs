@@ -12,7 +12,7 @@ using BnBPosClientNCF35.Properties;
 
 namespace BnBPosClientNCF35
 {
-    public partial class CheckInForm : Form
+    public partial class AuctionItemsForm : Form
     {
         private const int Element_Height = 40;
         private const int Element_Space = 2;
@@ -22,7 +22,7 @@ namespace BnBPosClientNCF35
         //private List<SellItemData> items;
         private Dictionary<long,SellItemData> items;
 
-        public CheckInForm()
+        public AuctionItemsForm()
         {
             this.items = new Dictionary<long,SellItemData>();
 
@@ -106,8 +106,8 @@ namespace BnBPosClientNCF35
 
         private void manualInputButton_Click(object sender, EventArgs e)
         {
-            Form frm = new ManualInputForm(this.OnBarcodeScanned);
-            frm.Show();
+            //Form frm = new ManualInputForm(this.OnBarcodeScanned);
+            //frm.Show();
         }
     }
 }

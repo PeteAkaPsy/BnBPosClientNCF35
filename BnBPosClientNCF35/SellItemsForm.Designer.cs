@@ -1,6 +1,6 @@
 ﻿namespace BnBPosClientNCF35
 {
-    partial class CheckInForm
+    partial class SellItemsForm
     {
         /// <summary>
         /// Erforderliche Designervariable.

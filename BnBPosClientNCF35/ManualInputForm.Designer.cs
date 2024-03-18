@@ -35,6 +35,8 @@
             this.manualInputLabel = new System.Windows.Forms.Label();
             this.idTB = new System.Windows.Forms.TextBox();
             this.addBtn = new System.Windows.Forms.Button();
+            this.sellRB = new System.Windows.Forms.RadioButton();
+            this.auctRB = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // backBtn
@@ -48,7 +50,7 @@
             // 
             // manualInputLabel
             // 
-            this.manualInputLabel.Location = new System.Drawing.Point(16, 116);
+            this.manualInputLabel.Location = new System.Drawing.Point(15, 144);
             this.manualInputLabel.Name = "manualInputLabel";
             this.manualInputLabel.Size = new System.Drawing.Size(53, 20);
             this.manualInputLabel.Text = "ID:";
@@ -56,7 +58,7 @@
             // 
             // idTB
             // 
-            this.idTB.Location = new System.Drawing.Point(75, 116);
+            this.idTB.Location = new System.Drawing.Point(74, 144);
             this.idTB.MaxLength = 10;
             this.idTB.Name = "idTB";
             this.idTB.Size = new System.Drawing.Size(100, 21);
@@ -72,12 +74,34 @@
             this.addBtn.Text = "ADD";
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
+            // sellRB
+            // 
+            this.sellRB.Checked = true;
+            this.sellRB.Location = new System.Drawing.Point(74, 92);
+            this.sellRB.Name = "sellRB";
+            this.sellRB.Size = new System.Drawing.Size(100, 20);
+            this.sellRB.TabIndex = 11;
+            this.sellRB.Text = "Sell";
+            this.sellRB.CheckedChanged += new System.EventHandler(this.sellRB_CheckedChanged);
+            // 
+            // auctRB
+            // 
+            this.auctRB.Location = new System.Drawing.Point(74, 118);
+            this.auctRB.Name = "auctRB";
+            this.auctRB.Size = new System.Drawing.Size(100, 20);
+            this.auctRB.TabIndex = 12;
+            this.auctRB.TabStop = false;
+            this.auctRB.Text = "Auction";
+            this.auctRB.CheckedChanged += new System.EventHandler(this.auctRB_CheckedChanged);
+            // 
             // ManualInputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.auctRB);
+            this.Controls.Add(this.sellRB);
             this.Controls.Add(this.addBtn);
             this.Controls.Add(this.idTB);
             this.Controls.Add(this.manualInputLabel);
@@ -97,5 +121,7 @@
         private System.Windows.Forms.Label manualInputLabel;
         private System.Windows.Forms.TextBox idTB;
         private System.Windows.Forms.Button addBtn;
+        private System.Windows.Forms.RadioButton sellRB;
+        private System.Windows.Forms.RadioButton auctRB;
     }
 }

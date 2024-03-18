@@ -37,8 +37,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.manualInputButton = new Retrolab.ImageButton();
-            this.payButton = new Retrolab.ImageButton();
-            this.cancelButton = new Retrolab.ImageButton();
+            this.okButton = new Retrolab.ImageButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,24 +94,16 @@
             this.manualInputButton.TabIndex = 12;
             this.manualInputButton.Click += new System.EventHandler(this.manualInputButton_Click);
             // 
-            // payButton
+            // okButton
             // 
-            this.payButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.payButton.BackColor = System.Drawing.SystemColors.Control;
-            this.payButton.Image = null;
-            this.payButton.Location = new System.Drawing.Point(205, 232);
-            this.payButton.Name = "payButton";
-            this.payButton.Size = new System.Drawing.Size(32, 32);
-            this.payButton.TabIndex = 14;
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.BackColor = System.Drawing.SystemColors.Control;
-            this.cancelButton.Image = ((System.Drawing.Image)(resources.GetObject("cancelButton.Image")));
-            this.cancelButton.Location = new System.Drawing.Point(3, 232);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(32, 32);
-            this.cancelButton.TabIndex = 13;
+            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.okButton.BackColor = System.Drawing.SystemColors.Control;
+            this.okButton.Image = null;
+            this.okButton.Location = new System.Drawing.Point(205, 232);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(32, 32);
+            this.okButton.TabIndex = 14;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // CheckInForm
             // 
@@ -120,8 +111,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
-            this.Controls.Add(this.payButton);
-            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.okButton);
             this.Controls.Add(this.manualInputButton);
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.panel1);
@@ -143,7 +133,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private Retrolab.ImageButton manualInputButton;
-        private Retrolab.ImageButton payButton;
-        private Retrolab.ImageButton cancelButton;
+        private Retrolab.ImageButton okButton;
     }
 }

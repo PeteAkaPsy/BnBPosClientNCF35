@@ -11,9 +11,9 @@ namespace BnBPosClientNCF35
 {
     public partial class ManualInputForm : Form
     {
-        private Action<string> OnInputFinished;
+        private Action<ScannedData> OnInputFinished;
 
-        public ManualInputForm(Action<string> onInputFinished)
+        public ManualInputForm(Action<ScannedData> onInputFinished)
         {
             this.OnInputFinished = onInputFinished;
 
@@ -26,7 +26,7 @@ namespace BnBPosClientNCF35
 
             if (this.OnInputFinished != null)
             {
-                OnInputFinished.Invoke(this.idTB.Text);
+                OnInputFinished.Invoke(new ScannedData() { DType = (uint)(this.sellRB.Checked ? ScannedType.Sale : ScannedType.Auction), ID = Convert.ToInt64(this.idTB.Text) });
             }
             this.Close();
         }
@@ -49,6 +49,16 @@ namespace BnBPosClientNCF35
             //{
             //  e.Handeld = true;
             //}
+        }
+
+        private void sellRB_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void auctRB_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
