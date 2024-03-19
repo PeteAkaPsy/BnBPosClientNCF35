@@ -13,6 +13,8 @@ namespace BnBPosClientNCF35
     {
         private Action<ScannedData> OnInputFinished;
 
+        //ToDo: add preconfiguration for Sale/Auction to disallow input of an auction in sellForm and vice versa
+
         public ManualInputForm(Action<ScannedData> onInputFinished)
         {
             this.OnInputFinished = onInputFinished;
@@ -51,6 +53,7 @@ namespace BnBPosClientNCF35
             //}
         }
 
+        //needs testing
         private void sellRB_CheckedChanged(object sender, EventArgs e)
         {
 

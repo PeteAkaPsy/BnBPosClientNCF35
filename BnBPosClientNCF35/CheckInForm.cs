@@ -20,12 +20,13 @@ namespace BnBPosClientNCF35
         private BCReader.IBCReader bcr;
 
         //private List<SellItemData> items;
-        private Dictionary<long,SellItemData> sellItems;
-        private Dictionary<long,AuctItemData> auctItems;
+        private Dictionary<long, SellItemData> sellItems;
+        private Dictionary<long, AuctItemData> auctItems;
 
         public CheckInForm()
         {
-            this.sellItems = new Dictionary<long,SellItemData>();
+            this.sellItems = new Dictionary<long, SellItemData>();
+            this.auctItems = new Dictionary<long, AuctItemData>();
 
             InitializeComponent();
 
@@ -42,7 +43,6 @@ namespace BnBPosClientNCF35
 
         private void UpdateView()
         {
-            //List<CollectionsData> collections = collectionsDb.CollTbl.Select();
             Pools.RecycleTwoColTxtBtnCollection(panel2.Controls);
             panel2.Height = (sellItems.Count() + 1) * (Element_Height + Element_Space);
 

@@ -29,7 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckInForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SellItemsForm));
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.imageButton2 = new Retrolab.ImageButton();
             this.backBtn = new Retrolab.ImageButton();
@@ -39,6 +39,7 @@
             this.manualInputButton = new Retrolab.ImageButton();
             this.payButton = new Retrolab.ImageButton();
             this.cancelButton = new Retrolab.ImageButton();
+            this.tempSumLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,6 +105,7 @@
             this.payButton.Name = "payButton";
             this.payButton.Size = new System.Drawing.Size(32, 32);
             this.payButton.TabIndex = 14;
+            this.payButton.Click += new System.EventHandler(this.payButton_Click);
             // 
             // cancelButton
             // 
@@ -113,13 +115,23 @@
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(32, 32);
             this.cancelButton.TabIndex = 13;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // CheckInForm
+            // tempSumLabel
+            // 
+            this.tempSumLabel.Location = new System.Drawing.Point(142, 232);
+            this.tempSumLabel.Name = "tempSumLabel";
+            this.tempSumLabel.Size = new System.Drawing.Size(57, 18);
+            this.tempSumLabel.Text = "000.00 $";
+            this.tempSumLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // SellItemsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.tempSumLabel);
             this.Controls.Add(this.payButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.manualInputButton);
@@ -128,8 +140,8 @@
             this.Controls.Add(this.imageButton2);
             this.Controls.Add(this.backBtn);
             this.Menu = this.mainMenu1;
-            this.Name = "CheckInForm";
-            this.Text = "CheckInForm";
+            this.Name = "SellItemsForm";
+            this.Text = "SellForm";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -145,5 +157,6 @@
         private Retrolab.ImageButton manualInputButton;
         private Retrolab.ImageButton payButton;
         private Retrolab.ImageButton cancelButton;
+        private System.Windows.Forms.Label tempSumLabel;
     }
 }
