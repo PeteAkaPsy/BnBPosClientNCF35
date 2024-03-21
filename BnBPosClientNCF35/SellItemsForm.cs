@@ -148,8 +148,16 @@ namespace BnBPosClientNCF35
 
         private void payButton_Click(object sender, EventArgs e)
         {
-            SumPayForm frm = new SumPayForm();
+            float sum = 0;
+            for (int i = 0; i < this.items.Count; i++)
+                sum += this.items[i].Price;
+
+            SumPayForm frm = new SumPayForm(sum, this.markSold);
             frm.Show();
+        }
+
+        private void markSold()
+        {
         }
     }
 }

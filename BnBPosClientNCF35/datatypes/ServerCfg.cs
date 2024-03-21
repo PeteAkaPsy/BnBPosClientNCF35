@@ -7,6 +7,7 @@ namespace BnBPosClientNCF35
     {
         public string ServerName;
         public string ServerUri;
+        public string UserName;
         /// <summary>
         /// only save the auth token, never the username/password
         /// </summary>

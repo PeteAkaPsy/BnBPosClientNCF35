@@ -34,7 +34,7 @@
             this.handedTB = new System.Windows.Forms.TextBox();
             this.sumTextLabel = new System.Windows.Forms.Label();
             this.sumLabel = new System.Windows.Forms.Label();
-            this.sumBackBtn = new Retrolab.ImageButton();
+            this.sumPayedBtn = new Retrolab.ImageButton();
             this.SuspendLayout();
             // 
             // imageButton2
@@ -45,7 +45,7 @@
             this.imageButton2.Location = new System.Drawing.Point(205, 3);
             this.imageButton2.Name = "imageButton2";
             this.imageButton2.Size = new System.Drawing.Size(32, 32);
-            this.imageButton2.TabIndex = 10;
+            this.imageButton2.TabIndex = 4;
             // 
             // backBtn
             // 
@@ -54,7 +54,7 @@
             this.backBtn.Location = new System.Drawing.Point(3, 3);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(32, 32);
-            this.backBtn.TabIndex = 9;
+            this.backBtn.TabIndex = 3;
             // 
             // handedTB
             // 
@@ -62,7 +62,7 @@
             this.handedTB.Location = new System.Drawing.Point(90, 147);
             this.handedTB.Name = "handedTB";
             this.handedTB.Size = new System.Drawing.Size(100, 24);
-            this.handedTB.TabIndex = 11;
+            this.handedTB.TabIndex = 1;
             // 
             // sumTextLabel
             // 
@@ -81,16 +81,16 @@
             this.sumLabel.Size = new System.Drawing.Size(100, 20);
             this.sumLabel.Text = "000.00 $";
             // 
-            // sumBackBtn
+            // sumPayedBtn
             // 
-            this.sumBackBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sumBackBtn.BackColor = System.Drawing.SystemColors.Control;
-            this.sumBackBtn.Image = null;
-            this.sumBackBtn.Location = new System.Drawing.Point(205, 259);
-            this.sumBackBtn.Name = "sumBackBtn";
-            this.sumBackBtn.Size = new System.Drawing.Size(32, 32);
-            this.sumBackBtn.TabIndex = 15;
-            this.sumBackBtn.Click += new System.EventHandler(this.sumBackBtn_Click);
+            this.sumPayedBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sumPayedBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.sumPayedBtn.Image = null;
+            this.sumPayedBtn.Location = new System.Drawing.Point(205, 259);
+            this.sumPayedBtn.Name = "sumPayedBtn";
+            this.sumPayedBtn.Size = new System.Drawing.Size(32, 32);
+            this.sumPayedBtn.TabIndex = 2;
+            this.sumPayedBtn.Click += new System.EventHandler(this.sumPayedBtn_Click);
             // 
             // SumPayForm
             // 
@@ -98,14 +98,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 294);
-            this.Controls.Add(this.sumBackBtn);
+            this.Controls.Add(this.sumPayedBtn);
             this.Controls.Add(this.sumLabel);
             this.Controls.Add(this.sumTextLabel);
             this.Controls.Add(this.handedTB);
             this.Controls.Add(this.imageButton2);
             this.Controls.Add(this.backBtn);
-            this.MinimizeBox = false;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SumPayForm";
             this.Text = "SumPayForm";
             this.ResumeLayout(false);
@@ -119,6 +119,6 @@
         private System.Windows.Forms.TextBox handedTB;
         private System.Windows.Forms.Label sumTextLabel;
         private System.Windows.Forms.Label sumLabel;
-        private Retrolab.ImageButton sumBackBtn;
+        private Retrolab.ImageButton sumPayedBtn;
     }
 }

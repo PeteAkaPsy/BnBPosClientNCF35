@@ -37,7 +37,7 @@ namespace BnBPosClientNCF35
             this.Close();
         }
 
-        private void sumBackBtn_Click(object sender, EventArgs e)
+        private void sumPayedBtn_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(this.sumLabel.Text)) return;
 
@@ -50,7 +50,11 @@ namespace BnBPosClientNCF35
 
             if (input > this.sumToPay)
             {
-                //show money to pay out
+                Form frm = new PayOut(input - sumToPay, () =>
+                {
+                    if (this.OnPaymentCompleted != null) this.OnPaymentCompleted.Invoke();
+                    this.Close();
+                });
                 return;
             }
 
