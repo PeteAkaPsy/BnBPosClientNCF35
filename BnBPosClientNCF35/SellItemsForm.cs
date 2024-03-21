@@ -158,6 +158,28 @@ namespace BnBPosClientNCF35
 
         private void markSold()
         {
+            long[] itemIDs = new long[this.items.Count];
+            for (int index = 0; index < this.items.Count; index++)
+            {
+                itemIDs[index] = this.items[index].Id;
+            }
+
+            Program.rest.Post<bool, long[]>("/r/sellitems", itemIDs,
+                    result =>
+                    {
+                        if (result != true)
+                        {
+                            //if false put into log list for action later
+                        }
+                        this.items.Clear();
+                        UpdateView();
+                    },
+                    errors =>
+                    {
+                        //check the error and put into log list
+                        this.items.Clear();
+                        UpdateView();
+                    });
         }
     }
 }
