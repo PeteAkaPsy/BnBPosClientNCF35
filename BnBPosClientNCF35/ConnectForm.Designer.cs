@@ -127,6 +127,8 @@
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.usernameLabel);
             this.Menu = this.mainMenu1;
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
             this.Name = "ConnectForm";
             this.Text = "LoginForm";
             this.ResumeLayout(false);

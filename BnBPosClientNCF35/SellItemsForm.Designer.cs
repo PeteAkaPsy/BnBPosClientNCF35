@@ -140,6 +140,8 @@
             this.Controls.Add(this.imageButton2);
             this.Controls.Add(this.backBtn);
             this.Menu = this.mainMenu1;
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
             this.Name = "SellItemsForm";
             this.Text = "SellForm";
             this.panel1.ResumeLayout(false);

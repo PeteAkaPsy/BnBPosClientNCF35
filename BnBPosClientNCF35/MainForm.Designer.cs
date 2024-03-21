@@ -160,6 +160,7 @@ namespace BnBPosClientNCF35
             this.Controls.Add(this.checkInBtn);
             this.Controls.Add(this.sellBtn);
             this.MinimizeBox = false;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "BnBPos Main";
             this.ResumeLayout(false);

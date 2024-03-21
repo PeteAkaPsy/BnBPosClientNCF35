@@ -98,6 +98,12 @@
     <Compile Include="AuctionItemsForm.Designer.cs">
       <DependentUpon>AuctionItemsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PayOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PayOut.Designer.cs">
+      <DependentUpon>PayOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="SellItemsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AuctionItemsForm.resx">
       <DependentUpon>AuctionItemsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PayOut.resx">
+      <DependentUpon>PayOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SellItemsForm.resx">
       <DependentUpon>SellItemsForm.cs</DependentUpon>

@@ -86,7 +86,7 @@
             this.sumBackBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.sumBackBtn.BackColor = System.Drawing.SystemColors.Control;
             this.sumBackBtn.Image = null;
-            this.sumBackBtn.Location = new System.Drawing.Point(205, 233);
+            this.sumBackBtn.Location = new System.Drawing.Point(205, 259);
             this.sumBackBtn.Name = "sumBackBtn";
             this.sumBackBtn.Size = new System.Drawing.Size(32, 32);
             this.sumBackBtn.TabIndex = 15;
@@ -104,6 +104,8 @@
             this.Controls.Add(this.handedTB);
             this.Controls.Add(this.imageButton2);
             this.Controls.Add(this.backBtn);
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
             this.Name = "SumPayForm";
             this.Text = "SumPayForm";
             this.ResumeLayout(false);

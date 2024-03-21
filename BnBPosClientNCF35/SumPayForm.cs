@@ -11,9 +11,17 @@ namespace BnBPosClientNCF35
 {
     public partial class SumPayForm : Form
     {
-        public SumPayForm()
+        private float sumToPay;
+        private Action OnPaymentCompleted;
+
+        public SumPayForm(float sumToPay, Action onPaymentCompleted)
         {
+            this.sumToPay = sumToPay;
+            this.OnPaymentCompleted = onPaymentCompleted;
+
             InitializeComponent();
+
+            this.sumLabel.Text = this.sumToPay.CurrencyStr();
 
             //Font tFont = sumTextLabel.Font;
             //tFont.Style = FontStyle.Bold; 
@@ -26,12 +34,29 @@ namespace BnBPosClientNCF35
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void sumBackBtn_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(this.sumLabel.Text)) return;
 
+            float input = Convert.ToSingle(this.sumLabel.Text);
+            if (input < this.sumToPay)
+            {
+                MessageBox.Show("Not enough Money given!");
+                return;
+            }
+
+            if (input > this.sumToPay)
+            {
+                //show money to pay out
+                return;
+            }
+
+            if (this.OnPaymentCompleted != null)
+                this.OnPaymentCompleted.Invoke();
+            this.Close();
         }
     }
 }
