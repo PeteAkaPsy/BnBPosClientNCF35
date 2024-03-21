@@ -48,8 +48,8 @@ namespace BnBPosClientNCF35
                 this.checkOutBtn.Height *= 2;
                 this.checkOutLabel.Width *= 2;
                 this.checkOutLabel.Height *= 2;
-                this.imageButton1.Width *= 2;
-                this.imageButton1.Height *= 2;
+                this.auctionBtn.Width *= 2;
+                this.auctionBtn.Height *= 2;
                 //this.missingLabel
             }
             else
@@ -88,7 +88,7 @@ namespace BnBPosClientNCF35
                 centerX - this.checkOutBtn.Width - CenterSpacing,
                 centerY + CenterSpacing + this.checkOutBtn.Height + CenterSpacing);
             //tmp/unknown
-            this.imageButton1.Location = new Point(
+            this.auctionBtn.Location = new Point(
                 centerX + CenterSpacing,
                 centerY + CenterSpacing);
             //missing label
@@ -113,17 +113,20 @@ namespace BnBPosClientNCF35
 
         private void sellBtn_Click(object sender, EventArgs e)
         {
-
+            Form frm = new SellItemsForm();
+            frm.Show();
         }
 
         private void checkOutBtn_Click(object sender, EventArgs e)
         {
-
+            Form frm = new CheckOutForm();
+            frm.Show();
         }
 
-        private void imageButton1_Click(object sender, EventArgs e)
+        private void auctionBtn_Click(object sender, EventArgs e)
         {
-
+            Form frm = new AuctionItemsForm();
+            frm.Show();
         }
     }
 }

@@ -157,6 +157,9 @@
     <EmbeddedResource Include="ServerPickerForm.resx">
       <DependentUpon>ServerPickerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SumPayForm.resx">
+      <DependentUpon>SumPayForm.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -167,6 +170,12 @@
     </Compile>
     <Compile Include="ServerPickerForm.Designer.cs">
       <DependentUpon>ServerPickerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SumPayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SumPayForm.Designer.cs">
+      <DependentUpon>SumPayForm.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

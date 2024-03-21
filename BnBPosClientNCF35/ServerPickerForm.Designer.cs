@@ -6,7 +6,6 @@
         /// Erforderliche Designervariable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.MainMenu mainMenu1;
 
         /// <summary>
         /// Verwendete Ressourcen bereinigen.
@@ -29,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.addEntryIBtn = new Retrolab.ImageButton();
@@ -75,12 +73,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(240, 268);
+            this.ClientSize = new System.Drawing.Size(240, 294);
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.addEntryIBtn);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
-            this.Menu = this.mainMenu1;
             this.MinimizeBox = false;
             this.Name = "ServerPickerForm";
             this.Text = "ServerPicker";

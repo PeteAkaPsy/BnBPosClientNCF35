@@ -6,7 +6,6 @@
         /// Erforderliche Designervariable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.MainMenu mainMenu1;
 
         /// <summary>
         /// Verwendete Ressourcen bereinigen.
@@ -29,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckInForm));
-            this.mainMenu1 = new System.Windows.Forms.MainMenu();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckOutForm));
             this.imageButton2 = new Retrolab.ImageButton();
             this.backBtn = new Retrolab.ImageButton();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
@@ -114,12 +112,12 @@
             this.cancelButton.Size = new System.Drawing.Size(32, 32);
             this.cancelButton.TabIndex = 13;
             // 
-            // CheckInForm
+            // CheckOutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(240, 268);
+            this.ClientSize = new System.Drawing.Size(240, 294);
             this.Controls.Add(this.payButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.manualInputButton);
@@ -127,8 +125,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.imageButton2);
             this.Controls.Add(this.backBtn);
-            this.Menu = this.mainMenu1;
-            this.Name = "CheckInForm";
+            this.Name = "CheckOutForm";
             this.Text = "CheckInForm";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

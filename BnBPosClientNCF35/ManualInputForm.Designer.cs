@@ -6,7 +6,6 @@
         /// Erforderliche Designervariable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.MainMenu mainMenu1;
 
         /// <summary>
         /// Verwendete Ressourcen bereinigen.
@@ -30,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManualInputForm));
-            this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.backBtn = new Retrolab.ImageButton();
             this.manualInputLabel = new System.Windows.Forms.Label();
             this.idTB = new System.Windows.Forms.TextBox();
@@ -99,7 +97,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(240, 268);
+            this.ClientSize = new System.Drawing.Size(240, 294);
             this.Controls.Add(this.auctRB);
             this.Controls.Add(this.sellRB);
             this.Controls.Add(this.addBtn);
@@ -107,7 +105,6 @@
             this.Controls.Add(this.manualInputLabel);
             this.Controls.Add(this.backBtn);
             this.MaximizeBox = false;
-            this.Menu = this.mainMenu1;
             this.MinimizeBox = false;
             this.Name = "ManualInputForm";
             this.Text = "ManualInputForm";

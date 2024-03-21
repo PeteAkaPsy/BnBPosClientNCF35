@@ -148,7 +148,8 @@ namespace BnBPosClientNCF35
 
         private void payButton_Click(object sender, EventArgs e)
         {
-
+            SumPayForm frm = new SumPayForm();
+            frm.Show();
         }
     }
 }

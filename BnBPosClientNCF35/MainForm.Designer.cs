@@ -9,7 +9,6 @@ namespace BnBPosClientNCF35
         /// Erforderliche Designervariable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.MainMenu mainMenu1;
 
         /// <summary>
         /// Verwendete Ressourcen bereinigen.
@@ -33,16 +32,16 @@ namespace BnBPosClientNCF35
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.sellBtn = new Retrolab.ImageButton();
             this.checkInBtn = new Retrolab.ImageButton();
             this.checkOutBtn = new Retrolab.ImageButton();
-            this.imageButton1 = new Retrolab.ImageButton();
+            this.auctionBtn = new Retrolab.ImageButton();
             this.backBtn = new Retrolab.ImageButton();
             this.imageButton2 = new Retrolab.ImageButton();
             this.sellLabel = new System.Windows.Forms.Label();
             this.checkInLabel = new System.Windows.Forms.Label();
             this.checkOutLabel = new System.Windows.Forms.Label();
+            this.auctionLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // sellBtn
@@ -78,16 +77,16 @@ namespace BnBPosClientNCF35
             this.checkOutBtn.TabIndex = 3;
             this.checkOutBtn.Click += new System.EventHandler(this.checkOutBtn_Click);
             // 
-            // imageButton1
+            // auctionBtn
             // 
-            this.imageButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.imageButton1.BackColor = System.Drawing.SystemColors.Control;
-            this.imageButton1.Image = null;
-            this.imageButton1.Location = new System.Drawing.Point(129, 153);
-            this.imageButton1.Name = "imageButton1";
-            this.imageButton1.Size = new System.Drawing.Size(64, 64);
-            this.imageButton1.TabIndex = 4;
-            this.imageButton1.Click += new System.EventHandler(this.imageButton1_Click);
+            this.auctionBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.auctionBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.auctionBtn.Image = null;
+            this.auctionBtn.Location = new System.Drawing.Point(129, 153);
+            this.auctionBtn.Name = "auctionBtn";
+            this.auctionBtn.Size = new System.Drawing.Size(64, 64);
+            this.auctionBtn.TabIndex = 4;
+            this.auctionBtn.Click += new System.EventHandler(this.auctionBtn_Click);
             // 
             // backBtn
             // 
@@ -137,20 +136,29 @@ namespace BnBPosClientNCF35
             this.checkOutLabel.Text = "CheckOut";
             this.checkOutLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // auctionLabel
+            // 
+            this.auctionLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.auctionLabel.Location = new System.Drawing.Point(129, 220);
+            this.auctionLabel.Name = "auctionLabel";
+            this.auctionLabel.Size = new System.Drawing.Size(64, 20);
+            this.auctionLabel.Text = "Auction";
+            this.auctionLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(240, 268);
+            this.ClientSize = new System.Drawing.Size(240, 294);
+            this.Controls.Add(this.auctionLabel);
             this.Controls.Add(this.checkOutLabel);
             this.Controls.Add(this.checkInLabel);
             this.Controls.Add(this.sellLabel);
             this.Controls.Add(this.imageButton2);
             this.Controls.Add(this.backBtn);
-            this.Controls.Add(this.imageButton1);
+            this.Controls.Add(this.auctionBtn);
             this.Controls.Add(this.checkOutBtn);
             this.Controls.Add(this.checkInBtn);
             this.Controls.Add(this.sellBtn);
-            this.Menu = this.mainMenu1;
             this.MinimizeBox = false;
             this.Name = "MainForm";
             this.Text = "BnBPos Main";
@@ -163,12 +171,13 @@ namespace BnBPosClientNCF35
         private ImageButton sellBtn;
         private ImageButton checkInBtn;
         private ImageButton checkOutBtn;
-        private ImageButton imageButton1;
+        private ImageButton auctionBtn;
         private ImageButton backBtn;
         private ImageButton imageButton2;
         private System.Windows.Forms.Label sellLabel;
         private System.Windows.Forms.Label checkInLabel;
         private System.Windows.Forms.Label checkOutLabel;
+        private System.Windows.Forms.Label auctionLabel;
     }
 }
 
