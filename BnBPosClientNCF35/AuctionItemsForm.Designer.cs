@@ -92,7 +92,6 @@
             // 
             // descriptionTB
             // 
-            this.descriptionTB.Enabled = false;
             this.descriptionTB.Location = new System.Drawing.Point(3, 57);
             this.descriptionTB.Multiline = true;
             this.descriptionTB.Name = "descriptionTB";

@@ -50,7 +50,8 @@ namespace BnBPosClientNCF35
                 this.checkOutLabel.Height *= 2;
                 this.auctionBtn.Width *= 2;
                 this.auctionBtn.Height *= 2;
-                //this.missingLabel
+                this.auctionLabel.Width *= 2;
+                this.auctionLabel.Height *= 2;
             }
             else
             {
@@ -87,11 +88,13 @@ namespace BnBPosClientNCF35
             this.checkOutLabel.Location = new Point(
                 centerX - this.checkOutBtn.Width - CenterSpacing,
                 centerY + CenterSpacing + this.checkOutBtn.Height + CenterSpacing);
-            //tmp/unknown
+            //Auction
             this.auctionBtn.Location = new Point(
                 centerX + CenterSpacing,
                 centerY + CenterSpacing);
-            //missing label
+            this.auctionLabel.Location = new Point(
+                centerX + CenterSpacing,
+                centerY + CenterSpacing + this.auctionBtn.Height + CenterSpacing);
 
         }
 

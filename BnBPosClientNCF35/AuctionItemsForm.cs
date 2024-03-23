@@ -16,13 +16,8 @@ namespace BnBPosClientNCF35
     {
         private BCReader.IBCReader bcr;
 
-        //private List<SellItemData> items;
-        //private Dictionary<long,AuctItemData> items;
-
         public AuctionItemsForm()
         {
-            //this.items = new Dictionary<long,AuctItemData>();
-
             InitializeComponent();
 
             this.bcr = Program.barcodeReader;
@@ -59,7 +54,7 @@ namespace BnBPosClientNCF35
                 return;
             }
 
-            Program.rest.Get<AuctItemData>("/r/auctionitem", new Dictionary<string, string>() { { "", "" } }, 
+            Program.rest.Get<AuctItemData>("/r/auctionitem", new Dictionary<string, string>() { { "id", data.ID.ToString() } }, 
                 result => {
                     if (result != null)
                     {
@@ -91,6 +86,39 @@ namespace BnBPosClientNCF35
         {
             Form frm = new ManualInputForm(this.OnItemScanned, ScannedType.Auction);
             frm.Show();
+        }
+
+        private void payButton_Click(object sender, EventArgs e)
+        {
+            float sum = 0;
+            long[] keys = this.items.Keys.ToArray();
+            for (int i = 0; i < this.items.Count; i++)
+                sum += this.items[keys[i]].Price;
+
+            SumPayForm frm = new SumPayForm(sum, this.markSold);
+            frm.Show();
+        }
+
+        private void markSold()
+        {
+            long[] keys = this.items.Keys.ToArray();
+
+            Program.rest.Post<bool, long[]>("/r/sellitems", keys,
+                    result =>
+                    {
+                        if (result != true)
+                        {
+                            //if false put into log list for action later
+                        }
+                        this.items.Clear();
+                        this.UpdateView();
+                    },
+                    errors =>
+                    {
+                        //check the error and put into log list
+                        this.items.Clear();
+                        this.UpdateView();
+                    });
         }
     }
 }
