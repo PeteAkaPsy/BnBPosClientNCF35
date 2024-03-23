@@ -16,6 +16,8 @@ namespace BnBPosClientNCF35
     {
         private BCReader.IBCReader bcr;
 
+        private AuctItemData lastScanned;
+
         public AuctionItemsForm()
         {
             InitializeComponent();
@@ -58,6 +60,7 @@ namespace BnBPosClientNCF35
                 result => {
                     if (result != null)
                     {
+                        this.lastScanned = result;
                         this.nameLabel.Text = result.Name;
                         this.descriptionTB.Text = result.Descr;
                         this.startPriceLabel.Text = result.StartPrice.CurrencyStr();
@@ -90,34 +93,35 @@ namespace BnBPosClientNCF35
 
         private void payButton_Click(object sender, EventArgs e)
         {
-            float sum = 0;
-            long[] keys = this.items.Keys.ToArray();
-            for (int i = 0; i < this.items.Count; i++)
-                sum += this.items[keys[i]].Price;
-
-            SumPayForm frm = new SumPayForm(sum, this.markSold);
+            Form frm = new AuctionBidForm(this.lastScanned.StartPrice, this.markSold);
             frm.Show();
         }
 
-        private void markSold()
+        private void clear()
         {
-            long[] keys = this.items.Keys.ToArray();
+            this.nameLabel.Text = "";
+            this.descriptionTB.Text = "";
+            this.categoryLabel.Text = "-";
+            this.startPriceLabel.Text = (0.0f).CurrencyStr();
+        }
 
-            Program.rest.Post<bool, long[]>("/r/sellitems", keys,
+        private void markSold(float sellPrice)
+        {
+            AuctItemChangedData data = new AuctItemChangedData() { Id = this.lastScanned.Id, SellPrice = sellPrice };
+
+            Program.rest.Post<bool, AuctItemChangedData>("/r/auctionitem/sold", data,
                     result =>
                     {
                         if (result != true)
                         {
                             //if false put into log list for action later
                         }
-                        this.items.Clear();
-                        this.UpdateView();
+                        this.clear();
                     },
                     errors =>
                     {
                         //check the error and put into log list
-                        this.items.Clear();
-                        this.UpdateView();
+                        this.clear();
                     });
         }
     }

@@ -163,7 +163,7 @@ namespace BnBPosClientNCF35
         {
             long[] keys = this.items.Keys.ToArray();
 
-            Program.rest.Post<bool, long[]>("/r/sellitems", keys,
+            Program.rest.Post<bool, long[]>("/r/sellitems/sold", keys,
                     result =>
                     {
                         if (result != true)

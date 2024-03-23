@@ -81,6 +81,7 @@
       <DependentUpon>ConnectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="datatypes\ItemStates.cs" />
+    <Compile Include="datatypes\AuctItemChangedData.cs" />
     <Compile Include="datatypes\ScannedData.cs" />
     <Compile Include="datatypes\SellItemData.cs" />
     <Compile Include="datatypes\ServerCfg.cs" />
@@ -97,6 +98,12 @@
     </Compile>
     <Compile Include="AuctionItemsForm.Designer.cs">
       <DependentUpon>AuctionItemsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AuctionBidForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuctionBidForm.Designer.cs">
+      <DependentUpon>AuctionBidForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PayOut.cs">
       <SubType>Form</SubType>
@@ -140,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AuctionItemsForm.resx">
       <DependentUpon>AuctionItemsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AuctionBidForm.resx">
+      <DependentUpon>AuctionBidForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PayOut.resx">
       <DependentUpon>PayOut.cs</DependentUpon>

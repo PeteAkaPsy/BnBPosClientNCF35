@@ -81,6 +81,7 @@
             this.payButton.Name = "payButton";
             this.payButton.Size = new System.Drawing.Size(32, 32);
             this.payButton.TabIndex = 14;
+            this.payButton.Click += new System.EventHandler(this.payButton_Click);
             // 
             // nameLabel
             // 
