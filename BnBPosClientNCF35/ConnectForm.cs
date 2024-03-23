@@ -50,9 +50,9 @@ namespace BnBPosClientNCF35
                         if (!string.IsNullOrEmpty(result))
                         {
                             Debug.WriteLine(result);
-                            if (OnLoginSuccess != null)
+                            if (this.OnLoginSuccess != null)
                             {
-                                OnLoginSuccess.Invoke(new ServerCfg() { ServerName = this.serverNameTB.Text, ServerUri = this.serverUriTB.Text, AccountToken = result });
+                                this.OnLoginSuccess.Invoke(new ServerCfg() { ServerName = this.serverNameTB.Text, ServerUri = this.serverUriTB.Text, AccountToken = result });
                                 Close();
                                 return;
                             }
@@ -66,9 +66,9 @@ namespace BnBPosClientNCF35
             }
             else if (!string.IsNullOrEmpty(this._token))
             {
-                if (OnLoginSuccess != null)
+                if (this.OnLoginSuccess != null)
                 {
-                    OnLoginSuccess.Invoke(new ServerCfg() { ServerName = this.serverNameTB.Text, ServerUri = this.serverUriTB.Text, AccountToken = this._token });
+                    this.OnLoginSuccess.Invoke(new ServerCfg() { ServerName = this.serverNameTB.Text, ServerUri = this.serverUriTB.Text, AccountToken = this._token });
                     Close();
                     return;
                 }

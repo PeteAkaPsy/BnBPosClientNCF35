@@ -16,7 +16,8 @@ namespace BnBPosClientNCF35
 
     public enum ScannedType : uint
     {
-        Sale = 0,
-        Auction = 1,
+        None = 0,
+        Sale = 1,
+        Auction = 2,
     }
 }

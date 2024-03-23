@@ -36,28 +36,28 @@ namespace BnBPosClientNCF35
                 this.bcr.StartReader();
             }
 
-            UpdateView();
+            this.UpdateView();
         }
 
         private void UpdateView()
         {
             //List<CollectionsData> collections = collectionsDb.CollTbl.Select();
-            Pools.RecycleTwoColTxtBtnCollection(panel2.Controls);
-            panel2.Height = (items.Count() + 1) * (Element_Height + Element_Space);
+            Pools.RecycleTwoColTxtBtnCollection(this.panel2.Controls);
+            this.panel2.Height = (items.Count() + 1) * (Element_Height + Element_Space);
 
             for (int i = 0; i < items.Count(); i++)
             {
                 //ToDo: add with Data, positioning,scrolling
                 TwoColTxtButton btn = Pools.TwoColTxtBtnPool.Get();
-                btn.Width = panel2.Width;
+                btn.Width = this.panel2.Width;
                 btn.Height = Element_Height;
-                btn.Init(items[i].Name, items[i].Price.CurrencyStr(), Resources.DeleteIcon_32, OnClickDeleteElement);
+                btn.Init(items[i].Name, items[i].Price.CurrencyStr(), Resources.DeleteIcon_32, this.OnClickDeleteElement);
                 btn.SetPos(0, i * (Element_Height + Element_Space));
                 btn.EntryId = i;
-                panel2.Controls.Add(btn);
+                this.panel2.Controls.Add(btn);
             }
 
-            vScrollBar1.UpdateVScroll(panel1);
+            this.vScrollBar1.UpdateVScroll(panel1);
         }
 
         private void OnBarcodeScanned(string bcode)
@@ -77,7 +77,7 @@ namespace BnBPosClientNCF35
                     if (result != null && !this.items.ContainsKey(result.Id))
                     {
                         this.items.Add(result.Id, result);
-                        UpdateView();
+                        this.UpdateView();
                     }
                 }, 
                 errors => {

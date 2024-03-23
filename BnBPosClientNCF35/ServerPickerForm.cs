@@ -35,22 +35,22 @@ namespace BnBPosClientNCF35
         private void UpdateView()
         {
             //List<CollectionsData> collections = collectionsDb.CollTbl.Select();
-            Pools.RecycleRowBtnCollection(panel2.Controls);
-            panel2.Height = (cfg.Configs.Count() + 1) * (Element_Height + Element_Space);
+            Pools.RecycleRowBtnCollection(this.panel2.Controls);
+            this.panel2.Height = (this.cfg.Configs.Count() + 1) * (Element_Height + Element_Space);
 
-            for (int i = 0; i < cfg.Configs.Count(); i++)
+            for (int i = 0; i < this.cfg.Configs.Count(); i++)
             {
                 //ToDo: add with Data, positioning,scrolling
                 RowButton btn = Pools.RowBtnPool.Get();
-                btn.Width = panel2.Width;
+                btn.Width = this.panel2.Width;
                 btn.Height = Element_Height;
-                btn.Init(cfg.Configs[i].ServerName, OnClickElement, Resources.EditIcon_32, OnClickEditElement, Resources.DeleteIcon_32, OnClickDeleteElement);
+                btn.Init(this.cfg.Configs[i].ServerName, this.OnClickElement, Resources.EditIcon_32, this.OnClickEditElement, Resources.DeleteIcon_32, this.OnClickDeleteElement);
                 btn.SetPos(0, i * (Element_Height + Element_Space));
                 btn.EntryId = i;
-                panel2.Controls.Add(btn);
+                this.panel2.Controls.Add(btn);
             }
 
-            vScrollBar1.UpdateVScroll(panel1);
+            this.vScrollBar1.UpdateVScroll(this.panel1);
         }
 
         private void UpdateData(ServerCfg newServer)
@@ -59,7 +59,7 @@ namespace BnBPosClientNCF35
 
             this.cfg.AddServer(newServer);
 
-            UpdateView();
+            this.UpdateView();
         }
 
         private void OnClickElement(long index)
@@ -98,13 +98,13 @@ namespace BnBPosClientNCF35
         {
             //TODO: encapsulate in msgBox to prevent unwanted deletion
             this.cfg.RemoveServerAt(index);
-            UpdateView();
+            this.UpdateView();
         }
 
         private void addEntryIBtn_Click(object sender, EventArgs e)
         {
             ConnectForm frm = new ConnectForm();
-            frm.OnLoginSuccess += UpdateData;
+            frm.OnLoginSuccess += this.UpdateData;
             frm.Show();
         }
     }

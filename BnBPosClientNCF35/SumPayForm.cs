@@ -39,9 +39,9 @@ namespace BnBPosClientNCF35
 
         private void sumPayedBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.sumLabel.Text)) return;
+            if (string.IsNullOrEmpty(this.handedTB.Text)) return;
 
-            float input = Convert.ToSingle(this.sumLabel.Text);
+            float input = Convert.ToSingle(this.handedTB.Text);
             if (input < this.sumToPay)
             {
                 MessageBox.Show("Not enough Money given!");
@@ -50,11 +50,12 @@ namespace BnBPosClientNCF35
 
             if (input > this.sumToPay)
             {
-                Form frm = new PayOut(input - sumToPay, () =>
+                Form frm = new PayOut(input - this.sumToPay, () =>
                 {
                     if (this.OnPaymentCompleted != null) this.OnPaymentCompleted.Invoke();
                     this.Close();
                 });
+                frm.Show();
                 return;
             }
 

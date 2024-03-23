@@ -16,8 +16,10 @@ namespace BnBPosClientNCF35
         public PayOut(float payout, Action onOk)
         {
             this.OnOk = onOk;
-            this.label2.Text = payout.CurrencyStr();
+
             InitializeComponent();
+
+            this.label2.Text = payout.CurrencyStr();
         }
 
         private void backBtn_Click(object sender, EventArgs e)

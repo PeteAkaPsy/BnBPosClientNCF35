@@ -34,7 +34,7 @@ namespace BnBPosClientNCF35
                 this.imageButton2.Width *= 2;
                 this.imageButton2.Height *= 2;
                 Point pt = this.imageButton2.Location;
-                pt.X -= imageButton2.Width / 2;
+                pt.X -= this.imageButton2.Width / 2;
                 this.imageButton2.Location = pt;
                 this.checkInBtn.Width *= 2;
                 this.checkInBtn.Height *= 2;
@@ -57,7 +57,7 @@ namespace BnBPosClientNCF35
                 this.backBtn.Image = Resources.BackIcon_32;
             }
 
-            SetMainIconPos();
+            this.SetMainIconPos();
         }
 
         private void SetMainIconPos()

@@ -45,6 +45,7 @@
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(32, 32);
             this.backBtn.TabIndex = 6;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
             // manualInputLabel
             // 
@@ -61,7 +62,6 @@
             this.idTB.Name = "idTB";
             this.idTB.Size = new System.Drawing.Size(100, 21);
             this.idTB.TabIndex = 8;
-            this.idTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.idTB_KeyPress);
             // 
             // addBtn
             // 

@@ -43,32 +43,36 @@ namespace BnBPosClientNCF35
 
         private void UpdateView()
         {
-            Pools.RecycleTwoColTxtBtnCollection(panel2.Controls);
-            panel2.Height = (sellItems.Count() + 1) * (Element_Height + Element_Space);
+            Pools.RecycleTwoColTxtBtnCollection(this.panel2.Controls);
+            this.panel2.Height = (this.sellItems.Count() + 1) * (Element_Height + Element_Space);
 
-            for (int i = 0; i < sellItems.Count(); i++)
+            long[] sellKeys = this.sellItems.Keys.ToArray();
+            for (int i = 0; i < sellKeys.Count(); i++)
             {
+                SellItemData data = this.sellItems[sellKeys[i]];
                 TwoColTxtButton btn = Pools.TwoColTxtBtnPool.Get();
-                btn.Width = panel2.Width;
+                btn.Width = this.panel2.Width;
                 btn.Height = Element_Height;
-                btn.Init(sellItems[i].Name, sellItems[i].Price.CurrencyStr(), null, null); //no delete of single elements on checkin/out
+                btn.Init(data.Name, data.Price.CurrencyStr(), null, null); //no delete of single elements on checkin/out
                 btn.SetPos(0, i * (Element_Height + Element_Space));
                 btn.EntryId = i;
-                panel2.Controls.Add(btn);
+                this.panel2.Controls.Add(btn);
             }
 
-            for (int i = 0; i < auctItems.Count(); i++)
+            long[] auctKeys = this.auctItems.Keys.ToArray();
+            for (int i = 0; i < auctKeys.Count(); i++)
             {
+                AuctItemData data = this.auctItems[auctKeys[i]];
                 TwoColTxtButton btn = Pools.TwoColTxtBtnPool.Get();
-                btn.Width = panel2.Width;
+                btn.Width = this.panel2.Width;
                 btn.Height = Element_Height;
-                btn.Init(sellItems[i].Name, auctItems[i].StartPrice.CurrencyStr(), null, null); //no delete of single elements on checkin/out
-                btn.SetPos(0, (sellItems.Count + i) * (Element_Height + Element_Space));
-                btn.EntryId = sellItems.Count + i;
-                panel2.Controls.Add(btn);
+                btn.Init(data.Name, data.StartPrice.CurrencyStr(), null, null); //no delete of single elements on checkin/out
+                btn.SetPos(0, (this.sellItems.Count + i) * (Element_Height + Element_Space));
+                btn.EntryId = this.sellItems.Count + i;
+                this.panel2.Controls.Add(btn);
             }
 
-            vScrollBar1.UpdateVScroll(panel1);
+            this.vScrollBar1.UpdateVScroll(this.panel1);
         }
 
         private void OnBarcodeScanned(string bcode)
@@ -99,7 +103,7 @@ namespace BnBPosClientNCF35
                         if (result != null && !this.sellItems.ContainsKey(result.Id))
                         {
                             this.sellItems.Add(result.Id, result);
-                            UpdateView();
+                            this.UpdateView();
                         }
                     },
                     errors =>
@@ -108,13 +112,13 @@ namespace BnBPosClientNCF35
             }
             else if (data.DType == (uint)ScannedType.Auction)
             {
-                Program.rest.Get<AuctItemData>("/r/auctcheckin", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
+                Program.rest.Get<AuctItemData>("/r/auctioncheckin", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
                     result =>
                     {
                         if (result != null && !this.sellItems.ContainsKey(result.Id))
                         {
                             this.auctItems.Add(result.Id, result);
-                            UpdateView();
+                            this.UpdateView();
                         }
                     },
                     errors =>
@@ -157,7 +161,7 @@ namespace BnBPosClientNCF35
         {
             this.sellItems.Clear();
             this.auctItems.Clear();
-            Pools.RecycleTwoColTxtBtnCollection(panel2.Controls);
+            Pools.RecycleTwoColTxtBtnCollection(this.panel2.Controls);
         }
     }
 }
