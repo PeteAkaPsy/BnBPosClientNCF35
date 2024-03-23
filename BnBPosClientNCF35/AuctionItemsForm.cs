@@ -14,17 +14,14 @@ namespace BnBPosClientNCF35
 {
     public partial class AuctionItemsForm : Form
     {
-        private const int Element_Height = 40;
-        private const int Element_Space = 2;
-
         private BCReader.IBCReader bcr;
 
         //private List<SellItemData> items;
-        private Dictionary<long,SellItemData> items;
+        //private Dictionary<long,AuctItemData> items;
 
         public AuctionItemsForm()
         {
-            this.items = new Dictionary<long,SellItemData>();
+            //this.items = new Dictionary<long,AuctItemData>();
 
             InitializeComponent();
 
@@ -35,58 +32,44 @@ namespace BnBPosClientNCF35
                 this.bcr.OnScan += this.OnBarcodeScanned;
                 this.bcr.StartReader();
             }
-
-            this.UpdateView();
-        }
-
-        private void UpdateView()
-        {
-            //List<CollectionsData> collections = collectionsDb.CollTbl.Select();
-            Pools.RecycleTwoColTxtBtnCollection(this.panel2.Controls);
-            this.panel2.Height = (items.Count() + 1) * (Element_Height + Element_Space);
-
-            for (int i = 0; i < items.Count(); i++)
-            {
-                //ToDo: add with Data, positioning,scrolling
-                TwoColTxtButton btn = Pools.TwoColTxtBtnPool.Get();
-                btn.Width = this.panel2.Width;
-                btn.Height = Element_Height;
-                btn.Init(items[i].Name, items[i].Price.CurrencyStr(), Resources.DeleteIcon_32, this.OnClickDeleteElement);
-                btn.SetPos(0, i * (Element_Height + Element_Space));
-                btn.EntryId = i;
-                this.panel2.Controls.Add(btn);
-            }
-
-            this.vScrollBar1.UpdateVScroll(panel1);
         }
 
         private void OnBarcodeScanned(string bcode)
         {
             Debug.WriteLine("CheckIn Scanned BarCode:" + bcode);
 
-            long bcodeVal = Convert.ToInt64(bcode);
+            ScannedData data;
 
-            if (bcodeVal == 0)
+            try
             {
-                Debug.WriteLine("Checked in Value could not be converted to an integer");
+                data = RetroLab.Json.Converter.Deserialize<ScannedData>(bcode);
+            }
+            catch (RetroLab.Json.JsonException ex)
+            {
+                Debug.WriteLine("Decoding Json from BarCode Failed:\n" + ex.Message);
+                Debug.WriteLine(ex.StackTrace);
+            }
+        }
+
+        private void OnItemScanned(ScannedData data)
+        {
+            if (data.DType == (uint)ScannedType.Sale)
+            {
+                //Show MSGBox on Repeat and play fail sfx
                 return;
             }
 
-            Program.rest.Get<SellItemData>("/r/sellitem", new Dictionary<string, string>() { { "", "" } }, 
+            Program.rest.Get<AuctItemData>("/r/auctionitem", new Dictionary<string, string>() { { "", "" } }, 
                 result => {
-                    if (result != null && !this.items.ContainsKey(result.Id))
+                    if (result != null)
                     {
-                        this.items.Add(result.Id, result);
-                        this.UpdateView();
+                        this.nameLabel.Text = result.Name;
+                        this.descriptionTB.Text = result.Descr;
+                        this.startPriceLabel.Text = result.StartPrice.CurrencyStr();
                     }
                 }, 
                 errors => {
                 });
-        }
-
-        private void OnClickDeleteElement(long index)
-        {
-
         }
 
         private void imageButton2_Click(object sender, EventArgs e)
@@ -106,8 +89,8 @@ namespace BnBPosClientNCF35
 
         private void manualInputButton_Click(object sender, EventArgs e)
         {
-            //Form frm = new ManualInputForm(this.OnBarcodeScanned);
-            //frm.Show();
+            Form frm = new ManualInputForm(this.OnItemScanned, ScannedType.Auction);
+            frm.Show();
         }
     }
 }
