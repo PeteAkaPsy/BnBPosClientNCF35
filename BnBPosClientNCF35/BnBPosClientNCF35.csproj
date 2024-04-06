@@ -45,6 +45,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.WindowsMobile.Forms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="mscorlib" />
     <Reference Include="System">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -66,6 +67,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CameraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CameraForm.Designer.cs">
+      <DependentUpon>CameraForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CheckInForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +87,7 @@
     <Compile Include="ConnectForm.Designer.cs">
       <DependentUpon>ConnectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="datatypes\ImageData.cs" />
     <Compile Include="datatypes\ItemStates.cs" />
     <Compile Include="datatypes\AuctItemChangedData.cs" />
     <Compile Include="datatypes\ScannedData.cs" />
@@ -136,6 +144,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CameraForm.resx">
+      <DependentUpon>CameraForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CheckInForm.resx">
       <DependentUpon>CheckInForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +190,9 @@
     <EmbeddedResource Include="SumPayForm.resx">
       <DependentUpon>SumPayForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WarningForm.resx">
+      <DependentUpon>WarningForm.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -195,6 +209,12 @@
     </Compile>
     <Compile Include="SumPayForm.Designer.cs">
       <DependentUpon>SumPayForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WarningForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WarningForm.Designer.cs">
+      <DependentUpon>WarningForm.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +240,7 @@
     <Content Include="Resources\AddIcon_64.png" />
     <Content Include="Resources\AddMultipleIcon_32.png" />
     <Content Include="Resources\AddMultipleIcon_64.png" />
+    <None Include="Resources\AdultOnlyIcon_128.png" />
     <Content Include="Resources\BackIcon_32.png" />
     <None Include="Resources\BackIcon_64.png" />
     <Content Include="Resources\DeleteIcon_32.png" />

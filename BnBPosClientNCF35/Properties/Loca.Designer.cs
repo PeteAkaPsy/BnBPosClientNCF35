@@ -61,6 +61,15 @@ namespace BnBPosClientNCF35.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die This item is for Adults only! Please check the customers age! ähnelt.
+        /// </summary>
+        public static string AdultsOnlyWarning {
+            get {
+                return ResourceManager.GetString("AdultsOnlyWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die The Login Failed! ähnelt.
         /// </summary>
         public static string LoginFailed {

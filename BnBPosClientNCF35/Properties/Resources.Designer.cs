@@ -88,6 +88,13 @@ namespace BnBPosClientNCF35.Properties {
             }
         }
         
+        public static System.Drawing.Bitmap AdultOnlyIcon_128 {
+            get {
+                object obj = ResourceManager.GetObject("AdultOnlyIcon_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         public static System.Drawing.Bitmap BackIcon_32 {
             get {
                 object obj = ResourceManager.GetObject("BackIcon_32", resourceCulture);

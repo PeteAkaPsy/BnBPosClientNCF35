@@ -95,6 +95,11 @@ namespace BnBPosClientNCF35
                     {
                         this.items.Add(result.Id, result);
                         this.UpdateView();
+                        if (result.AdultOnly)
+                        {
+                            Form frm = new WarningForm(Loca.AdultsOnlyWarning);
+                            frm.Show();
+                        }
                     }
                 }, 
                 errors => {

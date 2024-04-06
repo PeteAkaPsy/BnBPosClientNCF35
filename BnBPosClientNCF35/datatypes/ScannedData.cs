@@ -12,6 +12,7 @@ namespace BnBPosClientNCF35
         public long ID;
         public string Name;
         public float Price;
+        public bool AdultOnly;
     }
 
     public enum ScannedType : uint

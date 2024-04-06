@@ -32,9 +32,12 @@ namespace BnBPosClientNCF35
             }
             LoadConfig();
 
+            if (!Directory.Exists(@".\tmp"))
+                Directory.CreateDirectory(@".\tmp");
+
             Application.Run(new ServerPickerForm());
 
-            barcodeReader.Close();
+            barcodeReader.StopReader();
         }
 
         public static void LoadConfig()

@@ -64,6 +64,11 @@ namespace BnBPosClientNCF35
                         this.nameLabel.Text = result.Name;
                         this.descriptionTB.Text = result.Descr;
                         this.startPriceLabel.Text = result.StartPrice.CurrencyStr();
+                        if (result.AdultOnly)
+                        {
+                            Form frm = new WarningForm(Loca.AdultsOnlyWarning);
+                            frm.Show();
+                        }
                     }
                 }, 
                 errors => {

@@ -125,10 +125,10 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.imageButton2);
             this.Controls.Add(this.backBtn);
-            this.MinimizeBox = false;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CheckOutForm";
-            this.Text = "CheckInForm";
+            this.Text = "CheckOutForm";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

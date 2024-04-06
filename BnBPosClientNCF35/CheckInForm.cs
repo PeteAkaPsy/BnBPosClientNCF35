@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Diagnostics;
 using System.Windows.Forms;
+using Microsoft.WindowsMobile.Forms; //ToDo: change to symbol imager
 using Retrolab;
 using BnBPosClientNCF35.Properties;
 
@@ -97,13 +98,21 @@ namespace BnBPosClientNCF35
             if (data.DType == (uint)ScannedType.Sale)
             {
 
-                Program.rest.Get<SellItemData>("/r/sellcheckin", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
+                Program.rest.Get<SellItemDataWithImg>("/r/sellcheckin", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
                     result =>
                     {
                         if (result != null && !this.sellItems.ContainsKey(result.Id))
                         {
-                            this.sellItems.Add(result.Id, result);
-                            this.UpdateView();
+                            this.sellItems.Add(result.Id, result.ToSellItem());
+                            if (result.Images == null || result.Images.Length == 0)
+                            {
+                                Form frm = new CameraForm(ScannedType.Sale, result.Id, this.AddSellImg);
+                                frm.Show();
+                            }
+                            else
+                            {
+                                this.UpdateView();
+                            }
                         }
                     },
                     errors =>
@@ -125,6 +134,19 @@ namespace BnBPosClientNCF35
                     {
                     });
             }
+        }
+
+        private void AddSellImg(long sellId, string data)
+        {//call this from action in camForm
+            Program.rest.Post<bool, ImageData>("/r/sellitem/image", new ImageData() { ID = sellId, Data = data },
+                result =>
+                {
+                    this.UpdateView();
+                },
+                errors =>
+                {
+                    this.UpdateView();
+                });
         }
 
         //no delete on chekin/out
