@@ -6,8 +6,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Microsoft.WindowsMobile.Forms;
 using System.Diagnostics;
+using BCReader;
 
 namespace BnBPosClientNCF35
 {
@@ -17,50 +17,52 @@ namespace BnBPosClientNCF35
         ScannedType actionType;
         Action<long, string> OnCaptured;
 
+        IImager img;
+
         public CameraForm(ScannedType actionType, long id, Action<long,string> onCapture)
         {
             this.Id = id;
             this.actionType = actionType;
             this.OnCaptured = onCapture;
 
+            this.img = Program.imager;
+
             Program.barcodeReader.StopReader(); //just do start & Stop in this class as this is used only 
 
             InitializeComponent();
         }
 
+        private void OnCapture(Image img)
+        {
+            if (this.OnCaptured != null)
+            {
+                this.OnCaptured(Id, Ext.GetB64(img));
+            }
+            this.Close();
+        }
+
         private void CameraForm_Load(object sender, EventArgs e)
         {
-            //ToDo: change cam stuff to symbol imager
-            CameraCaptureDialog camera = new CameraCaptureDialog();
-            camera.InitialDirectory = @".\tmp";
-            //camera.InitialDirectory = @"\My Documents";
-            camera.DefaultFileName = @"capture.jpg";
-            camera.Title = "CaptureImage";
-            camera.Mode = CameraCaptureMode.Still;
-            camera.StillQuality = CameraCaptureStillQuality.High;
-
-            //bool ok = false;
-            try
-            {
-                DialogResult res = camera.ShowDialog();
-                if (res == DialogResult.OK)
-                {
-                    if (this.OnCaptured != null)
-                        this.OnCaptured.Invoke(this.Id, Ext.GetB64(camera.FileName));
-
-                    this.Close();
-                }
-            }
-            catch (SystemException ex)
-            {
-                MessageBox.Show("Could not access the Camera.\n");
-                Debug.WriteLine("SE-Could not access the Camera.\n Barcode/Imager still running?" + ex.Message);
-            }
+            this.img.EnableLamp(false);
+            this.img.OnImageTaken += OnCapture;
+            this.img.SetPB(this.pictureBox1);
+            this.img.StartImager();
         }
 
         private void CameraForm_Closed(object sender, EventArgs e)
         {
-            //Program.barcodeReader.StartReader();// restart of the reader here is too fast
+            this.img.StopImager();
+            this.img.SetPB(null);
+            this.img.OnImageTaken -= OnCapture;
+        }
+
+        private void CameraForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == System.Windows.Forms.Keys.Escape))
+            {
+                this.img.Reset();
+            }
+
         }
     }
 }

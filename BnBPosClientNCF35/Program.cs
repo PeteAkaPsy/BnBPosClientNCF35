@@ -14,6 +14,7 @@ namespace BnBPosClientNCF35
         const string cfgFilePath = "./config.json";
         public static RestClient rest;
         public static BCReader.IBCReader barcodeReader;
+        public static BCReader.IImager imager;
         public static Configuration cfg;
 
 
@@ -25,6 +26,7 @@ namespace BnBPosClientNCF35
         {
             rest = new RestClient();
             barcodeReader = BCReader.BCR.Get();
+            imager = BCReader.IMG.Get();
 
             if (File.Exists(cfgFilePath))
             {

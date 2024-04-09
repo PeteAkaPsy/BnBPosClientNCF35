@@ -7,7 +7,6 @@ using System.Drawing;
 using System.Text;
 using System.Diagnostics;
 using System.Windows.Forms;
-using Microsoft.WindowsMobile.Forms; //ToDo: change to symbol imager
 using Retrolab;
 using BnBPosClientNCF35.Properties;
 
