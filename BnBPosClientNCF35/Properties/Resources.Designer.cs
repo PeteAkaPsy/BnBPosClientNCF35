@@ -136,5 +136,19 @@ namespace BnBPosClientNCF35.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        public static System.Drawing.Bitmap LightOffIcon_64 {
+            get {
+                object obj = ResourceManager.GetObject("LightOffIcon_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap LightOnIcon_64 {
+            get {
+                object obj = ResourceManager.GetObject("LightOnIcon_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

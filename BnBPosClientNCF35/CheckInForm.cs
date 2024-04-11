@@ -19,7 +19,6 @@ namespace BnBPosClientNCF35
 
         private BCReader.IBCReader bcr;
 
-        //private List<SellItemData> items;
         private Dictionary<long, SellItemData> sellItems;
         private Dictionary<long, AuctItemData> auctItems;
 
@@ -120,13 +119,21 @@ namespace BnBPosClientNCF35
             }
             else if (data.DType == (uint)ScannedType.Auction)
             {
-                Program.rest.Get<AuctItemData>("/r/auctioncheckin", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
+                Program.rest.Get<AuctItemDataWithImg>("/r/auctioncheckin", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
                     result =>
                     {
                         if (result != null && !this.sellItems.ContainsKey(result.Id))
                         {
-                            this.auctItems.Add(result.Id, result);
-                            this.UpdateView();
+                            this.auctItems.Add(result.Id, result.ToAuctItem());
+                            if (result.Images == null || result.Images.Length == 0)
+                            {
+                                Form frm = new CameraForm(ScannedType.Auction, result.Id, this.AddAuctImg);
+                                frm.Show();
+                            }
+                            else
+                            {
+                                this.UpdateView();
+                            }
                         }
                     },
                     errors =>
@@ -136,8 +143,21 @@ namespace BnBPosClientNCF35
         }
 
         private void AddSellImg(long sellId, string data)
-        {//call this from action in camForm
+        {
             Program.rest.Post<bool, ImageData>("/r/sellitem/image", new ImageData() { ID = sellId, Data = data },
+                result =>
+                {
+                    this.UpdateView();
+                },
+                errors =>
+                {
+                    this.UpdateView();
+                });
+        }
+
+        private void AddAuctImg(long auctId, string data)
+        {
+            Program.rest.Post<bool, ImageData>("/r/auctitem/image", new ImageData() { ID = auctId, Data = data },
                 result =>
                 {
                     this.UpdateView();

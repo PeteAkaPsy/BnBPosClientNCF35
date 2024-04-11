@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using BCReader;
+using BnBPosClientNCF35.Properties;
 
 namespace BnBPosClientNCF35
 {
@@ -18,6 +19,7 @@ namespace BnBPosClientNCF35
         Action<long, string> OnCaptured;
 
         IImager img;
+        bool bcrStartedBefore = false;
 
         public CameraForm(ScannedType actionType, long id, Action<long,string> onCapture)
         {
@@ -27,7 +29,11 @@ namespace BnBPosClientNCF35
 
             this.img = Program.imager;
 
-            Program.barcodeReader.StopReader(); //just do start & Stop in this class as this is used only 
+            if (Program.barcodeReader.IsStarted())
+            {
+                this.bcrStartedBefore = true;
+                Program.barcodeReader.StopReader();
+            }
 
             InitializeComponent();
         }
@@ -43,10 +49,11 @@ namespace BnBPosClientNCF35
 
         private void CameraForm_Load(object sender, EventArgs e)
         {
-            this.img.EnableLamp(false);
             this.img.OnImageTaken += OnCapture;
             this.img.SetPB(this.pictureBox1);
             this.img.StartImager();
+
+            this.lightButton.Image = this.img.IsLampEnabled() ? Resources.LightOffIcon_64 : Resources.LightOnIcon_64;
         }
 
         private void CameraForm_Closed(object sender, EventArgs e)
@@ -54,6 +61,11 @@ namespace BnBPosClientNCF35
             this.img.StopImager();
             this.img.SetPB(null);
             this.img.OnImageTaken -= OnCapture;
+
+            if (this.bcrStartedBefore)
+            {
+                Program.barcodeReader.StartReader();
+            }
         }
 
         private void CameraForm_KeyDown(object sender, KeyEventArgs e)
@@ -62,7 +74,12 @@ namespace BnBPosClientNCF35
             {
                 this.img.Reset();
             }
+        }
 
+        private void lightButton_Click(object sender, EventArgs e)
+        {
+            this.img.EnableLamp(!this.img.IsLampEnabled());
+            this.lightButton.Image = this.img.IsLampEnabled() ? Resources.LightOffIcon_64 : Resources.LightOnIcon_64;
         }
     }
 }

@@ -29,13 +29,24 @@
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lightButton = new Retrolab.ImageButton();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(234, 220);
+            this.pictureBox1.Size = new System.Drawing.Size(234, 250);
+            // 
+            // lightButton
+            // 
+            this.lightButton.BackColor = System.Drawing.SystemColors.Control;
+            this.lightButton.Image = null;
+            this.lightButton.Location = new System.Drawing.Point(104, 259);
+            this.lightButton.Name = "lightButton";
+            this.lightButton.Size = new System.Drawing.Size(32, 32);
+            this.lightButton.TabIndex = 13;
+            this.lightButton.Click += new System.EventHandler(this.lightButton_Click);
             // 
             // CameraForm
             // 
@@ -43,6 +54,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 294);
+            this.Controls.Add(this.lightButton);
             this.Controls.Add(this.pictureBox1);
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -59,5 +71,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Retrolab.ImageButton lightButton;
     }
 }

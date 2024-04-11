@@ -246,6 +246,8 @@
     <Content Include="Resources\DeleteIcon_32.png" />
     <None Include="Resources\DeleteIcon_64.png" />
     <Content Include="Resources\EditIcon_32.png" />
+    <None Include="Resources\LightOffIcon_64.png" />
+    <None Include="Resources\LightOnIcon_64.png" />
     <None Include="Resources\EditIcon_64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
