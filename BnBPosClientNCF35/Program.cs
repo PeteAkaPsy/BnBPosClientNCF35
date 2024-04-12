@@ -34,8 +34,8 @@ namespace BnBPosClientNCF35
             }
             LoadConfig();
 
-            if (!Directory.Exists(@".\tmp"))
-                Directory.CreateDirectory(@".\tmp");
+            //if (!Directory.Exists(@".\tmp"))
+            //    Directory.CreateDirectory(@".\tmp");
 
             Application.Run(new ServerPickerForm());
 

@@ -49,7 +49,7 @@
             // 
             // manualInputLabel
             // 
-            this.manualInputLabel.Location = new System.Drawing.Point(15, 144);
+            this.manualInputLabel.Location = new System.Drawing.Point(15, 158);
             this.manualInputLabel.Name = "manualInputLabel";
             this.manualInputLabel.Size = new System.Drawing.Size(53, 20);
             this.manualInputLabel.Text = "ID:";
@@ -57,7 +57,7 @@
             // 
             // idTB
             // 
-            this.idTB.Location = new System.Drawing.Point(74, 144);
+            this.idTB.Location = new System.Drawing.Point(74, 158);
             this.idTB.MaxLength = 10;
             this.idTB.Name = "idTB";
             this.idTB.Size = new System.Drawing.Size(100, 21);
@@ -65,7 +65,7 @@
             // 
             // addBtn
             // 
-            this.addBtn.Location = new System.Drawing.Point(165, 245);
+            this.addBtn.Location = new System.Drawing.Point(165, 271);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(72, 20);
             this.addBtn.TabIndex = 9;
@@ -75,7 +75,7 @@
             // sellRB
             // 
             this.sellRB.Checked = true;
-            this.sellRB.Location = new System.Drawing.Point(74, 92);
+            this.sellRB.Location = new System.Drawing.Point(74, 106);
             this.sellRB.Name = "sellRB";
             this.sellRB.Size = new System.Drawing.Size(100, 20);
             this.sellRB.TabIndex = 11;
@@ -84,7 +84,7 @@
             // 
             // auctRB
             // 
-            this.auctRB.Location = new System.Drawing.Point(74, 118);
+            this.auctRB.Location = new System.Drawing.Point(74, 132);
             this.auctRB.Name = "auctRB";
             this.auctRB.Size = new System.Drawing.Size(100, 20);
             this.auctRB.TabIndex = 12;

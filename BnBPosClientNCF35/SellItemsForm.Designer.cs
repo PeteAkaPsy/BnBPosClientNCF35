@@ -6,7 +6,6 @@
         /// Erforderliche Designervariable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.MainMenu mainMenu1;
 
         /// <summary>
         /// Verwendete Ressourcen bereinigen.
@@ -30,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SellItemsForm));
-            this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.imageButton2 = new Retrolab.ImageButton();
             this.backBtn = new Retrolab.ImageButton();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
@@ -68,7 +66,7 @@
             // 
             this.vScrollBar1.Location = new System.Drawing.Point(224, 41);
             this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(13, 184);
+            this.vScrollBar1.Size = new System.Drawing.Size(13, 215);
             this.vScrollBar1.TabIndex = 10;
             // 
             // panel1
@@ -77,20 +75,20 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(3, 41);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(221, 184);
+            this.panel1.Size = new System.Drawing.Size(221, 215);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Info;
             this.panel2.Location = new System.Drawing.Point(4, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(214, 184);
+            this.panel2.Size = new System.Drawing.Size(214, 215);
             // 
             // manualInputButton
             // 
             this.manualInputButton.BackColor = System.Drawing.SystemColors.Control;
             this.manualInputButton.Image = null;
-            this.manualInputButton.Location = new System.Drawing.Point(104, 232);
+            this.manualInputButton.Location = new System.Drawing.Point(104, 259);
             this.manualInputButton.Name = "manualInputButton";
             this.manualInputButton.Size = new System.Drawing.Size(32, 32);
             this.manualInputButton.TabIndex = 12;
@@ -101,7 +99,7 @@
             this.payButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.payButton.BackColor = System.Drawing.SystemColors.Control;
             this.payButton.Image = null;
-            this.payButton.Location = new System.Drawing.Point(205, 232);
+            this.payButton.Location = new System.Drawing.Point(205, 259);
             this.payButton.Name = "payButton";
             this.payButton.Size = new System.Drawing.Size(32, 32);
             this.payButton.TabIndex = 14;
@@ -111,7 +109,7 @@
             // 
             this.cancelButton.BackColor = System.Drawing.SystemColors.Control;
             this.cancelButton.Image = ((System.Drawing.Image)(resources.GetObject("cancelButton.Image")));
-            this.cancelButton.Location = new System.Drawing.Point(3, 232);
+            this.cancelButton.Location = new System.Drawing.Point(3, 259);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(32, 32);
             this.cancelButton.TabIndex = 13;
@@ -119,7 +117,7 @@
             // 
             // tempSumLabel
             // 
-            this.tempSumLabel.Location = new System.Drawing.Point(142, 232);
+            this.tempSumLabel.Location = new System.Drawing.Point(142, 259);
             this.tempSumLabel.Name = "tempSumLabel";
             this.tempSumLabel.Size = new System.Drawing.Size(57, 18);
             this.tempSumLabel.Text = "000.00 $";
@@ -130,7 +128,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(240, 268);
+            this.ClientSize = new System.Drawing.Size(240, 294);
             this.Controls.Add(this.tempSumLabel);
             this.Controls.Add(this.payButton);
             this.Controls.Add(this.cancelButton);
@@ -139,9 +137,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.imageButton2);
             this.Controls.Add(this.backBtn);
-            this.Menu = this.mainMenu1;
-            this.MinimizeBox = false;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SellItemsForm";
             this.Text = "SellForm";
             this.panel1.ResumeLayout(false);
