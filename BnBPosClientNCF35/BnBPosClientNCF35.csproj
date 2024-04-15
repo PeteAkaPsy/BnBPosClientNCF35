@@ -79,6 +79,7 @@
     <Compile Include="CheckInForm.Designer.cs">
       <DependentUpon>CheckInForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="datatypes\AllItemsData.cs" />
     <Compile Include="datatypes\AuctItemData.cs" />
     <Compile Include="datatypes\Configuration.cs" />
     <Compile Include="ConnectForm.cs">
@@ -124,6 +125,13 @@
     </Compile>
     <Compile Include="CheckOutScanUIDForm.Designer.cs">
       <DependentUpon>CheckOutScanUIDForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="datatypes\UserData.cs" />
+    <Compile Include="CheckOutItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckOutItemForm.Designer.cs">
+      <DependentUpon>CheckOutItemForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PayOut.cs">
       <SubType>Form</SubType>
@@ -179,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CheckOutScanUIDForm.resx">
       <DependentUpon>CheckOutScanUIDForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckOutItemForm.resx">
+      <DependentUpon>CheckOutItemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PayOut.resx">
       <DependentUpon>PayOut.cs</DependentUpon>

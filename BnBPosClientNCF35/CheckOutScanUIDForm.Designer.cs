@@ -31,9 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckOutScanUIDForm));
             this.imageButton2 = new Retrolab.ImageButton();
             this.backBtn = new Retrolab.ImageButton();
-            this.manualInputButton = new Retrolab.ImageButton();
-            this.payButton = new Retrolab.ImageButton();
-            this.cancelButton = new Retrolab.ImageButton();
+            this.nextBtn = new Retrolab.ImageButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.idTBLabel = new System.Windows.Forms.Label();
+            this.idTB = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // imageButton2
@@ -57,34 +58,40 @@
             this.backBtn.TabIndex = 7;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
-            // manualInputButton
+            // nextBtn
             // 
-            this.manualInputButton.BackColor = System.Drawing.SystemColors.Control;
-            this.manualInputButton.Image = null;
-            this.manualInputButton.Location = new System.Drawing.Point(104, 259);
-            this.manualInputButton.Name = "manualInputButton";
-            this.manualInputButton.Size = new System.Drawing.Size(32, 32);
-            this.manualInputButton.TabIndex = 12;
-            this.manualInputButton.Click += new System.EventHandler(this.manualInputButton_Click);
+            this.nextBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nextBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.nextBtn.Image = null;
+            this.nextBtn.Location = new System.Drawing.Point(205, 259);
+            this.nextBtn.Name = "nextBtn";
+            this.nextBtn.Size = new System.Drawing.Size(32, 32);
+            this.nextBtn.TabIndex = 14;
+            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
             // 
-            // payButton
+            // label1
             // 
-            this.payButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.payButton.BackColor = System.Drawing.SystemColors.Control;
-            this.payButton.Image = null;
-            this.payButton.Location = new System.Drawing.Point(205, 259);
-            this.payButton.Name = "payButton";
-            this.payButton.Size = new System.Drawing.Size(32, 32);
-            this.payButton.TabIndex = 14;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(3, 106);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(234, 57);
+            this.label1.Text = "Scan Seller\'s Barcode or input the Seller ID!";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // cancelButton
+            // idTBLabel
             // 
-            this.cancelButton.BackColor = System.Drawing.SystemColors.Control;
-            this.cancelButton.Image = ((System.Drawing.Image)(resources.GetObject("cancelButton.Image")));
-            this.cancelButton.Location = new System.Drawing.Point(3, 259);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(32, 32);
-            this.cancelButton.TabIndex = 13;
+            this.idTBLabel.Location = new System.Drawing.Point(25, 167);
+            this.idTBLabel.Name = "idTBLabel";
+            this.idTBLabel.Size = new System.Drawing.Size(92, 20);
+            this.idTBLabel.Text = "Seller ID:";
+            this.idTBLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // idTB
+            // 
+            this.idTB.Location = new System.Drawing.Point(123, 166);
+            this.idTB.Name = "idTB";
+            this.idTB.Size = new System.Drawing.Size(81, 21);
+            this.idTB.TabIndex = 17;
             // 
             // CheckOutScanUIDForm
             // 
@@ -92,9 +99,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 294);
-            this.Controls.Add(this.payButton);
-            this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.manualInputButton);
+            this.Controls.Add(this.idTB);
+            this.Controls.Add(this.idTBLabel);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.nextBtn);
             this.Controls.Add(this.imageButton2);
             this.Controls.Add(this.backBtn);
             this.MaximizeBox = false;
@@ -109,8 +117,9 @@
 
         private Retrolab.ImageButton imageButton2;
         private Retrolab.ImageButton backBtn;
-        private Retrolab.ImageButton manualInputButton;
-        private Retrolab.ImageButton payButton;
-        private Retrolab.ImageButton cancelButton;
+        private Retrolab.ImageButton nextBtn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label idTBLabel;
+        private System.Windows.Forms.TextBox idTB;
     }
 }

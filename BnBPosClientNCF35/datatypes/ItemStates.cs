@@ -12,5 +12,7 @@ namespace BnBPosClientNCF35
         InSale,
         Sold,
         Rejected,
+        Lost,
+        CheckedOut,
     }
 }

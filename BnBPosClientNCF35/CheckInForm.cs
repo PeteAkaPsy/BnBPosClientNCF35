@@ -83,6 +83,7 @@ namespace BnBPosClientNCF35
             try
             {
                 data = RetroLab.Json.Converter.Deserialize<ScannedData>(bcode);
+                OnItemScanned(data);
             }
             catch (RetroLab.Json.JsonException ex)
             {
@@ -122,7 +123,7 @@ namespace BnBPosClientNCF35
                 Program.rest.Get<AuctItemDataWithImg>("/r/auctioncheckin", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
                     result =>
                     {
-                        if (result != null && !this.sellItems.ContainsKey(result.Id))
+                        if (result != null && !this.auctItems.ContainsKey(result.Id))
                         {
                             this.auctItems.Add(result.Id, result.ToAuctItem());
                             if (result.Images == null || result.Images.Length == 0)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -16,15 +17,21 @@ namespace BnBPosClientNCF35
     {
         private const int Element_Height = 40;
         private const int Element_Space = 2;
+        private const int Reload_Time = 5; //ToDo: move to cfg to be able ton conf it
 
         private BCReader.IBCReader bcr;
 
-        //private List<SellItemData> items;
-        private Dictionary<long,SellItemData> items;
+        private UserData userData;
+        private List<SellItemData> sellItems;
+        private List<AuctItemData> auctItems;
 
-        public CheckOutForm()
+        private Form subForm = null;
+
+        public CheckOutForm(UserData userData)
         {
-            this.items = new Dictionary<long,SellItemData>();
+            this.userData = userData;
+            this.sellItems = new List<SellItemData>();
+            this.auctItems = new List<AuctItemData>();
 
             InitializeComponent();
 
@@ -36,58 +43,171 @@ namespace BnBPosClientNCF35
                 this.bcr.StartReader();
             }
 
-            UpdateView();
+            Reload();
         }
 
         private void UpdateView()
         {
-            //List<CollectionsData> collections = collectionsDb.CollTbl.Select();
             Pools.RecycleTwoColTxtBtnCollection(panel2.Controls);
-            panel2.Height = (items.Count() + 1) * (Element_Height + Element_Space);
+            this.panel2.Height = (this.sellItems.Count() + 1) * (Element_Height + Element_Space);
 
-            for (int i = 0; i < items.Count(); i++)
+            for (int i = 0; i < sellItems.Count(); i++)
             {
-                //ToDo: add with Data, positioning,scrolling
+                SellItemData data = this.sellItems[i];
                 TwoColTxtButton btn = Pools.TwoColTxtBtnPool.Get();
-                btn.Width = panel2.Width;
+                btn.Width = this.panel2.Width;
                 btn.Height = Element_Height;
-                btn.Init(items[i].Name, items[i].Price.CurrencyStr(), Resources.DeleteIcon_32, OnClickDeleteElement);
+                btn.Init(data.Name, data.Price.CurrencyStr(), this.OnEntryClicked, null, null); //no delete of single elements on checkin/out
                 btn.SetPos(0, i * (Element_Height + Element_Space));
                 btn.EntryId = i;
-                panel2.Controls.Add(btn);
+                this.panel2.Controls.Add(btn);
             }
 
-            vScrollBar1.UpdateVScroll(panel1);
+            for (int i = 0; i < auctItems.Count(); i++)
+            {
+                AuctItemData data = this.auctItems[i];
+                TwoColTxtButton btn = Pools.TwoColTxtBtnPool.Get();
+                btn.Width = this.panel2.Width;
+                btn.Height = Element_Height;
+                btn.Init(data.Name, data.StartPrice.CurrencyStr(), this.OnEntryClicked, null, null); //no delete of single elements on checkin/out
+                btn.SetPos(0, (this.sellItems.Count + i) * (Element_Height + Element_Space));
+                btn.EntryId = this.sellItems.Count + i;
+                this.panel2.Controls.Add(btn);
+            }
+
+            this.vScrollBar1.UpdateVScroll(this.panel1);
+        }
+
+        private void Reload()
+        {
+            this.sellItems.Clear();
+            Program.rest.Get<AllItemsData>("/r/allitems", new Dictionary<string, string>() { { "id", userData.Id.ToString() } },
+                result =>
+                {
+                    if (result != null)
+                    {
+                        foreach (SellItemData item in result.SellItems)
+                        {
+                            if (item.ItemState != (uint)ItemStates.Sold)
+                                this.sellItems.Add(item);
+                        }
+                        foreach (AuctItemData item in result.AuctItems)
+                        {
+                            if (item.ItemState != (uint)ItemStates.Sold)
+                                this.auctItems.Add(item);
+                        }
+                        this.UpdateView();
+                    }
+                },
+                errors =>
+                {
+                });
+        }
+
+        private void OnEntryClicked(long index)
+        {
+            if (index < 0) return;
+
+            long id = 0;
+            ScannedType st = ScannedType.None;
+
+            if (index >= this.sellItems.Count)
+            {
+                st = ScannedType.Auction;
+                long tIndex = index - this.sellItems.Count;
+                id = this.auctItems.ElementAt((int)tIndex).Id;
+            }
+            else
+            {
+                st = ScannedType.Sale;
+                id = this.sellItems.ElementAt((int)index).Id;
+            }
+
+            switch (st)
+            {
+                case ScannedType.Sale:
+                    {
+                        Program.rest.Get<SellItemDataWithImg>("/r/sellcheckin", new Dictionary<string, string>() { { "id", id.ToString() } },
+                            result =>
+                            {
+                                if (result != null)
+                                {
+                                    if (result.Images == null || result.Images.Length == 0)
+                                    {
+                                        this.subForm = new CheckOutItemForm(result);
+                                        this.subForm.Show();
+                                    }
+                                }
+                            },
+                            errors =>
+                            {
+                            });
+                    } break;
+                case ScannedType.Auction:
+                    {
+                        Program.rest.Get<AuctItemDataWithImg>("/r/auctioncheckin", new Dictionary<string, string>() { { "id", id.ToString() } },
+                            result =>
+                            {
+                                if (result != null)
+                                {
+                                    this.subForm = new CheckOutItemForm(result);
+                                    this.subForm.Show();
+                                }
+                            },
+                            errors =>
+                            {
+                            });
+                    } break;
+            }
         }
 
         private void OnBarcodeScanned(string bcode)
         {
             Debug.WriteLine("CheckIn Scanned BarCode:" + bcode);
+            ScannedData data;
 
-            long bcodeVal = Convert.ToInt64(bcode);
-
-            if (bcodeVal == 0)
+            try
             {
-                Debug.WriteLine("Checked in Value could not be converted to an integer");
-                return;
+                data = RetroLab.Json.Converter.Deserialize<ScannedData>(bcode);
+                OnItemScanned(data);
             }
-
-            Program.rest.Get<SellItemData>("/r/sellitem", new Dictionary<string, string>() { { "", "" } }, 
-                result => {
-                    if (result != null && !this.items.ContainsKey(result.Id))
-                    {
-                        this.items.Add(result.Id, result);
-                        UpdateView();
-                    }
-                }, 
-                errors => {
-                });
+            catch (RetroLab.Json.JsonException ex)
+            {
+                Debug.WriteLine("Decoding Json from BarCode Failed:\n" + ex.Message);
+                Debug.WriteLine(ex.StackTrace);
+            }
         }
 
-        private void OnClickDeleteElement(long index)
+        private void OnItemScanned(ScannedData data)
         {
-
+            if (data.DType == (uint)ScannedType.Sale)
+            {
+                Program.rest.Get<SellItemDataWithImg>("/r/sellcheckout", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
+                    result =>
+                    {
+                        CloseSubForm();
+                        Reload();
+                    },
+                    errors =>
+                    {
+                    });
+            }
+            else if (data.DType == (uint)ScannedType.Auction)
+            {
+                Program.rest.Get<SellItemDataWithImg>("/r/auctioncheckout", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
+                    result =>
+                    {
+                        CloseSubForm();
+                        Reload();
+                    },
+                    errors =>
+                    {
+                    });
+            }
         }
+
+        //no delete on chekin/out
+        //private void OnClickDeleteElement(long index){}
 
         private void imageButton2_Click(object sender, EventArgs e)
         {
@@ -101,6 +221,7 @@ namespace BnBPosClientNCF35
                 this.bcr.StopReader();
                 this.bcr.OnScan -= this.OnBarcodeScanned;
             }
+            this.Clear();
             this.Close();
         }
 
@@ -108,6 +229,21 @@ namespace BnBPosClientNCF35
         {
             //Form frm = new ManualInputForm(this.OnBarcodeScanned);
             //frm.Show();
+        }
+
+        private void CloseSubForm()
+        {
+            if (this.subForm == null) return;
+
+            this.subForm.Close();
+            this.subForm = null;
+        }
+
+        private void Clear()
+        {
+            this.sellItems.Clear();
+            this.auctItems.Clear();
+            Pools.RecycleTwoColTxtBtnCollection(this.panel2.Controls);
         }
     }
 }

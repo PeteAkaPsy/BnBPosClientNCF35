@@ -122,7 +122,7 @@ namespace BnBPosClientNCF35
 
         private void checkOutBtn_Click(object sender, EventArgs e)
         {
-            Form frm = new CheckOutForm();
+            Form frm = new CheckOutScanUIDForm();
             frm.Show();
         }
 
