@@ -145,7 +145,7 @@ namespace BnBPosClientNCF35
 
         private void AddSellImg(long sellId, string data)
         {
-            Program.rest.Post<bool, ImageData>("/r/sellitem/image", new ImageData() { ID = sellId, Data = data },
+            Program.rest.Post<bool, ImageData>("/r/sellitem/image", new ImageData() { Id = sellId, Data = data },
                 result =>
                 {
                     this.UpdateView();
@@ -158,7 +158,7 @@ namespace BnBPosClientNCF35
 
         private void AddAuctImg(long auctId, string data)
         {
-            Program.rest.Post<bool, ImageData>("/r/auctitem/image", new ImageData() { ID = auctId, Data = data },
+            Program.rest.Post<bool, ImageData>("/r/auctitem/image", new ImageData() { Id = auctId, Data = data },
                 result =>
                 {
                     this.UpdateView();

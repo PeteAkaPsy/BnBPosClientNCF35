@@ -30,6 +30,7 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lightButton = new Retrolab.ImageButton();
+            this.imageButton1 = new Retrolab.ImageButton();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -48,12 +49,23 @@
             this.lightButton.TabIndex = 13;
             this.lightButton.Click += new System.EventHandler(this.lightButton_Click);
             // 
+            // imageButton1
+            // 
+            this.imageButton1.BackColor = System.Drawing.SystemColors.Control;
+            this.imageButton1.Image = null;
+            this.imageButton1.Location = new System.Drawing.Point(3, 259);
+            this.imageButton1.Name = "imageButton1";
+            this.imageButton1.Size = new System.Drawing.Size(32, 32);
+            this.imageButton1.TabIndex = 15;
+            this.imageButton1.Click += new System.EventHandler(this.imageButton1_Click);
+            // 
             // CameraForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 294);
+            this.Controls.Add(this.imageButton1);
             this.Controls.Add(this.lightButton);
             this.Controls.Add(this.pictureBox1);
             this.KeyPreview = true;
@@ -61,8 +73,8 @@
             this.MinimizeBox = false;
             this.Name = "CameraForm";
             this.Text = "CameraForm";
-            this.Load += new System.EventHandler(this.CameraForm_Load);
             this.Closed += new System.EventHandler(this.CameraForm_Closed);
+            this.Activated += new System.EventHandler(this.CameraForm_Activate);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CameraForm_KeyDown);
             this.ResumeLayout(false);
 
@@ -72,5 +84,6 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private Retrolab.ImageButton lightButton;
+        private Retrolab.ImageButton imageButton1;
     }
 }

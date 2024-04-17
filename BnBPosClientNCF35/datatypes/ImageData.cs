@@ -8,7 +8,7 @@ namespace BnBPosClientNCF35
     [Serializable]
     public class ImageData
     {
-        public long ID; //ImageId on Receive, sell/auctId on add
+        public long Id; //ImageId on Receive, sell/auctId on add
         public string Data;
     }
 }

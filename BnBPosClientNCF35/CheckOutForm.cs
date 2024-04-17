@@ -225,12 +225,6 @@ namespace BnBPosClientNCF35
             this.Close();
         }
 
-        private void manualInputButton_Click(object sender, EventArgs e)
-        {
-            //Form frm = new ManualInputForm(this.OnBarcodeScanned);
-            //frm.Show();
-        }
-
         private void CloseSubForm()
         {
             if (this.subForm == null) return;

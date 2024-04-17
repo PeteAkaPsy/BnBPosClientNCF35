@@ -32,16 +32,32 @@ namespace BnBPosClientNCF35
 
         private void UpdateView()
         {
-            this.nameLabel.Text = sellItem != null ? sellItem.Name : auctItem.Name;
-            //this.categoryLabel.Text = sellItem != null ? sellItem.Name : auctItem.Name;
-            this.nameLabel.Text = sellItem != null ? sellItem.Name : auctItem.Name;
-            //ToDo: maybe the old image needs cleanup?
+            if (sellItem != null)
+            {
+                this.nameLabel.Text = sellItem.Name;
+                //this.categoryLabel.Text = sellItem.Name;
+                this.nameLabel.Text = sellItem.Name;
+                //ToDo: maybe the old image needs cleanup?
+                SetNewPB1Img(Ext.GetImgFromB64(sellItem.Images != null && sellItem.Images.Length > 0 ? sellItem.Images[0].Data : null));
+            }
+            else if (auctItem != null)
+            {
+                this.nameLabel.Text = auctItem.Name;
+                //this.categoryLabel.Text = auctItem.Name;
+                this.nameLabel.Text = auctItem.Name;
+                //ToDo: maybe the old image needs cleanup?
+                SetNewPB1Img(Ext.GetImgFromB64(auctItem.Images != null && auctItem.Images.Length > 0 ? auctItem.Images[0].Data : null));
+            }
+        }
+
+        private void SetNewPB1Img(Image img)
+        {
             if (this.pictureBox1.Image != null)
             {
                 this.pictureBox1.Image.Dispose();
                 this.pictureBox1.Image = null;
             }
-            this.pictureBox1.Image = Ext.GetImgFromB64( sellItem != null ? sellItem.Images[0].Data : auctItem.Images[0].Data);
+            this.pictureBox1.Image = img;
         }
 
         private void imageButton2_Click(object sender, EventArgs e)

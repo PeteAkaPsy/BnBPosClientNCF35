@@ -36,6 +36,10 @@ namespace BnBPosClientNCF35
             }
 
             InitializeComponent();
+
+#if !DEBUG
+            this.imageButton1.Enabled = false;
+#endif
         }
 
         private void OnCapture(Image img)
@@ -47,8 +51,9 @@ namespace BnBPosClientNCF35
             this.Close();
         }
 
-        private void CameraForm_Load(object sender, EventArgs e)
+        private void CameraForm_Activate(object sender, EventArgs e)
         {
+            Debug.WriteLine(Program.barcodeReader.IsStarted().ToString());
             this.img.OnImageTaken += OnCapture;
             this.img.SetPB(this.pictureBox1);
             this.img.StartImager();
@@ -80,6 +85,11 @@ namespace BnBPosClientNCF35
         {
             this.img.EnableLamp(!this.img.IsLampEnabled());
             this.lightButton.Image = this.img.IsLampEnabled() ? Resources.LightOffIcon_64 : Resources.LightOnIcon_64;
+        }
+
+        private void imageButton1_Click(object sender, EventArgs e)
+        {
+            this.img.ChangeToNext();
         }
     }
 }
