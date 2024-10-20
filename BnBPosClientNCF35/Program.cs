@@ -47,6 +47,7 @@ namespace BnBPosClientNCF35
             if (cfg == null)
             {
                 cfg = new Configuration();
+                cfg.allowImgCapture = imager.IsUsable();
 #if DEBUG
                 // add test server without me painfully adding it every time but only when the conf is not found
                 RestClient rest = Program.rest;

@@ -49,6 +49,7 @@ namespace BnBPosClientNCF35
             for (int i = 0; i < sellKeys.Count(); i++)
             {
                 SellItemData data = this.sellItems[sellKeys[i]];
+                Debug.WriteLine("data.Price " + data.Price);
                 TwoColTxtButton btn = Pools.TwoColTxtBtnPool.Get();
                 btn.Width = this.panel2.Width;
                 btn.Height = Element_Height;
@@ -102,8 +103,9 @@ namespace BnBPosClientNCF35
                     {
                         if (result != null && !this.sellItems.ContainsKey(result.Id))
                         {
+                            Debug.WriteLine("result price: " + result.Price);
                             this.sellItems.Add(result.Id, result.ToSellItem());
-                            if (result.Images == null || result.Images.Length == 0)
+                            if (Program.cfg.allowImgCapture && (result.Images == null || result.Images.Length == 0))
                             {
                                 Form frm = new CameraForm(ScannedType.Sale, result.Id, this.AddSellImg);
                                 frm.Show();
@@ -123,7 +125,7 @@ namespace BnBPosClientNCF35
                 Program.rest.Get<AuctItemDataWithImg>("/r/auctioncheckin", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
                     result =>
                     {
-                        if (result != null && !this.auctItems.ContainsKey(result.Id))
+                        if (Program.cfg.allowImgCapture && (result != null && !this.auctItems.ContainsKey(result.Id)))
                         {
                             this.auctItems.Add(result.Id, result.ToAuctItem());
                             if (result.Images == null || result.Images.Length == 0)

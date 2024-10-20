@@ -8,6 +8,12 @@ namespace BnBPosClientNCF35
     [Serializable]
     public class Configuration
     {
+        /// <summary>
+        /// this is set to false if when the imager api is not supported. -> e.g. MC65
+        /// especially because the native captureForm has a very delayed cleanup blocking the imaging/scanning devices
+        /// </summary>
+        public bool allowImgCapture = true;
+
         public ServerCfg[] Configs;
 
         public void AddServer(ServerCfg newCfg)

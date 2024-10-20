@@ -79,6 +79,7 @@
     <Compile Include="CheckInForm.Designer.cs">
       <DependentUpon>CheckInForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Connector.cs" />
     <Compile Include="datatypes\AllItemsData.cs" />
     <Compile Include="datatypes\AuctItemData.cs" />
     <Compile Include="datatypes\Configuration.cs" />
