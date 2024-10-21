@@ -134,6 +134,24 @@
     <Compile Include="CheckOutItemForm.Designer.cs">
       <DependentUpon>CheckOutItemForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Options\OptionsSetIPPrinter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Options\OptionsSetIPPrinter.Designer.cs">
+      <DependentUpon>OptionsSetIPPrinter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\OptionsFindIPPrinter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Options\OptionsFindIPPrinter.Designer.cs">
+      <DependentUpon>OptionsFindIPPrinter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\OptionsMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Options\OptionsMenuForm.Designer.cs">
+      <DependentUpon>OptionsMenuForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PayOut.cs">
       <SubType>Form</SubType>
     </Compile>

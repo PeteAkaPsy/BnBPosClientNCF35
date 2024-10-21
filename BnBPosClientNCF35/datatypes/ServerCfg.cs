@@ -13,6 +13,12 @@ namespace BnBPosClientNCF35
         /// </summary>
         public string AccountToken;
 
+        public string LabelPrinterIP;
+        public int LabelPrinterPort = 9100;
+
+        public string DocPrinterIP;
+        public int DocPrinterPort = 9100;
+
         public static bool operator ==(ServerCfg cfgLeft, ServerCfg cfgRight)
         {
             if (cfgRight == null && cfgLeft == null) return true;
