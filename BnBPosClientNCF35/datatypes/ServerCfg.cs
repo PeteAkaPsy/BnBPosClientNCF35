@@ -15,9 +15,13 @@ namespace BnBPosClientNCF35
 
         public string LabelPrinterIP;
         public int LabelPrinterPort = 9100;
+        
+        public string LabelFileName;
+        public string LabelString; //maybe needs to change to byte[] for printers using ESC instead of ZPL, or maybe we will need anoter printer entry later making this comment obsolete
 
         public string DocPrinterIP;
         public int DocPrinterPort = 9100;
+        public string DocFileName;
 
         public static bool operator ==(ServerCfg cfgLeft, ServerCfg cfgRight)
         {

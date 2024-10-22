@@ -31,11 +31,11 @@ namespace BnBPosClientNCF35
                 this.backBtn.Width *= 2;
                 this.backBtn.Height *= 2;
                 this.backBtn.Image = Resources.BackIcon_64;
-                this.imageButton2.Width *= 2;
-                this.imageButton2.Height *= 2;
-                Point pt = this.imageButton2.Location;
-                pt.X -= this.imageButton2.Width / 2;
-                this.imageButton2.Location = pt;
+                this.optionsButton.Width *= 2;
+                this.optionsButton.Height *= 2;
+                Point pt = this.optionsButton.Location;
+                pt.X -= this.optionsButton.Width / 2;
+                this.optionsButton.Location = pt;
                 this.checkInBtn.Width *= 2;
                 this.checkInBtn.Height *= 2;
                 this.checkInLabel.Width *= 2;
@@ -103,9 +103,10 @@ namespace BnBPosClientNCF35
             this.Close();
         }
 
-        private void imageButton2_Click(object sender, EventArgs e)
+        private void optionsButton_Click(object sender, EventArgs e)
         {
-
+            Form frm = new OptionsMenuForm();
+            frm.Show();
         }
 
         private void checkInBtn_Click(object sender, EventArgs e)

@@ -37,7 +37,7 @@ namespace BnBPosClientNCF35
             this.checkOutBtn = new Retrolab.ImageButton();
             this.auctionBtn = new Retrolab.ImageButton();
             this.backBtn = new Retrolab.ImageButton();
-            this.imageButton2 = new Retrolab.ImageButton();
+            this.optionsButton = new Retrolab.ImageButton();
             this.sellLabel = new System.Windows.Forms.Label();
             this.checkInLabel = new System.Windows.Forms.Label();
             this.checkOutLabel = new System.Windows.Forms.Label();
@@ -98,16 +98,16 @@ namespace BnBPosClientNCF35
             this.backBtn.TabIndex = 5;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
-            // imageButton2
+            // optionsButton
             // 
-            this.imageButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.imageButton2.BackColor = System.Drawing.SystemColors.Control;
-            this.imageButton2.Image = null;
-            this.imageButton2.Location = new System.Drawing.Point(205, 3);
-            this.imageButton2.Name = "imageButton2";
-            this.imageButton2.Size = new System.Drawing.Size(32, 32);
-            this.imageButton2.TabIndex = 6;
-            this.imageButton2.Click += new System.EventHandler(this.imageButton2_Click);
+            this.optionsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.optionsButton.BackColor = System.Drawing.SystemColors.Control;
+            this.optionsButton.Image = null;
+            this.optionsButton.Location = new System.Drawing.Point(205, 3);
+            this.optionsButton.Name = "optionsButton";
+            this.optionsButton.Size = new System.Drawing.Size(32, 32);
+            this.optionsButton.TabIndex = 6;
+            this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
             // 
             // sellLabel
             // 
@@ -153,14 +153,14 @@ namespace BnBPosClientNCF35
             this.Controls.Add(this.checkOutLabel);
             this.Controls.Add(this.checkInLabel);
             this.Controls.Add(this.sellLabel);
-            this.Controls.Add(this.imageButton2);
+            this.Controls.Add(this.optionsButton);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.auctionBtn);
             this.Controls.Add(this.checkOutBtn);
             this.Controls.Add(this.checkInBtn);
             this.Controls.Add(this.sellBtn);
-            this.MinimizeBox = false;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
             this.Text = "BnBPos Main";
             this.ResumeLayout(false);
@@ -174,7 +174,7 @@ namespace BnBPosClientNCF35
         private ImageButton checkOutBtn;
         private ImageButton auctionBtn;
         private ImageButton backBtn;
-        private ImageButton imageButton2;
+        private ImageButton optionsButton;
         private System.Windows.Forms.Label sellLabel;
         private System.Windows.Forms.Label checkInLabel;
         private System.Windows.Forms.Label checkOutLabel;

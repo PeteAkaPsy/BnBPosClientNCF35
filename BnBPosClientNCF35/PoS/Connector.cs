@@ -62,6 +62,10 @@ namespace PosPrinter
             return this;
         }
 
+        /// <summary>
+        /// prints the data provided by connecting by use of TCP and closes the connection after sending the data
+        /// </summary>
+        /// <param name="data">the data to send to the printer</param>
         public void Print(string data)
         {
             if (string.IsNullOrEmpty(data))
@@ -73,6 +77,10 @@ namespace PosPrinter
             this.Print(Encoding.Default.GetBytes(data));
         }
 
+        /// <summary>
+        /// prints the data provided by connecting by use of TCP and closes the connection after sending the data
+        /// </summary>
+        /// <param name="data">the data to send to the printer</param>
         public void Print(byte[] data)
         {
             if (data == null || data.Length == 0)
@@ -145,34 +153,32 @@ namespace PosPrinter
                     } break;
                 case DeviceType.TCP:
                     {
-                        TcpClient tcp = new TcpClient();
+                        System.Diagnostics.Debug.WriteLine("Trying to Print over IP to " + this.ipAddr + ":" + this.port);
+
+                        NetworkStream ns = null;
+                        Socket socket = null;
+                        System.Net.IPEndPoint printerIP = null;
                         try
                         {
-                            tcp.Connect(this.ipAddr, this.port);
-                            tcp.SendTimeout = 1000;
-                            tcp.ReceiveTimeout = 1000;
-                            if (tcp.Client.Connected)
-                            {
-                                tcp.Client.Send(data);
-                            }
+                            printerIP = new System.Net.IPEndPoint(System.Net.IPAddress.Parse(this.ipAddr), this.port);
+                            socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                            socket.Connect(printerIP);
+                            ns = new NetworkStream(socket);
+
+                            ns.Write(data, 0, data.Length);
                         }
-                        catch
+                        catch (Exception ex)
                         {
-                            //logError
+                            System.Diagnostics.Debug.WriteLine(ex.Message);
                         }
                         finally
                         {
-                            if (tcp != null)
-                            {
-                                if (tcp.Client != null)
-                                {
-                                    tcp.Client.Close();
-                                    tcp.Client = null;
-                                }
-                                //log close
-                                tcp.Close();
-                                tcp = null;
-                            }
+                            if (ns != null)
+                                ns.Close();
+                            if (socket != null)
+                                socket.Close();
+
+                            System.Diagnostics.Debug.WriteLine("Connection Closed");
                         }
                     } break;
                 default: return; break;

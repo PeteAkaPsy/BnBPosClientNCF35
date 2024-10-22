@@ -79,7 +79,7 @@
     <Compile Include="CheckInForm.Designer.cs">
       <DependentUpon>CheckInForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Connector.cs" />
+    <Compile Include="PoS\Connector.cs" />
     <Compile Include="datatypes\AllItemsData.cs" />
     <Compile Include="datatypes\AuctItemData.cs" />
     <Compile Include="datatypes\Configuration.cs" />
@@ -209,6 +209,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CheckOutItemForm.resx">
       <DependentUpon>CheckOutItemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Options\OptionsMenuForm.resx">
+      <DependentUpon>OptionsMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Options\OptionsSetIPPrinter.resx">
+      <DependentUpon>OptionsSetIPPrinter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PayOut.resx">
       <DependentUpon>PayOut.cs</DependentUpon>

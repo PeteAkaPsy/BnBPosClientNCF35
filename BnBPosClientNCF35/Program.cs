@@ -71,5 +71,13 @@ namespace BnBPosClientNCF35
 #endif
             }
         }
+
+        // simplification to get the application path(there is no indirect pathing in CE)
+        public static string Path()
+        {
+            return System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+        }
+
+        public static readonly string TestLabelPathZPL = @"Labels\Test.zpl";
     }
 }
