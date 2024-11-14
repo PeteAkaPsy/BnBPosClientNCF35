@@ -210,6 +210,9 @@
     <EmbeddedResource Include="CheckOutItemForm.resx">
       <DependentUpon>CheckOutItemForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Options\OptionsFindIPPrinter.resx">
+      <DependentUpon>OptionsFindIPPrinter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Options\OptionsMenuForm.resx">
       <DependentUpon>OptionsMenuForm.cs</DependentUpon>
     </EmbeddedResource>
