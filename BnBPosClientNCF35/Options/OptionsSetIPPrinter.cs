@@ -19,7 +19,7 @@ namespace BnBPosClientNCF35
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void lpSearchBtn_Click(object sender, EventArgs e)

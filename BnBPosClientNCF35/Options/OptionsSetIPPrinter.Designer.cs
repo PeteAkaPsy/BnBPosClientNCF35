@@ -34,11 +34,15 @@
             this.lpUriTB = new System.Windows.Forms.TextBox();
             this.lpUriLabel = new System.Windows.Forms.Label();
             this.labelPrinterPanel = new System.Windows.Forms.Panel();
+            this.lpTestBtn = new System.Windows.Forms.Button();
+            this.lpProtocolCB = new System.Windows.Forms.ComboBox();
+            this.lpProtocolLabel = new System.Windows.Forms.Label();
             this.lpPortLabel = new System.Windows.Forms.Label();
             this.lpPortTB = new System.Windows.Forms.TextBox();
             this.lpSearchBtn = new Retrolab.ImageButton();
             this.lpLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.stdpTestBtn = new System.Windows.Forms.Button();
             this.stdpPortLabel = new System.Windows.Forms.Label();
             this.stdpPortTB = new System.Windows.Forms.TextBox();
             this.imageButton1 = new Retrolab.ImageButton();
@@ -46,10 +50,6 @@
             this.stdpNameTB = new System.Windows.Forms.TextBox();
             this.stdpUriLabel = new System.Windows.Forms.Label();
             this.stdUriTB = new System.Windows.Forms.TextBox();
-            this.lpProtocolLabel = new System.Windows.Forms.Label();
-            this.lpProtocolCB = new System.Windows.Forms.ComboBox();
-            this.lpTestBtn = new System.Windows.Forms.Button();
-            this.stdpTestBtn = new System.Windows.Forms.Button();
             this.labelPrinterPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +62,7 @@
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(32, 32);
             this.backBtn.TabIndex = 6;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
             // lpNameTB
             // 
@@ -106,6 +107,31 @@
             this.labelPrinterPanel.Location = new System.Drawing.Point(4, 42);
             this.labelPrinterPanel.Name = "labelPrinterPanel";
             this.labelPrinterPanel.Size = new System.Drawing.Size(233, 105);
+            // 
+            // lpTestBtn
+            // 
+            this.lpTestBtn.Location = new System.Drawing.Point(158, 77);
+            this.lpTestBtn.Name = "lpTestBtn";
+            this.lpTestBtn.Size = new System.Drawing.Size(72, 20);
+            this.lpTestBtn.TabIndex = 30;
+            this.lpTestBtn.Text = "Test";
+            this.lpTestBtn.Click += new System.EventHandler(this.lpTestBtn_Click);
+            // 
+            // lpProtocolCB
+            // 
+            this.lpProtocolCB.Items.Add("ZPL");
+            this.lpProtocolCB.Location = new System.Drawing.Point(68, 77);
+            this.lpProtocolCB.Name = "lpProtocolCB";
+            this.lpProtocolCB.Size = new System.Drawing.Size(71, 22);
+            this.lpProtocolCB.TabIndex = 29;
+            // 
+            // lpProtocolLabel
+            // 
+            this.lpProtocolLabel.Location = new System.Drawing.Point(3, 77);
+            this.lpProtocolLabel.Name = "lpProtocolLabel";
+            this.lpProtocolLabel.Size = new System.Drawing.Size(59, 20);
+            this.lpProtocolLabel.Text = "Protocol";
+            this.lpProtocolLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lpPortLabel
             // 
@@ -158,6 +184,15 @@
             this.panel1.Location = new System.Drawing.Point(4, 153);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(233, 105);
+            // 
+            // stdpTestBtn
+            // 
+            this.stdpTestBtn.Location = new System.Drawing.Point(158, 76);
+            this.stdpTestBtn.Name = "stdpTestBtn";
+            this.stdpTestBtn.Size = new System.Drawing.Size(72, 20);
+            this.stdpTestBtn.TabIndex = 31;
+            this.stdpTestBtn.Text = "Test";
+            this.stdpTestBtn.Click += new System.EventHandler(this.stdpTestBtn_Click);
             // 
             // stdpPortLabel
             // 
@@ -220,40 +255,6 @@
             this.stdUriTB.Size = new System.Drawing.Size(107, 21);
             this.stdUriTB.TabIndex = 16;
             this.stdUriTB.Text = "192.168.178.58";
-            // 
-            // lpProtocolLabel
-            // 
-            this.lpProtocolLabel.Location = new System.Drawing.Point(3, 77);
-            this.lpProtocolLabel.Name = "lpProtocolLabel";
-            this.lpProtocolLabel.Size = new System.Drawing.Size(59, 20);
-            this.lpProtocolLabel.Text = "Protocol";
-            this.lpProtocolLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // lpProtocolCB
-            // 
-            this.lpProtocolCB.Items.Add("ZPL");
-            this.lpProtocolCB.Location = new System.Drawing.Point(68, 77);
-            this.lpProtocolCB.Name = "lpProtocolCB";
-            this.lpProtocolCB.Size = new System.Drawing.Size(71, 22);
-            this.lpProtocolCB.TabIndex = 29;
-            // 
-            // lpTestBtn
-            // 
-            this.lpTestBtn.Location = new System.Drawing.Point(158, 77);
-            this.lpTestBtn.Name = "lpTestBtn";
-            this.lpTestBtn.Size = new System.Drawing.Size(72, 20);
-            this.lpTestBtn.TabIndex = 30;
-            this.lpTestBtn.Text = "Test";
-            this.lpTestBtn.Click += new System.EventHandler(this.lpTestBtn_Click);
-            // 
-            // stdpTestBtn
-            // 
-            this.stdpTestBtn.Location = new System.Drawing.Point(158, 76);
-            this.stdpTestBtn.Name = "stdpTestBtn";
-            this.stdpTestBtn.Size = new System.Drawing.Size(72, 20);
-            this.stdpTestBtn.TabIndex = 31;
-            this.stdpTestBtn.Text = "Test";
-            this.stdpTestBtn.Click += new System.EventHandler(this.stdpTestBtn_Click);
             // 
             // OptionsSetIPPrinter
             // 
