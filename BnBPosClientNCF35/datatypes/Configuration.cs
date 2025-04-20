@@ -15,6 +15,16 @@ namespace BnBPosClientNCF35
         public bool allowImgCapture = true;
 
         public ServerCfg[] Configs;
+        public int activeCfg = -1;
+        public ServerCfg CurrentCfg
+        {
+            get {
+                if (activeCfg < 0 || Configs == null || activeCfg >= Configs.Length)
+                    return null;
+
+                return Configs[activeCfg];
+            }
+        }
 
         public void AddServer(ServerCfg newCfg)
         {

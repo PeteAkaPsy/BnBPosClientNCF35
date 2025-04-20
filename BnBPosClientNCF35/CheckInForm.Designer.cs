@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckInForm));
-            this.imageButton2 = new Retrolab.ImageButton();
+            this.printButton = new Retrolab.ImageButton();
             this.backBtn = new Retrolab.ImageButton();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -39,16 +39,16 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // imageButton2
+            // printButton
             // 
-            this.imageButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.imageButton2.BackColor = System.Drawing.SystemColors.Control;
-            this.imageButton2.Image = null;
-            this.imageButton2.Location = new System.Drawing.Point(205, 3);
-            this.imageButton2.Name = "imageButton2";
-            this.imageButton2.Size = new System.Drawing.Size(32, 32);
-            this.imageButton2.TabIndex = 8;
-            this.imageButton2.Click += new System.EventHandler(this.imageButton2_Click);
+            this.printButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.printButton.BackColor = System.Drawing.SystemColors.Control;
+            this.printButton.Image = null;
+            this.printButton.Location = new System.Drawing.Point(205, 3);
+            this.printButton.Name = "printButton";
+            this.printButton.Size = new System.Drawing.Size(32, 32);
+            this.printButton.TabIndex = 8;
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
             // backBtn
             // 
@@ -113,7 +113,7 @@
             this.Controls.Add(this.manualInputButton);
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.imageButton2);
+            this.Controls.Add(this.printButton);
             this.Controls.Add(this.backBtn);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -126,7 +126,7 @@
 
         #endregion
 
-        private Retrolab.ImageButton imageButton2;
+        private Retrolab.ImageButton printButton;
         private Retrolab.ImageButton backBtn;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Panel panel1;

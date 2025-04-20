@@ -64,6 +64,7 @@ namespace BnBPosClientNCF35
 
         private void OnClickElement(long index)
         {
+            Program.cfg.activeCfg = (int)index;
             Program.rest.baseURL = this.cfg.Configs[index].ServerUri;
             Program.rest.SetAuthToken(this.cfg.Configs[index].AccountToken);
 

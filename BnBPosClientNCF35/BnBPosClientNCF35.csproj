@@ -79,6 +79,12 @@
     <Compile Include="CheckInForm.Designer.cs">
       <DependentUpon>CheckInForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CheckInScanUIDForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckInScanUIDForm.Designer.cs">
+      <DependentUpon>CheckInScanUIDForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PoS\Connector.cs" />
     <Compile Include="datatypes\AllItemsData.cs" />
     <Compile Include="datatypes\AuctItemData.cs" />
@@ -209,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CheckOutItemForm.resx">
       <DependentUpon>CheckOutItemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckInScanUIDForm.resx">
+      <DependentUpon>CheckInScanUIDForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Options\OptionsFindIPPrinter.resx">
       <DependentUpon>OptionsFindIPPrinter.cs</DependentUpon>

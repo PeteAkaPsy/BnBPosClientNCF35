@@ -13,13 +13,20 @@ namespace BnBPosClientNCF35
         /// </summary>
         public string AccountToken;
 
-        public string LabelPrinterIP;
-        public int LabelPrinterPort = 9100;
-        
-        public string LabelFileName;
-        public string LabelString; //maybe needs to change to byte[] for printers using ESC instead of ZPL, or maybe we will need anoter printer entry later making this comment obsolete
+        public string EventName = "Test2025";
+        public string CurrencySymbol = "$";
 
-        public string DocPrinterIP;
+        public string LabelPrinterName = "LP2824";
+        public string LabelPrinterIP = "192.168.178.40";
+        public int LabelPrinterPort = 9100;
+
+        public string LabelTestFile = "Labels\\Test.zpl";
+        public string LabelHeaderFile = "Labels\\D3825_H.zpl"; //header label used as user/seller identifier
+        public string LabelTemplateFile = "Labels\\D3825_T.zpl"; //template describing the look of the label
+        public string LabelDataFile = "Labels\\D3825_D.zpl"; //the data file allowing batch printing with different data for the template
+
+        public string DocPrinterName = "CLP-680ND";
+        public string DocPrinterIP = "192.168.178.58";
         public int DocPrinterPort = 9100;
         public string DocFileName;
 

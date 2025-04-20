@@ -45,11 +45,12 @@
             this.stdpTestBtn = new System.Windows.Forms.Button();
             this.stdpPortLabel = new System.Windows.Forms.Label();
             this.stdpPortTB = new System.Windows.Forms.TextBox();
-            this.imageButton1 = new Retrolab.ImageButton();
+            this.stdpSearchBtn = new Retrolab.ImageButton();
             this.stdpLabel = new System.Windows.Forms.Label();
             this.stdpNameTB = new System.Windows.Forms.TextBox();
             this.stdpUriLabel = new System.Windows.Forms.Label();
             this.stdUriTB = new System.Windows.Forms.TextBox();
+            this.saveBtn = new Retrolab.ImageButton();
             this.labelPrinterPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -80,7 +81,6 @@
             this.lpUriTB.Name = "lpUriTB";
             this.lpUriTB.Size = new System.Drawing.Size(107, 21);
             this.lpUriTB.TabIndex = 16;
-            this.lpUriTB.Text = "192.168.178.40";
             // 
             // lpUriLabel
             // 
@@ -148,7 +148,6 @@
             this.lpPortTB.Name = "lpPortTB";
             this.lpPortTB.Size = new System.Drawing.Size(40, 21);
             this.lpPortTB.TabIndex = 24;
-            this.lpPortTB.Text = "9100";
             // 
             // lpSearchBtn
             // 
@@ -176,7 +175,7 @@
             this.panel1.Controls.Add(this.stdpTestBtn);
             this.panel1.Controls.Add(this.stdpPortLabel);
             this.panel1.Controls.Add(this.stdpPortTB);
-            this.panel1.Controls.Add(this.imageButton1);
+            this.panel1.Controls.Add(this.stdpSearchBtn);
             this.panel1.Controls.Add(this.stdpLabel);
             this.panel1.Controls.Add(this.stdpNameTB);
             this.panel1.Controls.Add(this.stdpUriLabel);
@@ -209,17 +208,16 @@
             this.stdpPortTB.Name = "stdpPortTB";
             this.stdpPortTB.Size = new System.Drawing.Size(40, 21);
             this.stdpPortTB.TabIndex = 24;
-            this.stdpPortTB.Text = "9100";
             // 
-            // imageButton1
+            // stdpSearchBtn
             // 
-            this.imageButton1.BackColor = System.Drawing.SystemColors.Control;
-            this.imageButton1.Image = ((System.Drawing.Image)(resources.GetObject("imageButton1.Image")));
-            this.imageButton1.Location = new System.Drawing.Point(198, 3);
-            this.imageButton1.Name = "imageButton1";
-            this.imageButton1.Size = new System.Drawing.Size(32, 32);
-            this.imageButton1.TabIndex = 22;
-            this.imageButton1.Click += new System.EventHandler(this.imageButton1_Click);
+            this.stdpSearchBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.stdpSearchBtn.Image = ((System.Drawing.Image)(resources.GetObject("stdpSearchBtn.Image")));
+            this.stdpSearchBtn.Location = new System.Drawing.Point(198, 3);
+            this.stdpSearchBtn.Name = "stdpSearchBtn";
+            this.stdpSearchBtn.Size = new System.Drawing.Size(32, 32);
+            this.stdpSearchBtn.TabIndex = 22;
+            this.stdpSearchBtn.Click += new System.EventHandler(this.imageButton1_Click);
             // 
             // stdpLabel
             // 
@@ -254,13 +252,23 @@
             this.stdUriTB.Name = "stdUriTB";
             this.stdUriTB.Size = new System.Drawing.Size(107, 21);
             this.stdUriTB.TabIndex = 16;
-            this.stdUriTB.Text = "192.168.178.58";
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.saveBtn.Image = ((System.Drawing.Image)(resources.GetObject("saveBtn.Image")));
+            this.saveBtn.Location = new System.Drawing.Point(205, 3);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(32, 32);
+            this.saveBtn.TabIndex = 23;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // OptionsSetIPPrinter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(240, 294);
+            this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelPrinterPanel);
             this.Controls.Add(this.backBtn);
@@ -288,7 +296,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label stdpPortLabel;
         private System.Windows.Forms.TextBox stdpPortTB;
-        private Retrolab.ImageButton imageButton1;
+        private Retrolab.ImageButton stdpSearchBtn;
         private System.Windows.Forms.Label stdpLabel;
         private System.Windows.Forms.TextBox stdpNameTB;
         private System.Windows.Forms.Label stdpUriLabel;
@@ -297,5 +305,6 @@
         private System.Windows.Forms.ComboBox lpProtocolCB;
         private System.Windows.Forms.Button lpTestBtn;
         private System.Windows.Forms.Button stdpTestBtn;
+        private Retrolab.ImageButton saveBtn;
     }
 }

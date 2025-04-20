@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Data;
 using System.Drawing;
 using System.Text;
@@ -19,11 +20,15 @@ namespace BnBPosClientNCF35
 
         private BCReader.IBCReader bcr;
 
+        private UserData userData;
         private Dictionary<long, SellItemData> sellItems;
         private Dictionary<long, AuctItemData> auctItems;
+        private ServerCfg cfg;
 
-        public CheckInForm()
+        public CheckInForm(UserData userData)
         {
+            this.cfg = Program.cfg.CurrentCfg;
+            this.userData = userData;
             this.sellItems = new Dictionary<long, SellItemData>();
             this.auctItems = new Dictionary<long, AuctItemData>();
 
@@ -174,9 +179,62 @@ namespace BnBPosClientNCF35
         //no delete on chekin/out
         //private void OnClickDeleteElement(long index){}
 
-        private void imageButton2_Click(object sender, EventArgs e)
+        private void printButton_Click(object sender, EventArgs e)
         {
+            // print labels here
+            Program.rest.Get<AllItemsData>("/r/allitems", new Dictionary<string, string>() { { "id", userData.Id.ToString() } },
+                result =>
+                {
+                    if (result != null)
+                    {
+                        PosPrinter.Connector con = new PosPrinter.Connector();
+                        con.InitTCP(this.cfg.LabelPrinterIP, this.cfg.LabelPrinterPort);
 
+                        string label = ReadLabel(Program.Path(), this.cfg.LabelHeaderFile);
+                        label = label.Replace("__EVENTNAME__", this.cfg.EventName);
+                        //ToDo: add user specific data here e.g. name+id
+                        con.Print(label);
+
+                        label = ReadLabel(Program.Path(), this.cfg.LabelTemplateFile);
+                        con.Print(label);
+
+                        label = ReadLabel(Program.Path(), this.cfg.LabelDataFile);
+                        label = label.Replace("__EVENTNAME__", this.cfg.EventName);
+
+                        string tmpLabel;
+                        //init label print
+                        foreach (SellItemData item in result.SellItems)
+                        {
+                            if (item.ItemState != (uint)ItemStates.Sold && item.ItemState != (uint)ItemStates.Rejected)
+                            {
+                                tmpLabel = label.Replace("__CAT__", item.CategoryId.ToString());
+                                tmpLabel = tmpLabel.Replace("__ID__", item.Id.ToString());
+                                tmpLabel = tmpLabel.Replace("__PRICE__", item.Price.CurrencyStr());
+                                tmpLabel = tmpLabel.Replace("__QRJSON__", "");
+                                tmpLabel = tmpLabel.Replace("__Name__", item.Name);
+                                //18+
+                                con.Print(tmpLabel);
+                            }
+                        }
+                        foreach (AuctItemData item in result.AuctItems)
+                        {
+                            if (item.ItemState != (uint)ItemStates.Sold)
+                            {
+                                tmpLabel = label.Replace("__CAT__", item.CategoryId.ToString());
+                                tmpLabel = tmpLabel.Replace("__ID__", item.Id.ToString());
+                                tmpLabel = tmpLabel.Replace("__PRICE__", item.StartPrice.CurrencyStr());
+                                tmpLabel = tmpLabel.Replace("__QRJSON__", "");
+                                tmpLabel = tmpLabel.Replace("__Name__", item.Name);
+                                //18+
+                                con.Print(tmpLabel);
+                            }
+                        }
+                        this.UpdateView();
+                    }
+                },
+                errors =>
+                {
+                });
         }
 
         private void backBtn_Click(object sender, EventArgs e)
@@ -206,6 +264,18 @@ namespace BnBPosClientNCF35
             this.sellItems.Clear();
             this.auctItems.Clear();
             Pools.RecycleTwoColTxtBtnCollection(this.panel2.Controls);
+        }
+
+        private string ReadLabel(string bPath, string fPath)
+        {
+            string path = Path.Combine(bPath, fPath);
+            if (!File.Exists(path))
+            {
+                MessageBox.Show("the Headerlabel: " + path + " was not found!");
+                return null;
+            }
+
+            return Ext.ReadAllText(path);
         }
     }
 }

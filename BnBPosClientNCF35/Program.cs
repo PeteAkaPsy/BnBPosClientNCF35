@@ -51,7 +51,7 @@ namespace BnBPosClientNCF35
 #if DEBUG
                 // add test server without me painfully adding it every time but only when the conf is not found
                 RestClient rest = Program.rest;
-                ServerCfg scfg = new ServerCfg() { ServerName = "Test", ServerUri = "http://192.168.178.67:8081" }; // change this uri to your test server
+                ServerCfg scfg = new ServerCfg() { ServerName = "Test", ServerUri = "http://192.168.178.31:8081" }; // change this uri to your test server
                 rest.baseURL = scfg.ServerUri;
                 LoginData ld = new LoginData() { userName = "Admin", passwd = "Admin" };
 
