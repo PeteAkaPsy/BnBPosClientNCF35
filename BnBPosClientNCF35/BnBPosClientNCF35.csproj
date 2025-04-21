@@ -73,16 +73,16 @@
     <Compile Include="CameraForm.Designer.cs">
       <DependentUpon>CameraForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CheckInForm.cs">
+    <Compile Include="CheckIn\CheckInForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CheckInForm.Designer.cs">
+    <Compile Include="CheckIn\CheckInForm.Designer.cs">
       <DependentUpon>CheckInForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CheckInScanUIDForm.cs">
+    <Compile Include="CheckIn\CheckInScanUIDForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CheckInScanUIDForm.Designer.cs">
+    <Compile Include="CheckIn\CheckInScanUIDForm.Designer.cs">
       <DependentUpon>CheckInScanUIDForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PoS\Connector.cs" />
@@ -103,10 +103,10 @@
     <Compile Include="datatypes\ServerCfg.cs" />
     <Compile Include="datatypes\LoginData.cs" />
     <Compile Include="datatypes\UserAccountStates.cs" />
-    <Compile Include="CheckOutForm.cs">
+    <Compile Include="CheckOut\CheckOutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CheckOutForm.Designer.cs">
+    <Compile Include="CheckOut\CheckOutForm.Designer.cs">
       <DependentUpon>CheckOutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AuctionItemsForm.cs">
@@ -121,23 +121,23 @@
     <Compile Include="AuctionBidForm.Designer.cs">
       <DependentUpon>AuctionBidForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CheckOutBCKPForm.cs">
+    <Compile Include="CheckOut\CheckOutBCKPForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CheckOutBCKPForm.Designer.cs">
+    <Compile Include="CheckOut\CheckOutBCKPForm.Designer.cs">
       <DependentUpon>CheckOutBCKPForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CheckOutScanUIDForm.cs">
+    <Compile Include="CheckOut\CheckOutScanUIDForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CheckOutScanUIDForm.Designer.cs">
+    <Compile Include="CheckOut\CheckOutScanUIDForm.Designer.cs">
       <DependentUpon>CheckOutScanUIDForm.cs</DependentUpon>
     </Compile>
     <Compile Include="datatypes\UserData.cs" />
-    <Compile Include="CheckOutItemForm.cs">
+    <Compile Include="CheckOut\CheckOutItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CheckOutItemForm.Designer.cs">
+    <Compile Include="CheckOut\CheckOutItemForm.Designer.cs">
       <DependentUpon>CheckOutItemForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Options\OptionsSetIPPrinter.cs">
@@ -192,13 +192,13 @@
     <EmbeddedResource Include="CameraForm.resx">
       <DependentUpon>CameraForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CheckInForm.resx">
+    <EmbeddedResource Include="CheckIn\CheckInForm.resx">
       <DependentUpon>CheckInForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConnectForm.resx">
       <DependentUpon>ConnectForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CheckOutForm.resx">
+    <EmbeddedResource Include="CheckOut\CheckOutForm.resx">
       <DependentUpon>CheckOutForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AuctionItemsForm.resx">
@@ -207,16 +207,16 @@
     <EmbeddedResource Include="AuctionBidForm.resx">
       <DependentUpon>AuctionBidForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CheckOutBCKPForm.resx">
+    <EmbeddedResource Include="CheckOut\CheckOutBCKPForm.resx">
       <DependentUpon>CheckOutBCKPForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CheckOutScanUIDForm.resx">
+    <EmbeddedResource Include="CheckOut\CheckOutScanUIDForm.resx">
       <DependentUpon>CheckOutScanUIDForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CheckOutItemForm.resx">
+    <EmbeddedResource Include="CheckOut\CheckOutItemForm.resx">
       <DependentUpon>CheckOutItemForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CheckInScanUIDForm.resx">
+    <EmbeddedResource Include="CheckIn\CheckInScanUIDForm.resx">
       <DependentUpon>CheckInScanUIDForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Options\OptionsFindIPPrinter.resx">

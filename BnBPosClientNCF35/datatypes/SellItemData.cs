@@ -15,6 +15,20 @@ namespace BnBPosClientNCF35
         public bool AdultOnly;
         public float Price;
         public uint ItemState;
+
+        public ScannedData ToScanData()
+        {
+            return new ScannedData()
+            {
+                DT = (uint)ScannedType.Sale,
+                ID = this.Id,
+                UID = this.UserId,
+                CID = this.CategoryId,
+                N = this.Name,
+                P = this.Price,
+                AO = this.AdultOnly
+            };
+        }
     }
 
     [Serializable]

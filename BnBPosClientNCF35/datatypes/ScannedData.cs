@@ -8,11 +8,13 @@ namespace BnBPosClientNCF35
     [Serializable]
     public class ScannedData
     {
-        public uint DType;
+        public uint DT;
         public long ID;
-        public string Name;
-        public float Price;
-        public bool AdultOnly;
+        public long UID;
+        public long CID;
+        public string N;
+        public float P;
+        public bool AO;
     }
 
     public enum ScannedType : uint

@@ -17,6 +17,20 @@ namespace BnBPosClientNCF35
 	    public float StartPrice;
 	    public float SellPrice;
         public uint ItemState;
+
+        public ScannedData ToScanData()
+        {
+            return new ScannedData()
+            {
+                DT = (uint)ScannedType.Auction,
+                ID = this.Id,
+                UID = this.UserId,
+                CID = this.CategoryId,
+                N = this.Name,
+                P = this.StartPrice,
+                AO = this.AdultOnly
+            };
+        }
     }
 
     [Serializable]

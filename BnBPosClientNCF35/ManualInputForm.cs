@@ -45,7 +45,7 @@ namespace BnBPosClientNCF35
 
             if (this.OnInputFinished != null)
             {
-                this.OnInputFinished.Invoke(new ScannedData() { DType = (uint)(this.sellRB.Checked ? ScannedType.Sale : ScannedType.Auction), ID = Convert.ToInt64(this.idTB.Text) });
+                this.OnInputFinished.Invoke(new ScannedData() { DT = (uint)(this.sellRB.Checked ? ScannedType.Sale : ScannedType.Auction), ID = Convert.ToInt64(this.idTB.Text) });
             }
 
             this.Close();

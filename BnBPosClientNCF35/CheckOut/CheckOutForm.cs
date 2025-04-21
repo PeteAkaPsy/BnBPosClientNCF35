@@ -180,7 +180,7 @@ namespace BnBPosClientNCF35
 
         private void OnItemScanned(ScannedData data)
         {
-            if (data.DType == (uint)ScannedType.Sale)
+            if (data.DT == (uint)ScannedType.Sale)
             {
                 Program.rest.Get<SellItemDataWithImg>("/r/sellcheckout", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
                     result =>
@@ -192,7 +192,7 @@ namespace BnBPosClientNCF35
                     {
                     });
             }
-            else if (data.DType == (uint)ScannedType.Auction)
+            else if (data.DT == (uint)ScannedType.Auction)
             {
                 Program.rest.Get<SellItemDataWithImg>("/r/auctioncheckout", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
                     result =>

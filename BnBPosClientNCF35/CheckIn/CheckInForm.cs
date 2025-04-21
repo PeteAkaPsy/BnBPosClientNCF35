@@ -100,7 +100,7 @@ namespace BnBPosClientNCF35
 
         private void OnItemScanned(ScannedData data)
         {
-            if (data.DType == (uint)ScannedType.Sale)
+            if (data.DT == (uint)ScannedType.Sale)
             {
 
                 Program.rest.Get<SellItemDataWithImg>("/r/sellcheckin", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
@@ -125,7 +125,7 @@ namespace BnBPosClientNCF35
                     {
                     });
             }
-            else if (data.DType == (uint)ScannedType.Auction)
+            else if (data.DT == (uint)ScannedType.Auction)
             {
                 Program.rest.Get<AuctItemDataWithImg>("/r/auctioncheckin", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
                     result =>
@@ -201,32 +201,22 @@ namespace BnBPosClientNCF35
                         label = ReadLabel(Program.Path(), this.cfg.LabelDataFile);
                         label = label.Replace("__EVENTNAME__", this.cfg.EventName);
 
-                        string tmpLabel;
+                        int c = 0;
                         //init label print
                         foreach (SellItemData item in result.SellItems)
                         {
-                            if (item.ItemState != (uint)ItemStates.Sold && item.ItemState != (uint)ItemStates.Rejected)
+                            if (item.ItemState == (uint)ItemStates.New)
                             {
-                                tmpLabel = label.Replace("__CAT__", item.CategoryId.ToString());
-                                tmpLabel = tmpLabel.Replace("__ID__", item.Id.ToString());
-                                tmpLabel = tmpLabel.Replace("__PRICE__", item.Price.CurrencyStr());
-                                tmpLabel = tmpLabel.Replace("__QRJSON__", "");
-                                tmpLabel = tmpLabel.Replace("__Name__", item.Name);
-                                //18+
-                                con.Print(tmpLabel);
+                                c++;
+                                con.Print(FillLabel(label, item.ToScanData()));
+                                if (c >= 5) return;
                             }
                         }
                         foreach (AuctItemData item in result.AuctItems)
                         {
-                            if (item.ItemState != (uint)ItemStates.Sold)
+                            if (item.ItemState == (uint)ItemStates.New)
                             {
-                                tmpLabel = label.Replace("__CAT__", item.CategoryId.ToString());
-                                tmpLabel = tmpLabel.Replace("__ID__", item.Id.ToString());
-                                tmpLabel = tmpLabel.Replace("__PRICE__", item.StartPrice.CurrencyStr());
-                                tmpLabel = tmpLabel.Replace("__QRJSON__", "");
-                                tmpLabel = tmpLabel.Replace("__Name__", item.Name);
-                                //18+
-                                con.Print(tmpLabel);
+                                con.Print(FillLabel(label, item.ToScanData()));
                             }
                         }
                         this.UpdateView();
@@ -266,12 +256,41 @@ namespace BnBPosClientNCF35
             Pools.RecycleTwoColTxtBtnCollection(this.panel2.Controls);
         }
 
+        private string FillLabel(string label, ScannedData item)
+        {
+            string json = "";
+            try
+            {
+                json = RetroLab.Json.Converter.Serialize(item);
+            }
+            catch
+            {
+                //foo
+            }
+
+            //for now no url feature, just pure data
+            //string uri = 
+            //    item.DT == (uint)ScannedType.Sale ? 
+            //    Program.rest.GetFullPath("/sellitem/showfj?json=") + System.Uri.EscapeDataString(json) :
+            //    item.DT == (uint)ScannedType.Auction ? 
+            //        Program.rest.GetFullPath("/auctionitem/showfj?json=") + System.Uri.EscapeDataString(json) :
+            //        Program.rest.GetFullPath("");
+
+            label = label.Replace("__CAT__", item.CID.ToString());
+            label = label.Replace("__ID__", item.ID.ToString());
+            label = label.Replace("__PRICE__", item.P.CurrencyStr());
+            //label = label.Replace("__QRJSON__", uri);
+            label = label.Replace("__QRJSON__", json);
+            label = label.Replace("__NAME__", item.N);
+            return label;
+        }
+
         private string ReadLabel(string bPath, string fPath)
         {
             string path = Path.Combine(bPath, fPath);
             if (!File.Exists(path))
             {
-                MessageBox.Show("the Headerlabel: " + path + " was not found!");
+                MessageBox.Show("the Labelfile: " + path + " was not found!");
                 return null;
             }
 

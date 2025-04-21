@@ -50,7 +50,7 @@ namespace BnBPosClientNCF35
 
         private void OnItemScanned(ScannedData data)
         {
-            if (data.DType == (uint)ScannedType.Sale)
+            if (data.DT == (uint)ScannedType.Sale)
             {
                 //Show MSGBox on Repeat and play fail sfx
                 return;
