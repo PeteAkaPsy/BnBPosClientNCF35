@@ -201,15 +201,12 @@ namespace BnBPosClientNCF35
                         label = ReadLabel(Program.Path(), this.cfg.LabelDataFile);
                         label = label.Replace("__EVENTNAME__", this.cfg.EventName);
 
-                        int c = 0;
                         //init label print
                         foreach (SellItemData item in result.SellItems)
                         {
                             if (item.ItemState == (uint)ItemStates.New)
                             {
-                                c++;
                                 con.Print(FillLabel(label, item.ToScanData()));
-                                if (c >= 5) return;
                             }
                         }
                         foreach (AuctItemData item in result.AuctItems)
