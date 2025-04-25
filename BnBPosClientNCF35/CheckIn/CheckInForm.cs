@@ -42,7 +42,7 @@ namespace BnBPosClientNCF35
                 this.bcr.StartReader();
             }
 
-            UpdateView();
+            Reload();
         }
 
         private void UpdateView()
@@ -59,6 +59,7 @@ namespace BnBPosClientNCF35
                 btn.Width = this.panel2.Width;
                 btn.Height = Element_Height;
                 btn.Init(data.Name, data.Price.CurrencyStr(), null, null); //no delete of single elements on checkin/out
+                btn.BGColor = ItemStateColors.CheckInColor((ItemStates)data.ItemState);
                 btn.SetPos(0, i * (Element_Height + Element_Space));
                 btn.EntryId = i;
                 this.panel2.Controls.Add(btn);
@@ -72,12 +73,37 @@ namespace BnBPosClientNCF35
                 btn.Width = this.panel2.Width;
                 btn.Height = Element_Height;
                 btn.Init(data.Name, data.StartPrice.CurrencyStr(), null, null); //no delete of single elements on checkin/out
+                btn.BGColor = ItemStateColors.CheckInColor((ItemStates)data.ItemState);
                 btn.SetPos(0, (this.sellItems.Count + i) * (Element_Height + Element_Space));
                 btn.EntryId = this.sellItems.Count + i;
                 this.panel2.Controls.Add(btn);
             }
 
             this.vScrollBar1.UpdateVScroll(this.panel1);
+        }
+
+        private void Reload()
+        {
+            this.sellItems.Clear();
+            Program.rest.Get<AllItemsData>("/r/allitems", new Dictionary<string, string>() { { "id", userData.Id.ToString() } },
+                result =>
+                {
+                    if (result != null)
+                    {
+                        foreach (SellItemData item in result.SellItems)
+                        {
+                            this.sellItems.Add(item.Id, item);
+                        }
+                        foreach (AuctItemData item in result.AuctItems)
+                        {
+                            this.auctItems.Add(item.Id, item);
+                        }
+                        this.UpdateView();
+                    }
+                },
+                errors =>
+                {
+                });
         }
 
         private void OnBarcodeScanned(string bcode)
@@ -109,7 +135,6 @@ namespace BnBPosClientNCF35
                         if (result != null && !this.sellItems.ContainsKey(result.Id))
                         {
                             Debug.WriteLine("result price: " + result.Price);
-                            this.sellItems.Add(result.Id, result.ToSellItem());
                             if (Program.cfg.allowImgCapture && (result.Images == null || result.Images.Length == 0))
                             {
                                 Form frm = new CameraForm(ScannedType.Sale, result.Id, this.AddSellImg);
@@ -117,7 +142,7 @@ namespace BnBPosClientNCF35
                             }
                             else
                             {
-                                this.UpdateView();
+                                this.Reload();
                             }
                         }
                     },
@@ -132,7 +157,6 @@ namespace BnBPosClientNCF35
                     {
                         if (Program.cfg.allowImgCapture && (result != null && !this.auctItems.ContainsKey(result.Id)))
                         {
-                            this.auctItems.Add(result.Id, result.ToAuctItem());
                             if (result.Images == null || result.Images.Length == 0)
                             {
                                 Form frm = new CameraForm(ScannedType.Auction, result.Id, this.AddAuctImg);
@@ -140,7 +164,7 @@ namespace BnBPosClientNCF35
                             }
                             else
                             {
-                                this.UpdateView();
+                                this.Reload();
                             }
                         }
                     },
@@ -155,11 +179,11 @@ namespace BnBPosClientNCF35
             Program.rest.Post<bool, ImageData>("/r/sellitem/image", new ImageData() { Id = sellId, Data = data },
                 result =>
                 {
-                    this.UpdateView();
+                    this.Reload();
                 },
                 errors =>
                 {
-                    this.UpdateView();
+                    this.Reload();
                 });
         }
 
@@ -168,11 +192,11 @@ namespace BnBPosClientNCF35
             Program.rest.Post<bool, ImageData>("/r/auctitem/image", new ImageData() { Id = auctId, Data = data },
                 result =>
                 {
-                    this.UpdateView();
+                    this.Reload();
                 },
                 errors =>
                 {
-                    this.UpdateView();
+                    this.Reload();
                 });
         }
 
@@ -181,47 +205,48 @@ namespace BnBPosClientNCF35
 
         private void printButton_Click(object sender, EventArgs e)
         {
-            // print labels here
-            Program.rest.Get<AllItemsData>("/r/allitems", new Dictionary<string, string>() { { "id", userData.Id.ToString() } },
-                result =>
+            string printString = "";
+
+            //update label-template ToDo: move to mainScreen/connect
+            printString += ReadLabel(Program.Path(), this.cfg.LabelTemplateFile);
+
+            //read the data template to print the actual labels(print last first)
+            string label = ReadLabel(Program.Path(), this.cfg.LabelDataFile);
+            label = label.Replace("__EVENTNAME__", this.cfg.EventName);
+            
+            string userLabel = ReadLabel(Program.Path(), this.cfg.LabelHeaderFile);
+            userLabel = userLabel.Replace("__EVENTNAME__", this.cfg.EventName);
+            userLabel = userLabel.Replace("__USERNAME__", this.userData.UserName);
+            userLabel = userLabel.Replace("__UID__", this.userData.Id.ToString());
+            //ToDo: add user specific data here e.g. name+id
+            printString = userLabel.Replace("__TYPE__", "Sale") + printString;
+
+            //init label print
+            long[] sellKeys = this.sellItems.Keys.ToArray();
+            for (int i = 0; i < sellKeys.Count(); i++)
+            {
+                SellItemData item = this.sellItems[sellKeys[i]];
+                if (item.ItemState == (uint)ItemStates.New)
                 {
-                    if (result != null)
-                    {
-                        PosPrinter.Connector con = new PosPrinter.Connector();
-                        con.InitTCP(this.cfg.LabelPrinterIP, this.cfg.LabelPrinterPort);
+                    printString = FillLabel(label, item.ToScanData()) + printString;
+                }
+            }
 
-                        string label = ReadLabel(Program.Path(), this.cfg.LabelHeaderFile);
-                        label = label.Replace("__EVENTNAME__", this.cfg.EventName);
-                        //ToDo: add user specific data here e.g. name+id
-                        con.Print(label);
+            printString = userLabel.Replace("__TYPE__", "Auction") + printString;
 
-                        label = ReadLabel(Program.Path(), this.cfg.LabelTemplateFile);
-                        con.Print(label);
-
-                        label = ReadLabel(Program.Path(), this.cfg.LabelDataFile);
-                        label = label.Replace("__EVENTNAME__", this.cfg.EventName);
-
-                        //init label print
-                        foreach (SellItemData item in result.SellItems)
-                        {
-                            if (item.ItemState == (uint)ItemStates.New)
-                            {
-                                con.Print(FillLabel(label, item.ToScanData()));
-                            }
-                        }
-                        foreach (AuctItemData item in result.AuctItems)
-                        {
-                            if (item.ItemState == (uint)ItemStates.New)
-                            {
-                                con.Print(FillLabel(label, item.ToScanData()));
-                            }
-                        }
-                        this.UpdateView();
-                    }
-                },
-                errors =>
+            long[] auctKeys = this.auctItems.Keys.ToArray();
+            for (int i = 0; i < auctKeys.Count(); i++)
+            {
+                AuctItemData item = this.auctItems[auctKeys[i]];
+                if (item.ItemState == (uint)ItemStates.New)
                 {
-                });
+                    printString = FillLabel(label, item.ToScanData()) + printString;
+                }
+            }
+            
+            PosPrinter.Connector con = new PosPrinter.Connector();
+            con.InitTCP(this.cfg.LabelPrinterIP, this.cfg.LabelPrinterPort);
+            con.Print(printString);
         }
 
         private void backBtn_Click(object sender, EventArgs e)
