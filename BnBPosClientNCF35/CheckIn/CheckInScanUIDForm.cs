@@ -34,17 +34,24 @@ namespace BnBPosClientNCF35
 
         private void OnBarcodeScanned(string bcode)
         {
-            Debug.WriteLine("CheckIn Scanned BarCode:" + bcode);
+            Debug.WriteLine("CheckInUID Scanned BarCode:" + bcode);
 
-            long bcodeVal = Convert.ToInt64(bcode);
-
-            if (bcodeVal == 0)
+            try
             {
-                Debug.WriteLine("Checked in Value could not be converted to an integer");
-                return;
-            }
+                long bcodeVal = Convert.ToInt64(bcode);
 
-            OnCheckUser(bcodeVal);
+                if (bcodeVal == 0)
+                {
+                    Debug.WriteLine("Checked in Value could not be converted to an integer");
+                    return;
+                }
+
+                OnCheckUser(bcodeVal);
+            }
+            catch
+            {
+                Debug.WriteLine("");
+            }
         }
 
         private void OnCheckUser(long id)
@@ -56,7 +63,7 @@ namespace BnBPosClientNCF35
                     {
                         Form frm = new CheckInForm(result);
                         frm.Show();
-                        this.Close();
+                        this.SaveClose();
                     }
                 },
                 errors =>
@@ -76,7 +83,7 @@ namespace BnBPosClientNCF35
                 this.bcr.StopReader();
                 this.bcr.OnScan -= this.OnBarcodeScanned;
             }
-            this.Close();
+            this.SaveClose();
         }
 
         private void nextBtn_Click(object sender, EventArgs e)
@@ -91,6 +98,16 @@ namespace BnBPosClientNCF35
             }
 
             OnCheckUser(idVal);
+        }
+
+        private void SaveClose()
+        {
+            if (this.bcr != null)
+            {
+                this.bcr.StopReader();
+                this.bcr.OnScan -= this.OnBarcodeScanned;
+            }
+            this.Close();
         }
     }
 }

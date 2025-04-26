@@ -33,6 +33,7 @@
             this.generalSettingsBtn = new System.Windows.Forms.Button();
             this.printerSettingsBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.jsonDbgBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // backBtn
@@ -78,11 +79,23 @@
             this.button2.Text = "...";
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // jsonDbgBtn
+            // 
+            this.jsonDbgBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.jsonDbgBtn.Location = new System.Drawing.Point(3, 238);
+            this.jsonDbgBtn.Name = "jsonDbgBtn";
+            this.jsonDbgBtn.Size = new System.Drawing.Size(234, 20);
+            this.jsonDbgBtn.TabIndex = 9;
+            this.jsonDbgBtn.Text = "JSON Dbg";
+            this.jsonDbgBtn.Click += new System.EventHandler(this.jsonDbgBtn_Click);
+            // 
             // OptionsMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(240, 294);
+            this.Controls.Add(this.jsonDbgBtn);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.printerSettingsBtn);
             this.Controls.Add(this.generalSettingsBtn);
@@ -101,5 +114,6 @@
         private System.Windows.Forms.Button generalSettingsBtn;
         private System.Windows.Forms.Button printerSettingsBtn;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button jsonDbgBtn;
     }
 }

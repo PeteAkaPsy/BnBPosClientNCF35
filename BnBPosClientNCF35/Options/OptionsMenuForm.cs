@@ -34,5 +34,13 @@ namespace BnBPosClientNCF35
         private void button2_Click(object sender, EventArgs e)
         {
         }
+
+        private void jsonDbgBtn_Click(object sender, EventArgs e)
+        {
+            string json = "{\"DT\":1,\"ID\":59,\"UID\":7,\"CID\":11,\"N\":\"user7 Item 0\",\"P\":37.73,\"AO\":false}";
+            ScannedData data;
+            data = RetroLab.Json.Converter.Deserialize<ScannedData>(json);
+            //Debug.WriteLine("Deserialized! -> calling OnItemScanned");
+        }
     }
 }

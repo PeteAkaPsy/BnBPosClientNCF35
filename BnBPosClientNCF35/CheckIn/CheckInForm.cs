@@ -115,7 +115,9 @@ namespace BnBPosClientNCF35
             try
             {
                 data = RetroLab.Json.Converter.Deserialize<ScannedData>(bcode);
-                OnItemScanned(data);
+                Debug.WriteLine("Deserialized! -> calling OnItemScanned");
+                this.Invoke(new Action(() => OnItemScanned(data)));
+                //Debug.WriteLine("OnItemScanned done!");
             }
             catch (RetroLab.Json.JsonException ex)
             {
@@ -126,9 +128,16 @@ namespace BnBPosClientNCF35
 
         private void OnItemScanned(ScannedData data)
         {
+            if (data.UID != this.userData.Id)
+            {
+                Debug.WriteLine("Deserialized! -> calling OnItemScanned");
+                //ToDo: play an error sound
+                return;
+            }
+
             if (data.DT == (uint)ScannedType.Sale)
             {
-
+                Debug.WriteLine("Calling SellCheckin!");
                 Program.rest.Get<SellItemDataWithImg>("/r/sellcheckin", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
                     result =>
                     {
@@ -152,6 +161,7 @@ namespace BnBPosClientNCF35
             }
             else if (data.DT == (uint)ScannedType.Auction)
             {
+                Debug.WriteLine("Calling AucttionCheckin!");
                 Program.rest.Get<AuctItemDataWithImg>("/r/auctioncheckin", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
                     result =>
                     {
