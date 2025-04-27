@@ -156,7 +156,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AuctionItemsForm";
-            this.Text = "CheckInForm";
+            this.Text = "AuctionItemsForm";
             this.ResumeLayout(false);
 
         }

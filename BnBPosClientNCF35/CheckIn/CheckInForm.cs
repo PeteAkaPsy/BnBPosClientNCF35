@@ -54,7 +54,6 @@ namespace BnBPosClientNCF35
             for (int i = 0; i < sellKeys.Count(); i++)
             {
                 SellItemData data = this.sellItems[sellKeys[i]];
-                Debug.WriteLine("data.Price " + data.Price);
                 TwoColTxtButton btn = Pools.TwoColTxtBtnPool.Get();
                 btn.Width = this.panel2.Width;
                 btn.Height = Element_Height;
@@ -85,6 +84,7 @@ namespace BnBPosClientNCF35
         private void Reload()
         {
             this.sellItems.Clear();
+            this.auctItems.Clear();
             Program.rest.Get<AllItemsData>("/r/allitems", new Dictionary<string, string>() { { "id", userData.Id.ToString() } },
                 result =>
                 {
@@ -115,9 +115,7 @@ namespace BnBPosClientNCF35
             try
             {
                 data = RetroLab.Json.Converter.Deserialize<ScannedData>(bcode);
-                Debug.WriteLine("Deserialized! -> calling OnItemScanned");
                 this.Invoke(new Action(() => OnItemScanned(data)));
-                //Debug.WriteLine("OnItemScanned done!");
             }
             catch (RetroLab.Json.JsonException ex)
             {
@@ -137,13 +135,27 @@ namespace BnBPosClientNCF35
 
             if (data.DT == (uint)ScannedType.Sale)
             {
+                if (this.sellItems.ContainsKey(data.ID) && this.sellItems[data.ID].ItemState != (uint)ItemStates.New)
+                {
+                    //ToDo: error Sound
+                    return;
+                }
+
                 Debug.WriteLine("Calling SellCheckin!");
                 Program.rest.Get<SellItemDataWithImg>("/r/sellcheckin", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
                     result =>
                     {
-                        if (result != null && !this.sellItems.ContainsKey(result.Id))
+                        if (result != null)
                         {
-                            Debug.WriteLine("result price: " + result.Price);
+                            if (!this.sellItems.ContainsKey(result.Id))
+                            {
+                                this.sellItems.Add(result.Id, result.ToSellItem());
+                            }
+                            else
+                            {
+                                this.sellItems[result.Id].ItemState = result.ItemState;
+                            }
+
                             if (Program.cfg.allowImgCapture && (result.Images == null || result.Images.Length == 0))
                             {
                                 Form frm = new CameraForm(ScannedType.Sale, result.Id, this.AddSellImg);
@@ -151,7 +163,7 @@ namespace BnBPosClientNCF35
                             }
                             else
                             {
-                                this.Reload();
+                                this.UpdateView();
                             }
                         }
                     },
@@ -161,20 +173,35 @@ namespace BnBPosClientNCF35
             }
             else if (data.DT == (uint)ScannedType.Auction)
             {
+                if (this.auctItems.ContainsKey(data.ID) && this.auctItems[data.ID].ItemState != (uint)ItemStates.New)
+                {
+                    //ToDo: error Sound
+                    return;
+                }
+
                 Debug.WriteLine("Calling AucttionCheckin!");
                 Program.rest.Get<AuctItemDataWithImg>("/r/auctioncheckin", new Dictionary<string, string>() { { "id", data.ID.ToString() } },
                     result =>
                     {
-                        if (Program.cfg.allowImgCapture && (result != null && !this.auctItems.ContainsKey(result.Id)))
+                        if (result != null)
                         {
-                            if (result.Images == null || result.Images.Length == 0)
+                            if (!this.auctItems.ContainsKey(result.Id))
+                            {
+                                this.auctItems.Add(result.Id, result.ToAuctItem());
+                            }
+                            else
+                            {
+                                this.auctItems[result.Id].ItemState = result.ItemState;
+                            }
+
+                            if (Program.cfg.allowImgCapture && (result.Images == null || result.Images.Length == 0))
                             {
                                 Form frm = new CameraForm(ScannedType.Auction, result.Id, this.AddAuctImg);
                                 frm.Show();
                             }
                             else
                             {
-                                this.Reload();
+                                this.UpdateView();
                             }
                         }
                     },
@@ -189,11 +216,11 @@ namespace BnBPosClientNCF35
             Program.rest.Post<bool, ImageData>("/r/sellitem/image", new ImageData() { Id = sellId, Data = data },
                 result =>
                 {
-                    this.Reload();
+                    this.UpdateView();
                 },
                 errors =>
                 {
-                    this.Reload();
+                    this.UpdateView();
                 });
         }
 
@@ -202,11 +229,11 @@ namespace BnBPosClientNCF35
             Program.rest.Post<bool, ImageData>("/r/auctitem/image", new ImageData() { Id = auctId, Data = data },
                 result =>
                 {
-                    this.Reload();
+                    this.UpdateView();
                 },
                 errors =>
                 {
-                    this.Reload();
+                    this.UpdateView();
                 });
         }
 

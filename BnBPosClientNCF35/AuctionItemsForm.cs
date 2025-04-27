@@ -40,6 +40,7 @@ namespace BnBPosClientNCF35
             try
             {
                 data = RetroLab.Json.Converter.Deserialize<ScannedData>(bcode);
+                this.Invoke(new Action(() => OnItemScanned(data)));
             }
             catch (RetroLab.Json.JsonException ex)
             {
@@ -56,12 +57,20 @@ namespace BnBPosClientNCF35
                 return;
             }
 
+            //ToDo: use local DB cause there might be no WiFi
             Program.rest.Get<AuctItemData>("/r/auctionitem", new Dictionary<string, string>() { { "id", data.ID.ToString() } }, 
                 result => {
                     if (result != null)
                     {
+                        if (result.ItemState != (uint)ItemStates.InSale)
+                        {
+                            //ToDo: play error Sound
+                            return;
+                        }
+
                         this.lastScanned = result;
                         this.nameLabel.Text = result.Name;
+                        this.categoryLabel.Text = result.CategoryId.ToString();
                         this.descriptionTB.Text = result.Descr;
                         this.startPriceLabel.Text = result.StartPrice.CurrencyStr();
                         if (result.AdultOnly)
@@ -114,6 +123,7 @@ namespace BnBPosClientNCF35
         {
             AuctItemChangedData data = new AuctItemChangedData() { Id = this.lastScanned.Id, SellPrice = sellPrice };
 
+            //save sold in local DB case there might be no WiFi
             Program.rest.Post<bool, AuctItemChangedData>("/r/auctionitem/sold", data,
                     result =>
                     {

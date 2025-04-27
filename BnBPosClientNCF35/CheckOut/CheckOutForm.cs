@@ -58,6 +58,7 @@ namespace BnBPosClientNCF35
                 btn.Width = this.panel2.Width;
                 btn.Height = Element_Height;
                 btn.Init(data.Name, data.Price.CurrencyStr(), this.OnEntryClicked, null, null); //no delete of single elements on checkin/out
+                btn.BGColor = ItemStateColors.CheckOutColor((ItemStates)data.ItemState);
                 btn.SetPos(0, i * (Element_Height + Element_Space));
                 btn.EntryId = i;
                 this.panel2.Controls.Add(btn);
@@ -70,6 +71,7 @@ namespace BnBPosClientNCF35
                 btn.Width = this.panel2.Width;
                 btn.Height = Element_Height;
                 btn.Init(data.Name, data.StartPrice.CurrencyStr(), this.OnEntryClicked, null, null); //no delete of single elements on checkin/out
+                btn.BGColor = ItemStateColors.CheckOutColor((ItemStates)data.ItemState);
                 btn.SetPos(0, (this.sellItems.Count + i) * (Element_Height + Element_Space));
                 btn.EntryId = this.sellItems.Count + i;
                 this.panel2.Controls.Add(btn);
@@ -88,12 +90,12 @@ namespace BnBPosClientNCF35
                     {
                         foreach (SellItemData item in result.SellItems)
                         {
-                            if (item.ItemState != (uint)ItemStates.Sold)
+                            if (item.ItemState != (uint)ItemStates.New)
                                 this.sellItems.Add(item);
                         }
                         foreach (AuctItemData item in result.AuctItems)
                         {
-                            if (item.ItemState != (uint)ItemStates.Sold)
+                            if (item.ItemState != (uint)ItemStates.New)
                                 this.auctItems.Add(item);
                         }
                         this.UpdateView();
@@ -127,7 +129,7 @@ namespace BnBPosClientNCF35
             {
                 case ScannedType.Sale:
                     {
-                        Program.rest.Get<SellItemDataWithImg>("/r/sellcheckin", new Dictionary<string, string>() { { "id", id.ToString() } },
+                        Program.rest.Get<SellItemDataWithImg>("/r/sellitem", new Dictionary<string, string>() { { "id", id.ToString() } },
                             result =>
                             {
                                 if (result != null)
@@ -145,7 +147,7 @@ namespace BnBPosClientNCF35
                     } break;
                 case ScannedType.Auction:
                     {
-                        Program.rest.Get<AuctItemDataWithImg>("/r/auctioncheckin", new Dictionary<string, string>() { { "id", id.ToString() } },
+                        Program.rest.Get<AuctItemDataWithImg>("/r/auctionitem", new Dictionary<string, string>() { { "id", id.ToString() } },
                             result =>
                             {
                                 if (result != null)

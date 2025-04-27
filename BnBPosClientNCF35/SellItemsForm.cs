@@ -66,13 +66,14 @@ namespace BnBPosClientNCF35
 
         private void OnBarcodeScanned(string bcode)
         {
-            Debug.WriteLine("CheckIn Scanned BarCode:" + bcode);
+            Debug.WriteLine("SellItems Scanned BarCode:" + bcode);
 
             ScannedData data;
 
             try
             {
                 data = RetroLab.Json.Converter.Deserialize<ScannedData>(bcode);
+                this.Invoke(new Action(() => OnItemScanned(data)));
             }
             catch (RetroLab.Json.JsonException ex)
             {
@@ -91,8 +92,14 @@ namespace BnBPosClientNCF35
 
             Program.rest.Get<SellItemData>("/r/sellitem", new Dictionary<string, string>() { { "id", data.ID.ToString() } }, 
                 result => {
-                    if (result != null && !this.items.ContainsKey(result.Id))
+                    if (result != null)
                     {
+                        if (result.ItemState != (uint)ItemStates.InSale || this.items.ContainsKey(result.Id))
+                        {
+                            //ToDo: Play error Sound
+                            return;
+                        }
+
                         this.items.Add(result.Id, result);
                         this.UpdateView();
                         if (result.AdultOnly)
