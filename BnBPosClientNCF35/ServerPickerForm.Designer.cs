@@ -30,8 +30,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.addEntryIBtn = new Retrolab.ImageButton();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.addEntryIBtn = new Retrolab.ImageButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +50,14 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(214, 224);
             // 
+            // vScrollBar1
+            // 
+            this.vScrollBar1.Location = new System.Drawing.Point(224, 41);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(13, 224);
+            this.vScrollBar1.TabIndex = 0;
+            this.vScrollBar1.ValueChanged += new System.EventHandler(this.onScrollChanged);
+            // 
             // addEntryIBtn
             // 
             this.addEntryIBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -60,13 +68,6 @@
             this.addEntryIBtn.Size = new System.Drawing.Size(32, 32);
             this.addEntryIBtn.TabIndex = 7;
             this.addEntryIBtn.Click += new System.EventHandler(this.addEntryIBtn_Click);
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(224, 41);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(13, 224);
-            this.vScrollBar1.TabIndex = 0;
             // 
             // ServerPickerForm
             // 

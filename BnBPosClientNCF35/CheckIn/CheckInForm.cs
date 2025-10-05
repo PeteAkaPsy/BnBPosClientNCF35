@@ -106,6 +106,11 @@ namespace BnBPosClientNCF35
                 });
         }
 
+        private void onScrollChanged(object sender, EventArgs e)
+        {
+            panel2.Top = -1 * vScrollBar1.Value;
+        }
+
         private void OnBarcodeScanned(string bcode)
         {
             Debug.WriteLine("CheckIn Scanned BarCode:" + bcode);

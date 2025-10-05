@@ -64,6 +64,11 @@ namespace BnBPosClientNCF35
             this.tempSumLabel.Text = tempSum.CurrencyStr();
         }
 
+        private void onScrollChanged(object sender, EventArgs e)
+        {
+            panel2.Top = -1 * vScrollBar1.Value;
+        }
+
         private void OnBarcodeScanned(string bcode)
         {
             Debug.WriteLine("SellItems Scanned BarCode:" + bcode);

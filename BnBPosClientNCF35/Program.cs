@@ -68,6 +68,12 @@ namespace BnBPosClientNCF35
 
                 if (!string.IsNullOrEmpty(scfg.AccountToken))
                     cfg.AddServer(scfg);
+
+                // for testing the list in the Server Picker Form
+                //for (int n = 0; n < 20; n++)
+                //{
+                //    cfg.AddServer(new ServerCfg() { ServerName = "Test" + n, ServerUri = "http://192.168.178.31:8081" });
+                //}
 #endif
             }
         }

@@ -68,6 +68,7 @@
             this.vScrollBar1.Name = "vScrollBar1";
             this.vScrollBar1.Size = new System.Drawing.Size(13, 215);
             this.vScrollBar1.TabIndex = 10;
+            this.vScrollBar1.ValueChanged += new System.EventHandler(this.onScrollChanged);
             // 
             // panel1
             // 

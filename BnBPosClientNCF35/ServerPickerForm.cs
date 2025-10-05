@@ -108,5 +108,10 @@ namespace BnBPosClientNCF35
             frm.OnLoginSuccess += this.UpdateData;
             frm.Show();
         }
+
+        private void onScrollChanged(object sender, EventArgs e)
+        {
+            panel2.Top = -1 * vScrollBar1.Value;
+        }
     }
 }
