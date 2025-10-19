@@ -65,8 +65,8 @@ namespace BnBPosClientNCF35
 
         private void stdpTestBtn_Click(object sender, EventArgs e)
         {
-            //string path = Path.Combine(Program.Path(), "documents\\test2.pdf");//worked!
-            string path = Path.Combine(Program.Path(), "documents\\test2.ps");
+            string path = Path.Combine(Program.Path(), "documents\\test2.pdf");//worked!
+            //string path = Path.Combine(Program.Path(), "documents\\test2.ps");
             if (!File.Exists(path))
             {
                 MessageBox.Show("the TestPDF: " + path + " was not found!");

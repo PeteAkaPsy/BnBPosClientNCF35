@@ -176,11 +176,12 @@ namespace BnBPosClientNCF35
             frm.Show();
         }
 
-        private void markSold()
+        private void markSold(float total, float given, float back)
         {
-            long[] keys = this.items.Keys.ToArray();
+            BillData bill = new BillData() { Total=total,Given=given,Back=back };
+            bill.SellItemIds = this.items.Keys.ToArray();
 
-            Program.rest.Post<bool, long[]>("/r/sellitems/sold", keys,
+            Program.rest.Post<bool, BillData>("/r/sellitems/sold", bill,
                     result =>
                     {
                         if (result != true)

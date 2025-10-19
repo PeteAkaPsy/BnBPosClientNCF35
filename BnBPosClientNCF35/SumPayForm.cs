@@ -6,15 +6,16 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace BnBPosClientNCF35
 {
     public partial class SumPayForm : Form
     {
         private float sumToPay;
-        private Action OnPaymentCompleted;
+        private Action<float, float, float> OnPaymentCompleted;
 
-        public SumPayForm(float sumToPay, Action onPaymentCompleted)
+        public SumPayForm(float sumToPay, Action<float,float,float> onPaymentCompleted)
         {
             this.sumToPay = sumToPay;
             this.OnPaymentCompleted = onPaymentCompleted;
@@ -47,20 +48,20 @@ namespace BnBPosClientNCF35
                 MessageBox.Show("Not enough Money given!");
                 return;
             }
-
-            if (input > this.sumToPay)
+            else
             {
                 Form frm = new PayOut(input - this.sumToPay, () =>
                 {
-                    if (this.OnPaymentCompleted != null) this.OnPaymentCompleted.Invoke();
+                    if (this.OnPaymentCompleted != null) this.OnPaymentCompleted.Invoke(this.sumToPay, input, input-this.sumToPay);
                     this.Close();
                 });
                 frm.Show();
                 return;
             }
 
-            if (this.OnPaymentCompleted != null)
-                this.OnPaymentCompleted.Invoke();
+            //if (this.OnPaymentCompleted != null)
+            //    this.OnPaymentCompleted.Invoke(this.sumToPay, input, input-this.sumToPay);
+            Debug.WriteLine("Error: SumPayForm.sumPayedBtn() oops smth. went wrong here...");
             this.Close();
         }
     }

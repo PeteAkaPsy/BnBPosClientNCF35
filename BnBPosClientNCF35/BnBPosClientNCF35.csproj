@@ -85,6 +85,7 @@
     <Compile Include="CheckIn\CheckInScanUIDForm.Designer.cs">
       <DependentUpon>CheckInScanUIDForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="datatypes\BillData.cs" />
     <Compile Include="PoS\Connector.cs" />
     <Compile Include="datatypes\AllItemsData.cs" />
     <Compile Include="datatypes\AuctItemData.cs" />
