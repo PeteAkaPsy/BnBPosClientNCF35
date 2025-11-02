@@ -55,10 +55,10 @@ namespace BnBPosClientNCF35
             }
         }
 
-        private void onBidCompleted()
+        private void onBidCompleted(float total, float given, float back)
         {
             if (this.OnPaymentCompleted != null)
-                this.OnPaymentCompleted.Invoke(Convert.ToSingle(this.handedTB.Text));
+                this.OnPaymentCompleted.Invoke(Convert.ToSingle(total));
             this.Close();
         }
     }

@@ -11,6 +11,7 @@ namespace BnBPosClientNCF35
         New,
         Withdrawn,
         InSale,
+        Unsold,
         Sold,
         Rejected,
         Lost,
@@ -31,6 +32,7 @@ namespace BnBPosClientNCF35
                 case ItemStates.New: return Neutral;
                 case ItemStates.Withdrawn: return Neutral;
                 case ItemStates.InSale: return Positive;
+                case ItemStates.Unsold: return Positive;
                 case ItemStates.Sold: return Positive;
                 case ItemStates.Rejected: return Negative;
                 case ItemStates.Lost: return Bad;
@@ -46,6 +48,7 @@ namespace BnBPosClientNCF35
                 case ItemStates.New: return Neutral; // should not be shown in checkout
                 case ItemStates.Withdrawn: return Neutral;
                 case ItemStates.InSale: return Neutral;
+                case ItemStates.Unsold: return Neutral;
                 case ItemStates.Sold: return Positive;
                 case ItemStates.Rejected: return Neutral;
                 case ItemStates.Lost: return Bad;

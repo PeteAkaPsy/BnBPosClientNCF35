@@ -34,6 +34,8 @@ namespace BnBPosClientNCF35
 
         private void UpdateView()
         {
+            if (this.cfg == null || this.cfg.Configs == null) return;
+
             //List<CollectionsData> collections = collectionsDb.CollTbl.Select();
             Pools.RecycleRowBtnCollection(this.panel2.Controls);
             this.panel2.Height = (this.cfg.Configs.Count() + 1) * (Element_Height + Element_Space);
